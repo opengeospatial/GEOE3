@@ -47,17 +47,20 @@ You can see explanations of user parameters **for CityGML version** below:
 # How to interpret the results?
 The explanations for all implemented rules are in the Excel file located in this repository. It is a good practice to keep Excel table synchronized with the FME implementation.
 
-1. CSV Results
+**1. CSV Results**
+
 Tabular results can be stored to CSV (Comma Separated Values) -file. In addition of basic information of features, CSV file includes names, details and severity levels of every errors detected. You can group, aggregate or analyze the results based on the unique identifier or the dataset name. This can be done by any software / programming language that can handle CSV data.
 
 Example results opened in Excel:
 
 ![Example image of CSV results](https://user-images.githubusercontent.com/60340933/150500173-276a39c0-bade-4dfd-b201-8d0fba137a16.png)
 
-2. CityJSON and CityGML Results
+**2. CityJSON and CityGML Results**
+
 Geometrical results ie. invalid parts of the features can be stored to CityGML or CityJSON file. This output file contain errorneous geometry parts of the buildings and the basic information of errors. Error names, desciptions, counts and severity levels are included. Note, that all features has their original geometry without any modified or deleted parts. You can analyze and process geometrical results via any application or programming language that can handle CityJSON or CityGML data, like FME Inspector. 
 
-3. Results in FME Workspace
+**3. Results in FME Workspace**
+
 You can also inspect, group and aggregate the results from FME workspace itself when you add inspectors or enable feature caching ('Run' -> 'Enable Feature Caching'). That might be useful especially, if you encounter some problems.
 
 ![kuva](https://user-images.githubusercontent.com/60340933/150511861-668b84b9-9c02-4e05-be0e-045bb4ba9da3.png)
