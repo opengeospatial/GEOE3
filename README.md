@@ -29,8 +29,8 @@ You can see explanations of user parameters **for CityGML version** below:
 | No. 	|     USER PARAMETER 	|     OPTIONS 	|     DESCRIPTION 	|
 |---	|---	|---	|--- |
 | 1. 	| [INPUT_CITYGML3] Source CityGML File(s) 	|Full or relative path of files. Also wildcards ('*') are supported.| One or multiple input file(s). Multiple files are all read and processed together, which enables eg. checking duplicate IDs against features in all data sets.	|
-| 2. 	| [OUTPUT_CSV]   Destination CSV Folder 	|Full or relative file path. No extensions or name needed. | Output CSV (Comma Separated Values) file contains only errors aggregated per feature. If a file with name 'results_table.csv' already exists in this folder, it will be overwritten. 	|
-| 3. 	| [OUTPUT_CITYGML] Destination CityGML file |Full or relative file path and name. No extensions needed. | Output CityGML file contains invalid geometry parts and corresponding errors. If the file with the same name already exists, it will be overwritten. 	|
+| 2. 	| [OUTPUT_CSV]   Destination CSV File 	|File name without path. No extensions needed. | Output CSV (Comma Separated Values) file contains only errors aggregated per feature. If a file with same name already exists in the same folder, it will be overwritten. 	|
+| 3. 	| [OUTPUT_CITYGML] Destination CityGML file |File name without path. No extensions needed. | Output CityGML file contains invalid geometry parts and corresponding errors. If the file with the same name already exists, it will be overwritten. 	|
 | 4. 	| [RULE_CATEGORIES]   Rule categories to be checked 	| ValidateGeometry, ValidateAttributes, ValidateXlinks, ValidateHierarchy, ValidateAddress | This parameter defines which rule categories are applied to data automatically. For example, if you only choose ValidateGeometry, then the model does not process other rules. This is especially useful, when the input dataset is very large and thus processing would take a lot of time. |
 | 5. 	| [CRS] Destination Coordinate System 	| All suitable coordinate reference systems, like EPSG registries. | Coordinate Reference System in which all datasets will be converted. If empty, original input CRSs is used.	Note that used CRS defines the measurement units for many thresholds (eg. meter or foot)|
 | 6. 	| [COORD_PREC]   Coordinate rounding precision (number of decimal places) 	| Integer 0-20 | The model rounds coordinates of the feature to a specified number of decimal places.	|
@@ -41,6 +41,7 @@ You can see explanations of user parameters **for CityGML version** below:
 | 11. 	| [MIN_AREA]   Minimum area of the surface (crs unit) 	| Float >= 0 | The model checks that every surface has a bigger area than the given threshold. If the area is smaller than the threshold, it causes an error. 	|
 | 12. 	| [MIN_VOLUME] Minimum volume of the solid 	| Integer > 0 | The model checks that every solid has larger volume than this threshold. If the volume is too small, it causes an error. 	|
 | 13. 	| [SPIKE_ANGLE] Maximum spike angle 	| Float 0-180 degrees | If the angle (in degrees) between two line segments is less than or equal to this parameter, then the middle point is a spike and is notified. The value must be between 0 and 180 degrees. 	|
+| 14. 	| [TOLERANCE] Tolerance for duplicate concecutive points 	| Float >= 0 | If two concecutive points are located in the same coordinates within this tolerance, they are considered as an duplicate points. 	|
 
 **Note 1:** User parameters slightly differ between CityGML and CityJSON workspaces and might be in different order. 
 
