@@ -24,24 +24,28 @@ When you run the workspace, FME will ask the user to define multiple **user para
 
 You can see explanations of user parameters **for CityGML version** below:
 
-<img src="https://github.com/opengeospatial/GEOE3/blob/main/wiki_images/user_parameters.PNG" alt="User parameters image" width="60%">
+<img src="https://github.com/opengeospatial/GEOE3/blob/main/wiki_images/user_parameters.png" alt="User parameters image" width="60%">
 
 | No. 	|     USER PARAMETER 	|     OPTIONS 	|     DESCRIPTION 	|
 |---	|---	|---	|--- |
 | 1. 	| [INPUT_CITYGML3] Source CityGML File(s) 	|Full or relative path of files. Also wildcards ('*') are supported.| One or multiple input file(s). Multiple files are all read and processed together, which enables eg. checking duplicate IDs against features in all data sets.	|
 | 2. 	| [OUTPUT_CSV]   Destination CSV File 	|File name without path. No extensions needed. | Output CSV (Comma Separated Values) file contains only errors aggregated per feature. If a file with same name already exists in the same folder, it will be overwritten. 	|
-| 3. 	| [OUTPUT_CITYGML] Destination CityGML file |File name without path. No extensions needed. | Output CityGML file contains invalid geometry parts and corresponding errors. If the file with the same name already exists, it will be overwritten. 	|
+| 3. 	| [OUTPUT_CITYGML] Destination CityGML file |File name without path. No extensions needed. | Output CityGML file contains invalid geometry parts and corresponding errors as an attributes. If the file with the same name already exists, it will be overwritten. 	|
 | 4. 	| [RULE_CATEGORIES]   Rule categories to be checked 	| ValidateGeometry, ValidateAttributes, ValidateXlinks, ValidateHierarchy, ValidateAddress | This parameter defines which rule categories are applied to data automatically. For example, if you only choose ValidateGeometry, then the model does not process other rules. This is especially useful, when the input dataset is very large and thus processing would take a lot of time. |
 | 5. 	| [CRS] Destination Coordinate System 	| All suitable coordinate reference systems, like EPSG registries. | Coordinate Reference System in which all datasets will be converted. If empty, original input CRSs is used.	Note that used CRS defines the measurement units for many thresholds (eg. meter or foot)|
-| 6. 	| [COORD_PREC]   Coordinate rounding precision (number of decimal places) 	| Integer 0-20 | The model rounds coordinates of the feature to a specified number of decimal places.	|
-| 7. 	| [CHECK_NORMALS]   Check vertex normals for every feature 	| Yes/No | If this is chosen, the model adds an error to every feature, which doesn't contain normal vectors. 	|
-| 8.  	| [OVERLAP] Maximum overlappiing percentage of the whole area	|  Float 0-100 | Threshold, which determines the maximum overlapping area of one surface. 	|
-| 9. 	| [PLAN_DIST] Planar surface distance tolerance i.e. 'thickness' 	| Float >= 0| This parameter describes the maximum “thickness” a face can have before it is considered non-planar. A planar polygon has a thickness of 0. 	|
-| 10. 	| [PLAN_ANG]   Planar surface normal deviation tolerance | Float 0-180 degrees| This parameter describes the maximum deviation between the average surface normal of a face and the surface normals resulting from a triangulation of that face, before it is considered non-planar. A planar polygon has a surface normal deviation of 0. 	|
+| 6. 	| [CHECK_NORMALS]   Check vertex normals for every feature 	| Yes/No | If this is chosen, the model adds an error to every feature, which doesn't contain normal vectors. 	|
+| 7.  	| [OVERLAP] Maximum overlappiing percentage of the whole area	|  Float 0-100 | Threshold, which determines the maximum overlapping area of one surface. 	|
+| 8. 	| [PLAN_DIST] Planar surface distance tolerance i.e. 'thickness' 	| Float >= 0| This parameter describes the maximum “thickness” a face can have before it is considered non-planar. A planar polygon has a thickness of 0. 	|
+| 9. 	| [PLAN_ANG]   Planar surface normal deviation tolerance | Float 0-180 degrees| This parameter describes the maximum deviation between the average surface normal of a face and the surface normals resulting from a triangulation of that face, before it is considered non-planar. A planar polygon has a surface normal deviation of 0. 	|
+| 10. 	| [MIN_VOLUME] Minimum volume of the solid 	| Integer > 0 | The model checks that every solid has larger volume than this threshold. If the volume is too small, it causes an error. 	|
 | 11. 	| [MIN_AREA]   Minimum area of the surface (crs unit) 	| Float >= 0 | The model checks that every surface has a bigger area than the given threshold. If the area is smaller than the threshold, it causes an error. 	|
-| 12. 	| [MIN_VOLUME] Minimum volume of the solid 	| Integer > 0 | The model checks that every solid has larger volume than this threshold. If the volume is too small, it causes an error. 	|
-| 13. 	| [SPIKE_ANGLE] Maximum spike angle 	| Float 0-180 degrees | If the angle (in degrees) between two line segments is less than or equal to this parameter, then the middle point is a spike and is notified. The value must be between 0 and 180 degrees. 	|
+| 12. 	| [SPIKE_ANGLE] Maximum spike angle 	| Float 0-180 degrees | If the angle (in degrees) between two line segments is less than or equal to this parameter, then the middle point is a spike and is notified. The value must be between 0 and 180 degrees. 	|
+| 13. 	| [COORD_PREC]   Coordinate rounding precision (number of decimal places) 	| Integer 0-20 | The model rounds coordinates of the feature to a specified number of decimal places.	|
 | 14. 	| [TOLERANCE] Tolerance for duplicate concecutive points 	| Float >= 0 | If two concecutive points are located in the same coordinates within this tolerance, they are considered as an duplicate points. 	|
+
+
+
+
 
 **Note 1:** User parameters slightly differ between CityGML and CityJSON workspaces and might be in different order. 
 
