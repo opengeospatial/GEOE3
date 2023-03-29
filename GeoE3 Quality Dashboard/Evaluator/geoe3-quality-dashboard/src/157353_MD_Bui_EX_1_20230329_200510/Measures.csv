@@ -1,6 +1,6 @@
 Element,Measure,Measure_Weight,Measure_Description,Measure_Score
 FAIR Findability,Keywords,10,Keywords should be specified.,5.0
-Contextuality,Title,8,Title.,5.0
+Contextuality,Title,8,Title,5.0
 Contextuality,Description,8,Description.,5.0
 Language,Language Presence,5,Language should be specified.,5.0
 Language,English Language,8,Describes whether English is available.,5.0

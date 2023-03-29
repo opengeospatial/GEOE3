@@ -46,11 +46,11 @@ def main():
         os.makedirs(folder_name)
 
     name_excel_file = metadata_file.replace('.xml', '')
-    scores_table.to_csv(os.path.join(folder_name, name_excel_file + '_Metrics'+'.csv'), index=False)
-    VP.to_csv(os.path.join(folder_name, name_excel_file + '_VP' + '.csv'), index=False)
-    D.to_csv(os.path.join(folder_name, name_excel_file + '_Dimensions' + '.csv'), index=False)
-    E.to_csv(os.path.join(folder_name, name_excel_file + '_Elements' + '.csv'), index=False)
-    M.to_csv(os.path.join(folder_name, name_excel_file + '_Measures' + '.csv'), index=False)
+    scores_table.to_csv(os.path.join(folder_name, 'Metrics'+'.csv'), index=False)
+    VP.to_csv(os.path.join(folder_name, 'VP' + '.csv'), index=False)
+    D.to_csv(os.path.join(folder_name, 'Dimensions' + '.csv'), index=False)
+    E.to_csv(os.path.join(folder_name, 'Elements' + '.csv'), index=False)
+    M.to_csv(os.path.join(folder_name, 'Measures' + '.csv'), index=False)
     print('Results have been saved in a folder named : ', name_excel_file)
 
 

@@ -6,6 +6,6 @@ Service And Dataset,Thematic Quality,5,Thematic quality is defined as the accura
 Service And Dataset,Logical Consistency,5,"Degree of adherence to logical rules of data structure, attribution and relationships (data structure can be conceptual, logical or physical) [ISO 19157-1:2021].",4.6088090408577225
 Service And Dataset,Temporal Quality,7,Accuracy of the temporal attributes and temporal relationships of features [ISO 19157-1:2021].,4.242105263157894
 Service And Dataset,Positionnal Accuracy,5,Accuracy of the position of features [ISO 19157-1:2021].,4.045045045045045
-interoperability,FAIR Reusability,7,Data and metadata are sufficiently annotated so machine and human users can determine fit-for-purpose in the context of their analysis (FAIR principles).,5.0
-interoperability,Traceability,6,Describes whether the data process is described adequately.,5.0
-interoperability,FAIR Interoperability,7,"Data and metadata are consistently structured and described, both syntactically and semantically, so that algorithms can parse and ensure like data are accurately compared to like (FAIR principles).",1.5
+Interoperability,FAIR Reusability,7,Data and metadata are sufficiently annotated so machine and human users can determine fit-for-purpose in the context of their analysis (FAIR principles).,5.0
+Interoperability,Traceability,6,Describes whether the data process is described adequately.,5.0
+Interoperability,FAIR Interoperability,7,"Data and metadata are consistently structured and described, both syntactically and semantically, so that algorithms can parse and ensure like data are accurately compared to like (FAIR principles).",1.5
