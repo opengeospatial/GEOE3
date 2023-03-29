@@ -1,0 +1,2271 @@
+{
+"UseCase": {
+    "type": "viewpoint",
+    "name": "Use Case",
+    "weight": 1,
+    "description": "Viewpoint focused on the user and its use case. Displays the less technical data such as XXX",
+    "nodes": {
+        "Understandability": {
+            "type": "dimension",
+            "name": "Understandability",
+            "weight": 7,
+            "description": "Quality Dimension under the Use Case Viewpoint. Describes whether the dataset can easily be understood by potential users.",
+            "nodes": {
+                "Findability": {
+                    "type": "qualityElement",
+                    "name": "FAIR Findability",
+                    "weight": 7,
+                    "description": "Data and metadata are online and openly searchable with a persistent link that is uniquely attached to each specific dataset. ",
+                    "nodes": {
+                        "Keywords": {
+                            "type": "measure",
+                            "name": "Keywords",
+                            "weight": 10,
+                            "description": "Keywords should be specified.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Keywords Presence",
+                                    "weight": 5,
+                                    "description": "Keywords should be specified.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-metadata",
+                                        "rule": "//ows:Keywords",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Keywords are present."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "Contextuality": {
+                    "type": "qualityElement",
+                    "name": "Contextuality",
+                    "weight": 4,
+                    "description": "Context is provided to the user.",
+                    "nodes": {
+                        "Title": {
+                            "type": "measure",
+                            "name": "Title",
+                            "weight": 8,
+                            "description": "Title.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Title.",
+                                    "weight": 5,
+                                    "description": "Title.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-metadata",
+                                        "rule": "//ows:ServiceIdentification//ows:Title",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks that the property is set."
+                                    }
+                                }
+                            }
+                        },
+                        "Description": {
+                            "type": "measure",
+                            "name": "Description",
+                            "weight": 8,
+                            "description": "Description.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Abstract.",
+                                    "weight": 5,
+                                    "description": "Abstract.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-metadata",
+                                        "rule": "//ows:ServiceIdentification//ows:Abstract",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks that the property is set."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "Language": {
+                    "type": "qualityElement",
+                    "name": "Language",
+                    "weight": 6,
+                    "description": "Quality Element under the Understandability Dimension. Evaluates language requirements (specification of language, English available..). ",
+                    "nodes": {
+                        "LanguagePresence": {
+                            "type": "measure",
+                            "name": "Language Presence",
+                            "weight": 5,
+                            "description": "Language should be specified.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Resource Language",
+                                    "weight": 5,
+                                    "description": "Language(s) used within the datasets.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:identificationInfo//gmd:language//gmd:LanguageCode/@codeListValue",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Resource Language is present"
+                                    }
+                                },
+                                "metric2": {
+                                    "type": "metric",
+                                    "name": "Metadata Language",
+                                    "weight": 5,
+                                    "description": "Language in which the metadata elements are expressed",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:MD_Metadata/gmd:language/gmd:LanguageCode/@codeListValue",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Metadata language is present"
+                                    }
+                                }
+                            }
+                        },
+                        "LanguageEnglish": {
+                            "type": "measure",
+                            "name": "English Language",
+                            "weight": 8,
+                            "description": "Describes whether English is available.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "English",
+                                    "weight": 5,
+                                    "description": "Default language OR one of the alternate languages is English",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:MD_Metadata //gmd:locale//gmd:LanguageCode/@codeListValue",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "referenceValue": "eng",
+                                        "operator": "is",
+                                        "description": "Default language of the Metadata OR one of its alternate languages is English"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+},
+"ServiceAndDataset": {
+    "type": "viewpoint",
+    "name": "Service And Dataset",
+    "weight": 1,
+    "description": "Viewpoint focused on Service availability and technical evaluations. Use of ISO standards, Quality Evaluation Software and Metadata.",
+    "nodes": {
+        "serviceQuality":{
+            "type": "dimension",
+            "name": "Service Quality",
+            "weight": 6,
+            "description": "Dimension under the Service and Dataset Viewpoint. Evaluates the quality of the service that provides the data.",
+            "nodes": {
+                "serviceRobustness": {
+                    "type": "qualityElement",
+                    "name": "Service Robustness",
+                    "weight": 5,
+                    "description": "Quality Element evaluating the service's robustness.",
+                    "nodes": {
+                        "availability": {
+                            "type": "measure",
+                            "name": "Availability",
+                            "weight": 5,
+                            "description": "Displays availability statistics of the service.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Days Of Availability Metrics",
+                                    "weight": 0,
+                                    "description": "For how many days availability statistics and interruptions are calculated",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-availability",
+                                        "url_start": "https://beta.spatineo-devops.com/api/public/geoe3-dashboard?privateAccessKey=RoYjl8a3NbJ3tx1Hh0-IK6iP55i3YnAhSpcWcD2xgwSE8jBBP0EA9Q&serviceIds=",
+                                        "rule": "//daysOfAvailabilityMetrics",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks presence"
+                                    }
+                                }, 
+                                "metric2": {
+                                    "type": "metric",
+                                    "name": "Days Of Response Time Metrics",
+                                    "weight": 0,
+                                    "description": "For how many days response time metrics are calculated",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-availability",
+                                        "url_start": "https://beta.spatineo-devops.com/api/public/geoe3-dashboard?privateAccessKey=RoYjl8a3NbJ3tx1Hh0-IK6iP55i3YnAhSpcWcD2xgwSE8jBBP0EA9Q&serviceIds=",
+                                        "rule": "//daysOfResponseTimeMetrics",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "descripiton": "Checks presence"
+                                    }
+                                },
+                                "metric0": {
+                                    "type": "metric",
+                                    "name": "Service Id",
+                                    "weight": 0,
+                                    "description": "Service ID",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-availability",
+                                        "url_start": "https://beta.spatineo-devops.com/api/public/geoe3-dashboard?privateAccessKey=RoYjl8a3NbJ3tx1Hh0-IK6iP55i3YnAhSpcWcD2xgwSE8jBBP0EA9Q&serviceIds=",
+                                        "rule": "//services//serviceId",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule":{
+                                        "type": "presence",
+                                        "description": "Checks presence"
+                                    }
+                                },
+                                "metric3": {
+                                    "type": "metric",
+                                    "name": "Availability ok (ms)",
+                                    "weight": 1,
+                                    "description": "Contains the number of milliseconds the service has been in 'ok' state during the period",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-availability",
+                                        "url_start": "https://beta.spatineo-devops.com/api/public/geoe3-dashboard?privateAccessKey=RoYjl8a3NbJ3tx1Hh0-IK6iP55i3YnAhSpcWcD2xgwSE8jBBP0EA9Q&serviceIds=",
+                                        "rule": "//services//availability//total//ok",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Check presence of measure"
+                                    }
+                                },
+                                "metric4": {
+                                    "type": "metric",
+                                    "name": "Availability down (ms)",
+                                    "weight": 1,
+                                    "description": "Contains the number of milliseconds the service has been in 'ok' state during the period",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-availability",
+                                        "url_start": "https://beta.spatineo-devops.com/api/public/geoe3-dashboard?privateAccessKey=RoYjl8a3NbJ3tx1Hh0-IK6iP55i3YnAhSpcWcD2xgwSE8jBBP0EA9Q&serviceIds=",
+                                        "rule": "//services//availability//total//down",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Check presence of measure"
+                                    }
+                                },
+                                "metric5": {
+                                    "type": "metric",
+                                    "name": "Availability maintenance (ms)",
+                                    "weight": 1,
+                                    "description": "Contains the number of milliseconds the service has been in 'ok' state during the period",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-availability",
+                                        "url_start": "https://beta.spatineo-devops.com/api/public/geoe3-dashboard?privateAccessKey=RoYjl8a3NbJ3tx1Hh0-IK6iP55i3YnAhSpcWcD2xgwSE8jBBP0EA9Q&serviceIds=",
+                                        "rule": "//services//availability//total//maintenance",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Check presence of measure"
+                                    }
+                                },
+                                "metric6": {
+                                    "type": "metric",
+                                    "name": "Availability",
+                                    "weight": 8,
+                                    "description": "Contains the number of milliseconds the service has been in available (meaning ok or in maintenance state) during the period",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-availability",
+                                        "url_start": "https://beta.spatineo-devops.com/api/public/geoe3-dashboard?privateAccessKey=RoYjl8a3NbJ3tx1Hh0-IK6iP55i3YnAhSpcWcD2xgwSE8jBBP0EA9Q&serviceIds=",
+                                        "rule": "(//services//availability//total//ok + //services//availability//total//maintenance) div (//services//availability//total//ok + //services//availability//total//maintenance + //services//availability//total//down)",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "referenceValue": 0.95,
+                                        "operator": ">",
+                                        "description": "We assume the service should be available state at least 95% of the time from when the statistics are calculated. Availability = (ok + maintenance) / (ok + down + maintenance)"
+                                    }
+                                },
+                                "metric7": {
+                                    "type": "metric",
+                                    "name": "Longest Interruptions",
+                                    "weight": 4,
+                                    "description": "The length in milliseconds of the longest interruption during or overlapping 'daysOfAvailabilityMetrics'",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-availability",
+                                        "url_start": "https://beta.spatineo-devops.com/api/public/geoe3-dashboard?privateAccessKey=RoYjl8a3NbJ3tx1Hh0-IK6iP55i3YnAhSpcWcD2xgwSE8jBBP0EA9Q&serviceIds=",
+                                        "rule": "//services//interruptions//longest",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "referenceValue": 86400000,
+                                        "operator": "<",
+                                        "description": "We assume it should be at most 24h. Null if no monitoring data is available for the period."
+                                    }
+                                },
+                                "metric8": {
+                                    "type": "metric",
+                                    "name": "Average Interruptions",
+                                    "weight": 4,
+                                    "description": "The average length of service interruptions during or overlapping 'daysOfAvailabilityMetrics'",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-availability",
+                                        "url_start": "https://beta.spatineo-devops.com/api/public/geoe3-dashboard?privateAccessKey=RoYjl8a3NbJ3tx1Hh0-IK6iP55i3YnAhSpcWcD2xgwSE8jBBP0EA9Q&serviceIds=",
+                                        "rule": "//services//interruptions//average",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "referenceValue": 43200000,
+                                        "operator": "<",
+                                        "description": "We assume it should be at most 12h. Null if no monitoring data is available for the period."
+                                    }
+                                },
+                                "metric9": {
+                                    "type": "metric",
+                                    "name": "Response Time Average",
+                                    "weight": 4,
+                                    "description": "Average response time (in milliseconds) of service during 'daysOfResponseTimeMetrics'.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-availability",
+                                        "url_start": "https://beta.spatineo-devops.com/api/public/geoe3-dashboard?privateAccessKey=RoYjl8a3NbJ3tx1Hh0-IK6iP55i3YnAhSpcWcD2xgwSE8jBBP0EA9Q&serviceIds=",
+                                        "rule": "//services//responseTime//averageMillis",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "referenceValue": 21600000,
+                                        "operator": "<",
+                                        "description": "We assume it should be at most 6h. Null if no monitoring data is available for the period."
+                                    }
+                                },
+                                "metric10": {
+                                    "type": "metric",
+                                    "name": "Response Time Latest At",
+                                    "weight": 4,
+                                    "description": "Timestamp of latest monitoring request (in milliseconds since epoch).",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-availability",
+                                        "url_start": "https://beta.spatineo-devops.com/api/public/geoe3-dashboard?privateAccessKey=RoYjl8a3NbJ3tx1Hh0-IK6iP55i3YnAhSpcWcD2xgwSE8jBBP0EA9Q&serviceIds=",
+                                        "rule": "//services//responseTime//latest//at",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Check presence of timestamp. Null if no monitoring data is available for the period."
+                                    }
+                                },
+                                "metric11": {
+                                    "type": "metric",
+                                    "name": "Response Time Latest Millis",
+                                    "weight": 4,
+                                    "description": "Response time (in milliseconds) of the latest monitoring request.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-availability",
+                                        "url_start": "https://beta.spatineo-devops.com/api/public/geoe3-dashboard?privateAccessKey=RoYjl8a3NbJ3tx1Hh0-IK6iP55i3YnAhSpcWcD2xgwSE8jBBP0EA9Q&serviceIds=",
+                                        "rule": "//services//responseTime//latest//millis",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "range",
+                                        "minimum": 0,
+                                        "maximum": 3600000,
+                                        "description": "We assume it should be at most 1h. Null if no monitoring data is available for the period."
+                                    }
+                                },
+                                "metric12": {
+                                    "type": "metric",
+                                    "name": "Service Info Url",
+                                    "weight": 0,
+                                    "description": "URL of the service endpoint in question",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-availability",
+                                        "url_start": "https://beta.spatineo-devops.com/api/public/geoe3-dashboard?privateAccessKey=RoYjl8a3NbJ3tx1Hh0-IK6iP55i3YnAhSpcWcD2xgwSE8jBBP0EA9Q&serviceIds=",
+                                        "rule": "//services//serviceInfo//url",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Check presence of URL."
+                                    }
+                                },
+                                "metric13": {
+                                    "type": "metric",
+                                    "name": "Service Info Type",
+                                    "weight": 0,
+                                    "description": "Type of service (WMS, WFS, WMTS, ArcGIS, REST, or INSPIRE_ATOM)",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-availability",
+                                        "url_start": "https://beta.spatineo-devops.com/api/public/geoe3-dashboard?privateAccessKey=RoYjl8a3NbJ3tx1Hh0-IK6iP55i3YnAhSpcWcD2xgwSE8jBBP0EA9Q&serviceIds=",
+                                        "rule": "//services//serviceInfo//type",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Check presence of type of service."
+                                    }
+                                },
+                                "metric14": {
+                                    "type": "metric",
+                                    "name": "Service Info Version",
+                                    "weight": 0,
+                                    "description": "Version of service endpoint (newest supported version in case of OGC services",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-availability",
+                                        "url_start": "https://beta.spatineo-devops.com/api/public/geoe3-dashboard?privateAccessKey=RoYjl8a3NbJ3tx1Hh0-IK6iP55i3YnAhSpcWcD2xgwSE8jBBP0EA9Q&serviceIds=",
+                                        "rule": "//services//serviceInfo//version",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Check presence of version."
+                                    }
+                                }                                
+                            }
+                        }
+                    }
+                }
+            }
+        }, 
+        "completeness": {
+            "type": "dimension",
+            "name": "Completeness",
+            "weight": 5,
+            "description": "Presence and absence of features, their attributes and their relationship [ISO 19157-1:2021].",
+            "nodes": {
+                "omission": {
+                    "type": "qualityElement",
+                    "name": "Omission",
+                    "weight": 5,
+                    "description": "Data absent from the dataset, as described by the scope [ISO 19157-1:2021].",
+                    "nodes": {
+                        "missingItem" : {
+                            "type": "measure",
+                            "name": "Missing Item",
+                            "weight": 5,
+                            "description": "Evaluation based on missing items in the data.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Item Missing",
+                                    "weight": 5,
+                                    "description": "Indication of omission",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "/gmd:MD_Metadata//gmd:dataQuality//gmd:Completeness//gmd:Omission//gmd:itemMissing",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                            "type": "presence",
+                                            "description": "Checks indication of omission"
+                                    }
+                                }, 
+                                "metric2": {
+                                    "type": "metric",
+                                    "name": "Item Missing Count",
+                                    "weight": 1,
+                                    "description": "Number of missing item",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "/gmd:MD_Metadata//gmd:dataQuality//gmd:Completeness//gmd:Omission//gmd:count",
+                                        "value": "text"
+                                        
+                                    },
+                                    "evaluationRule": {
+                                            "type": "comparison",
+                                            "referenceValue": 1000,
+                                            "operator": "<",
+                                            "description": "We assume it should be at most 1000 (number chosen randomly, user input parameter ?)."
+                                    }
+                                },
+                                "metric3": {
+                                    "type": "metric",
+                                    "name": "Item Missing Rate",
+                                    "weight": 7,
+                                    "description": "Proportion of missing item",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "/gmd:MD_Metadata//gmd:dataQuality//gmd:Completeness//gmd:Omission//gmd:rate",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "referenceValue": 15,
+                                        "operator": "<",
+                                        "description": "We assume it should be at most 15% (user input parameter ?)."
+                                    }
+                                }
+                            }
+                        }
+                        
+                    }
+                },
+                "commision": {
+                    "type": "qualityElement",
+                    "name": "Comission",
+                    "weight": 5,
+                    "description": "Excess data present in the dataset, as described by the scope [ISO 19157-1:2021].",
+                    "nodes": {
+                        "itemDucplicate": {
+                            "type": "measure",
+                            "name": "Item Duplicate",
+                            "weight": 2,
+                            "description": "Evaluation based on duplicate items in the data.",
+                            "nodes": {
+                                "metric1" : {
+                                    "type": "metric",
+                                    "name": "Item Duplicate",
+                                    "weight": 5,
+                                    "description": "Number of duplicate item",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "/gmd:MD_Metadata//gmd:dataQuality//gmd:Completeness//gmd:Commission//gmd:itemDuplicate",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "referenceValue": 100,
+                                        "operator": "<",
+                                        "description": "We assume it should be at most 100 (number chosen randomly, user input parameter ?)."
+                                    }
+                                }
+                            }
+                        },
+                        "itemExcess": {
+                            "type": "measure",
+                            "name": "Item Excess",
+                            "weight": 5,
+                            "description": "Evaluation based on excess items in the data.",
+                            "nodes": {
+                            }, 
+                            "metric1": {
+                                "type": "metric",
+                                "name": "Item Excess",
+                                "weight": 5,
+                                "description": "Indication of commission",
+                                "extractionRule": {
+                                    "type": "xpath",
+                                    "source": "dataset-metadata",
+                                    "rule": "/gmd:MD_Metadata//gmd:dataQuality//gmd:Completeness//gmd:Commission//gmd:itemExtra",
+                                    "value": "text"
+                                },
+                                "evaluationRule": {
+                                    "type": "presence",
+                                    "description":"Check presence of indication of excess item."
+                                }
+                            }, 
+                            "metric2": {
+                                "type": "metric",
+                                "name": "Item Extra Count",
+                                "weight": 1,
+                                "description": "Number of extra item",
+                                "extractionRule": {
+                                    "type": "xpath",
+                                    "source": "dataset-metadata",
+                                    "rule": "/gmd:MD_Metadata//gmd:dataQuality//gmd:Completeness//gmd:Commission//gmd:count",
+                                    "value": "text"
+                                },
+                                "evaluationRule": {
+                                    "type": "comparison",
+                                    "referenceValue": 100,
+                                    "operator": "<",
+                                    "description": "We assume it should be at most 100 (number chosen randomly, user input parameter ?)."
+                                }
+                            }, 
+                            "metric3": {
+                                "type": "metric",
+                                "name": "Item Extra Rate",
+                                "weight": 7,
+                                "description": "Proportion of extra item",
+                                "extractionRule": {
+                                    "type": "xpath",
+                                    "source": "dataset-metadata",
+                                    "rule": "/gmd:MD_Metadata//gmd:dataQuality//gmd:Completeness//gmd:Commission//gmd:rate",
+                                    "value": "text"
+                                },
+                                "evaluationRule": {
+                                    "type": "comparison",
+                                    "referenceValue": 15,
+                                    "operator": "<",
+                                    "description": "We assume it should be at most 15% (user input parameter ?)."
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, 
+        "thematicQuality": {
+            "type": "dimension",
+            "name": "Thematic Quality",
+            "weight": 5,
+            "description": "Thematic quality is defined as the accuracy of quantitative attributes and the correctness of non-quantitative attributes and of the classifications of features and their relationships [ISO 19157-1:2021].",
+            "nodes": {
+                "quantitativeAttributeAccuracy": {
+                    "type": "qualityElement",
+                    "name": "Quantitative Attribute Accuracy",
+                    "weight": 7,
+                    "description": "Closeness of the value of a quantitative attribute to a value accepted as or known to be true [ISO 19157-1:2021].",
+                    "nodes": {
+                        "dateLastEvalQAA": {
+                            "type": "measure",
+                            "name": "Date Last Evaluation (QAA)",
+                            "weight": 8,
+                            "description": "Evaluation based on the date of last Evaluation.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Date Last Evaluation (QAA)",
+                                    "weight": 5,
+                                    "description": "Date of last evaluation",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "/gmd:MD_Metadata//gmd:dataQuality//gmd:ThematicQuality//gmd:QuantitativeAttributeAccuracy//gmd:date_evaluation//gco:date",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "date",
+                                        "minimum": "2000-01-01" ,
+                                        "maximum": "2023-01-01",
+                                        "description": "Should be between 2000-01-01 and 2023-01-01 (defined by user)"
+                                    }
+                                }
+                            }
+                        }, 
+                        "AttributeValueUncertainty": {
+                            "type": "measure",
+                            "name": "Attribute Value Uncertainty",
+                            "weight": 5,
+                            "description": "Attribute value uncertainty.",
+                            "nodes": {
+                                "AVU68": {
+                                    "type": "metric",
+                                    "name": "AVU 68.3%",
+                                    "weight": 5,
+                                    "description": "Attribute value uncertainty at 68,3 % significance level",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "/gmd:MD_Metadata//gmd:dataQuality//gmd:ThematicQuality//gmd:QuantitativeAttributeAccuracy//gmd:AttributeValueUncertaincy//gmd:sigmaUn",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "referenceValue": 0.5,
+                                        "operator": ">",
+                                        "description": "Half length of the interval defined by an upper and a lower limit, in which the true value for the quantitative attribute lies with probability 68,3 % ; LE68.3 (ISO19157, Table D.78)"
+                                    }
+                                },
+                                "AVU95": {
+                                    "type": "metric",
+                                    "name": "AVU 95%",
+                                    "weight": 5,
+                                    "description": "Attribute value uncertainty at 95 % significance level",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "/gmd:MD_Metadata//gmd:dataQuality//gmd:ThematicQuality//gmd:QuantitativeAttributeAccuracy//gmd:AttributeValueUncertaincy//gmd:sigmaDeux ",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "referenceValue": 0.5,
+                                        "operator": ">",
+                                        "description": "Half length of the interval defined by an upper and a lower limit, in which the true value for the quantitative attribute lies with probability 95 % ; LE95 (ISO19157, Table D.81)"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }, 
+                "NonQuantitativeAttributeCorrectness": {
+                    "type": "qualityElement",
+                    "name": "Non Quantitative Attribute Correctness",
+                    "weight": 7,
+                    "description": "Correctness of non-quantitative attributes is correct or incorrect [ISO 19157-1:2021].",
+                    "nodes": {
+                        "dateLastEvalNQAC": {
+                            "type": "measure",
+                            "name": "Date Last Evaluation (NQAC)",
+                            "weight": 8,
+                            "description": "Evaluation based on the date of last Evaluation.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Date Last Evaluation (NQAC)",
+                                    "weight": 5,
+                                    "description": "Date of last evaluation",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "/gmd:MD_Metadata//gmd:dataQuality//gmd:ThematicQuality//gmd:NonQuantitativeAttributeCorrectness//gmd:date_evaluation//gco:date",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "date",
+                                        "minimum": "2000-01-01" ,
+                                        "maximum": "2023-01-01",
+                                        "description": "Should be between 2000-01-01 and 2023-01-01 (defined by user)"
+                                    }
+                                }
+                            }
+                        },
+                        "missclassNQAC": {
+                            "type": "measure",
+                            "name": "Missclassification (NQAC)",
+                            "weight": 6,
+                            "description": "Evaluation based on the missclassification of non-quantitative attributes.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Missclassification Rate (NQAC)",
+                                    "weight": 7,
+                                    "description": "Proportion of missclassification for non-quantitative attributes",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "/gmd:MD_Metadata//gmd:dataQuality//gmd:ThematicQuality//gmd:NonQuantitativeAttributeCorrectness//gmd:missclassification//gmd:rate",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "referenceValue": 15,
+                                        "operator": "<",
+                                        "description": "We assume it should be at most 15% (user input parameter ?)."
+                                    }
+                                }, 
+                                "metric2": {
+                                    "type": "metric",
+                                    "name": "Missclassification Count (NQAC)",
+                                    "weight": 1,
+                                    "description": "Missclassification count for non-quantitative attributes",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "/gmd:MD_Metadata//gmd:dataQuality//gmd:ThematicQuality//gmd:NonQuantitativeAttributeCorrectness//gmd:missclassification//gmd:count",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "referenceValue": 100,
+                                        "operator": "<",
+                                        "description": "We assume it should be at most 100 (number chosen randomly, user input parameter ?)."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }, 
+                "ClassificationCorrectness": {
+                    "type": "qualityElement",
+                    "name": "Classification Correctness",
+                    "weight": 7,
+                    "description": "Comparison of the classes assigned to features or their attributes to a universe of discourse [ISO 19157-1:2021].",
+                    "nodes": {
+                        "dateLastEvalThematicQuality": {
+                            "type": "measure",
+                            "name": "Date Last Evaluation Thematic Quality",
+                            "weight": 8,
+                            "description": "Evaluation based on the date of last Evaluation.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Date Last Evaluation Thematic Quality",
+                                    "weight": 5,
+                                    "description": "Date of last Evaluation.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "/gmd:MD_Metadata//gmd:dataQuality//gmd:ThematicQuality//gmd:ClassificationCorrectness//gmd:date_evaluation//gco:date",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "date",
+                                        "minimum": "2000-01-01" ,
+                                        "maximum": "2023-01-01",
+                                        "description": "Should be between 2000-01-01 and 2023-01-01 (defined by user)"
+                                    }
+                                }                             
+                            }
+                            
+                        }, 
+                        "missclassTCC":{
+                            "type": "measure",
+                            "name": "Missclassification (TCC)",
+                            "weight": 5,
+                            "description": "Evaluation based on thematic missclassification.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Missclassification Rate (TCC)",
+                                    "weight": 7,
+                                    "description": "Proportion of incorrectly classified item",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "/gmd:MD_Metadata//gmd:dataQuality//gmd:ThematicQuality//gmd:ClassificationCorrectness//gmd:missclassification//gmd:rate",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "referenceValue": 15,
+                                        "operator": "<",
+                                        "description": "We assume it should be at most 15% (user input parameter ?)."
+                                    }
+                                }, 
+                                "metric2": {
+                                    "type": "metric",
+                                    "name": "Number of Incorrect Items (TCC)",
+                                    "weight": 1,
+                                    "description": "Number of item with incorrect classification",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "/gmd:MD_Metadata//gmd:dataQuality//gmd:ThematicQuality//gmd:ClassificationCorrectness//gmd:missclassification//gmd:count",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "referenceValue": 100,
+                                        "operator": "<",
+                                        "description": "We assume it should be at most 100 (number chosen randomly, user input parameter ?)."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "logicalConsistency": {
+            "type": "dimension",
+            "name": "Logical Consistency",
+            "weight": 5,
+            "description": "Degree of adherence to logical rules of data structure, attribution and relationships (data structure can be conceptual, logical or physical) [ISO 19157-1:2021].",
+            "nodes": {
+                "ConceptualConsistency": {
+                    "type": "element",
+                    "name": "Conceptual Consistency",
+                    "weight": 6,
+                    "description": "Adherence to rules of the conceptual schema [ISO 19157-1:2021].",
+                    "nodes":{
+                        "FailsOGC" : {
+                            "type": "measure",
+                            "name": "FailsOGC",
+                            "weight": 7,
+                            "description": "Evaluation based on whether the data follows OGC principles.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Fails OGC Valid",
+                                     "weight": 5,
+                                     "description": "The feature must follow OGC Valid principles.",
+                                     "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "Fails OGC Valid",
+                                        "value": "text"                                       
+                                     },
+                                     "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 1000,
+                                        "description": "The feature do not follow OGC Valid principles. Checks count of such errors."
+                                     }
+                                },
+                                "metric2": {
+                                    "type": "metric",
+                                    "name": "Fails OGC Simple",
+                                    "weight": 5,
+                                     "description": "The feature must follow OGC Simple principles.",
+                                    "extractionRule": {
+                                       "type": "formula",
+                                       "source": "quality-evaluation",
+                                       "column": "error_count",
+                                       "rule": "Fails OGC Simple",
+                                       "value": "text"                                       
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 1000,
+                                        "description": "The feature do not follow OGC Simple principles. Checks count of such errors."
+                                    }
+                                }
+                            }
+                        },
+                        "MissingVertexNormals" : {
+                            "type": "measure",
+                            "name": "Missing Vertex Normals",
+                            "weight": 5,
+                            "description": "Evaluation based on whether the data is missing vertex normals.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "MissingVertexNormals",
+                                     "weight": 5,
+                                     "description": "The feature must have a vertex normals.",
+                                     "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "Missing Vertex Normals",
+                                        "value": "text"                                       
+                                     },
+                                     "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 50,
+                                        "description": "The feature has no vertex normals. Checks count of such errors."
+                                     }
+                                }
+                            }
+                        },
+                        "SurfacesWronglyOriented" : {
+                            "type": "measure",
+                            "name": "Surfaces Wrongly Oriented",
+                            "weight": 5,
+                            "description": "Evaluation based on whether the data has mistakes in the orientation of surfaces.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Surfaces Wrongly Oriented",
+                                     "weight": 5,
+                                     "description": "All normals of the faces must be logically oriented.",
+                                     "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "SurfacesWronglyOriented",
+                                        "value": "text"                                       
+                                     },
+                                     "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 50,
+                                        "description": "Is the every surface of the feature logically oriented based on vertex normals and depending on the feature type? Checks count of such errors."
+                                     }
+                                }
+                            }
+                        }
+                    }
+                },
+                "DomainConsistency": {
+                    "type": "element",
+                    "name": "Domain Consistency",
+                    "weight": 5,
+                    "description": "Adherence of values to the value domains [ISO 19157-1:2021].",
+                    "nodes":{
+                        "AttributeValueNotInAllowedRange": {
+                            "type": "measure",
+                            "name": "Attribute Value Not In Allowed Range",
+                            "weight": 5,
+                            "description": "Describes whether the attribute value is within allowed range.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Attribute Value Not In Allowed Range : True or False",
+                                    "weight": 5,
+                                    "description": "The value of the attribute XXX must be in the allowed range (A-N). Allowed ranges were derived from OGC CityGML Encoding Standard.",
+                                    "extractionRule": {
+                                       "type": "formula",
+                                       "source": "quality-evaluation",
+                                       "column": "error_count",
+                                       "rule": "ValueNotInAllowedRange",
+                                       "value": "text"                                       
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 10,
+                                        "description": "At least X attribute(s) is/are not in allowed range. Checks count of such errors."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "FormatConsistency": {
+                    "type": "element",
+                    "name": "Format Consistency",
+                    "weight": 8,
+                    "description": "Degree to which data are stored in accordance with the physical structure of the dataset, as described by the scope [ISO 19157-1:2021].",
+                    "nodes":{
+                        "MismatchedDimensions": {
+                            "type": "measure",
+                            "name": "Mismatched Dimensions",
+                            "weight": 5,
+                            "description": "Evaluates the presence of mismatched dimensions.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Mismatched Dimensions",
+                                    "weight": 5,
+                                    "description": "Geometries must be either 2D or 3D, not both.",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "Mismatched Dimensions",
+                                        "value": "text"                                         
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 1,
+                                        "description": "Does the feature have a mixture of 2D and 3D parts? Checks count of such errors."
+                                    }
+                                }
+                            }
+                        },
+                        "Not3D": {
+                            "type": "measure",
+                            "name": "Not 3D",
+                            "weight": 5,
+                            "description": "Describes whether the coordinate reference system is in 3D (as it should) or not.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Not 3D",
+                                    "weight": 5,
+                                    "description": "The coordinate reference system must be 3D.",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "Not3D",
+                                        "value": "text"                                         
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 1,
+                                        "description": "Is the coordinate reference system 3D? Checks count of such errors."
+                                    }
+                                }
+                            }
+                        },
+                        "WrongDataType": {
+                            "type": "measure",
+                            "name": "Wrong Data Type",
+                            "weight": 5,
+                            "description": "Desctibes whether the data type of attriute is valid.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Wrong Data Type",
+                                    "weight": 5,
+                                    "description": "Data type of attribute information XXX must be valid.",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "WrongDataType",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 5,
+                                        "description": "At least X attribute(s) has/have a wrong data type. Checks count of such errors."
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+                },
+                "GeometricConsistency": {
+                    "type": "element",
+                    "name": "Geometric Consistency",
+                    "weight": 5,
+                    "description": "Refers to the property of a set of geometric objects or transformations that preserve their relative position or shape.",
+                    "nodes":{
+                        "GroundOverlappingIn2D": {
+                            "type": "measure",
+                            "name": "Ground Overlapping In 2D",
+                            "weight": 5,
+                            "description": "Describes whether features overlap.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "GroundOverlappingIn2D",
+                                    "weight": 5,
+                                    "description": "Overlapping area of two features must be smaller than 5 % of their areas. ",
+                                     "extractionRule": {
+                                         "type": "formula",
+                                         "source": "quality-evaluation",
+                                         "column": "error_count",
+                                         "rule": "GroundOverlappingIn2D",
+                                         "value": "text"                                        
+                                     },
+                                     "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 50,
+                                        "description": "Is the GroundSurface overlapping with the GroundSurface of another Building? ? Checks count of such errors."
+                                     }
+                                }
+                            }
+                        },
+                        "DegenerateCorruptGeometries": {
+                            "type": "measure",
+                            "name": "Degenerate Corrupt Geometries",
+                            "weight": 5,
+                            "description": "Describe whether the geometry of features is valid.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Degenerate Corrupt Geometries",
+                                    "weight": 5,
+                                    "description": "The geometry must be valid.",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "Degenerate or Corrupt Geometries",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 50,
+                                        "description": "Does the geometry contain degenerated or corrupted geometries? Checks count of such errors."
+                                    }
+                                }
+                            }
+                        },
+                        "NonPlanarSurfaces": {
+                            "type": "measure",
+                            "name": "Non Planar Surfaces",
+                            "weight": 5,
+                            "description": "Describes whether surfaces are planar.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Non Planar Surfaces",
+                                    "weight": 5,
+                                    "description": "The face or BoundarySurface must be planar.",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "Non-Planar Surfaces",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 50,
+                                        "description": "Is the Face or BoundarySurface planar based on thickness or normal deviation? Checks count of such errors."
+                                    }
+                                }
+                            }
+                        },
+                        "GroundHigherThanRoof": {
+                            "type": "measure",
+                            "name": "Ground Higher Than Roof",
+                            "weight": 5,
+                            "description": "Describes errors due to incoherent heights of ground an roof in relation with each other.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "MinGroundHigherThanMinRoof",
+                                    "weight": 5,
+                                    "description": "The minimum height of the roof cannot be smaller than minimum height of the ground.",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "MinGroundHigherThanMinRoof",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 50,
+                                        "description": "Checks count of such errors."
+                                    }
+                                },
+                                "metric2": {
+                                    "type": "metric",
+                                    "name": "Max Ground Higher Than Max Roof",
+                                    "weight": 5,
+                                    "description": "The maximum height of the floor cannot be smaller than maximum height of the roof.",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "MaxGroundHigherThanMaxRoof",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 50,
+                                        "description": "Checks count of such errors."
+                                    }
+                                }
+                            }
+                        },
+                        "FeatureHasSpikes": {
+                            "type": "measure",
+                            "name": "Feature Has Spikes",
+                            "weight": 5,
+                            "description": "Evaluation based on spikes in dataset that exceed tolerance.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Feature Has Spikes",
+                                    "weight": 5,
+                                    "description": "The feature contains spikes, which angle or length exceeds the given tolerance.",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "FeatureHasSpikes",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 50,
+                                        "description": "The feature cannot contain spikes less than X degrees and/or Y meters (user ?)."
+                                    }
+                                }
+                            }
+                        },
+                        "GeometryTooSmall": {
+                            "type": "measure",
+                            "name": "Geometry Too Small",
+                            "weight": 5,
+                            "description": "Describes whether some geometry are too small.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Area Too Small",
+                                    "weight": 5,
+                                    "description": "The area of the face must be at least X m².",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "AreaTooSmall",
+                                        "value": "text"                                         
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": ">",
+                                        "referenceValue": 50,
+                                        "description": "The area of the face must be at least X m² (user request? / user parameter in FME)"
+                                    }
+                                },
+                                "metric2": {
+                                    "type": "metric",
+                                    "name": "Too Small Volume",
+                                    "weight": 5,
+                                    "description": "The volume of the solid cannot be smaller than X m3.",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "TooSmallVolume",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": ">",
+                                        "referenceValue": 50,
+                                        "description": "The volume of the solid must be greater than X m3. (user request? / user parameter in FME)"
+                                }
+                                }
+                            }
+                        },
+                        "Orientation": {
+                            "type": "measure",
+                            "name": "Orientation",
+                            "weight": 5,
+                            "description": "Evaluation based on presence of inccorect orientation.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Incorrect Surface Orientation",
+                                    "weight": 5,
+                                    "description": "The surface must have a valid orientation.",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "Incorrect Surface Orientation",
+                                        "value": "text"                                            
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 50,
+                                        "description": "The surfaces cannot have an incorrect orientation."
+                                    }
+                                },
+                                "metric2": {
+                                    "type": "metric",
+                                    "name": "Incorrect Solid Orientation",
+                                    "weight": 5,
+                                    "description": "The solid must have a valid orientation.",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "Incorrect Solid Orientation",
+                                        "value": "text"                                            
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 50,
+                                        "description": "The solids cannot have an incorrect orientation."
+                                    }
+                                },
+                                "metric3": {
+                                    "type": "metric",
+                                    "name": "Incorrect Area Orientation",
+                                    "weight": 5,
+                                    "description": "The areas must have a valid orientation.",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "Incorrect Orientation",
+                                        "value": "text"                                             
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 50,
+                                        "description": "Do Areas, such as polygons, ellipses, and donuts, have an correct orientation? The area cannot have an incorrect orientation."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "TopologicalConsistency": {
+                    "type": "element",
+                    "name": "Topological Consistency",
+                    "weight": 5,
+                    "description": "Correctness of the explicitly encoded topological characteristics of the dataset as described by the scope [ISO 19157-1:2021].",
+                    "nodes":{
+                        "MissingConnections": {
+                            "type": "measure",
+                            "name": "Missing Connections",
+                            "weight": 5,
+                            "description": "Describes whether connections are missing.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Count Missing Connections",
+                                     "weight": 5,
+                                     "description": "The feature must be self-closure based on its starting and ending points.",
+                                     "extractionRule": {
+                                         "type": "formula",
+                                         "source": "quality-evaluation",
+                                         "column": "error_count",
+                                         "rule": "EndtoStartPoint",
+                                         "value": "text"                                        
+                                     },
+                                     "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 50,
+                                        "description": "The feature is not self-closure."
+                                     }
+                                    
+                                }
+                            }
+                        },
+                        "InvalidSolidVoids": {
+                            "type": "measure",
+                            "name": "Invalid Solid Voids",
+                            "weight": 5,
+                            "description": "Describes whether the solid contains problems.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Count Invalid Solid Voids",
+                                    "weight": 5,
+                                    "description": "The solid must be valid.",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "InvalidSolidVoids",
+                                        "value": "text"                                       
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 50,
+                                        "description": "The solid cannot contain problems."
+                                    }
+                                }
+                            }
+                        },
+                        "InvalidSelfInterestOverlapErrors": {
+                            "type": "measure",
+                            "name": "Invalid Self-Interest Overlap Errors",
+                            "weight": 5,
+                            "description": "Describes whether vertices of the feature are correctly connected.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Count Invalid Self-Interest Overlap Errors",
+                                    "weight": 5,
+                                    "description": "The vertices of the feature must be correctly connected",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "Self-Intersections in 2D",
+                                        "value": "text"                                       
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 50000,
+                                        "description": "The feature cannot intersect itself."
+                                    }
+                                }
+                            }
+                        },
+                        "InvalidSolidBoundaries": {
+                            "type": "measure",
+                            "name": "Invalid Solid Boundaries",
+                            "weight": 5,
+                            "description": "The solid boundaries must be valid.",
+                            "nodes":{
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Count Invalid Solid Boundaries",
+                                    "weight": 5,
+                                    "description": "The solid boundaries must be valid.",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "quality-evaluation",
+                                        "column": "error_count",
+                                        "rule": "Invalid Solid Boundaries",
+                                        "value": "text"                                           
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "operator": "<",
+                                        "referenceValue": 50,
+                                        "description": "The solid boundaries cannot be invalid."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "temporalQuality": {
+            "type": "dimension",
+            "name": "Temporal Quality",
+            "weight": 7,
+            "description": "Accuracy of the temporal attributes and temporal relationships of features [ISO 19157-1:2021].",
+            "nodes": {
+                "AccuracyTimeMeasurment": {
+                    "type": "qualityElement",
+                    "name": "Accuracy Time Measurment",
+                    "weight": 5,
+                    "description": "Closeness of reported time measurements to values accepted as true [ISO 19157-1:2021].",
+                    "nodes": {
+                        "TimeAccuracy": {
+                            "type": "measure",
+                            "name": "Time Accuracy",
+                            "weight": 5,
+                            "description": "Time accuracy at XX.X % significance level [ISO 19157-3:2021]..",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Time Accuracy LE90",
+                                    "weight": 5,
+                                    "description": "Time accuracy at 90 % significance level",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:TemporalQuality//gmd:AccuracyTimeMeasurment//gmd:TimeAccuracy//gmd:TimeAccuracyLE90",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule":{
+                                        "type": "comparison",
+                                        "referenceValue": 0.5,
+                                        "operator": ">",
+                                        "description": "Half length of the interval defined by an upper and a lower limit, in which the true value for the time instance lies with probability 90 %; LE90 (ISO19157, Table D.63)"
+                                    }
+                                }
+                            } 
+                        }
+                    }
+                },
+                "TemporalConsistency": {
+                    "type": "qualityElement",
+                    "name": "Temporal Consistency",
+                    "weight": 5,
+                    "description": "Evaluates the correctness of the order of events [ISO 19157-1:2021].",
+                    "nodes": {
+                        "ChronologicalOrder": {
+                            "type": "measure",
+                            "name": "Chronological Order",
+                            "weight": 5,
+                            "description": "Time accuracy at 99,8 % significance level [ISO 19157-3:2021]",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Time Accuracy LE99.8",
+                                    "weight": 5,
+                                    "description": "Time accuracy at 99,8 % significance level",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:TemporalConsistency//gmd:ChronologicalOrder//gmd:TimeAccuracyLE99.8",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule":{
+                                        "type": "comparison",
+                                        "referenceValue": 0.5,
+                                        "operator": ">",
+                                        "description": "Half length of the interval defined by an upper and a lower limit, in which the true value for the time instance lies with probability 99.8 %; LE99.8 (ISO19157, Table D.67)"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "TemporalValidity": {
+                    "type": "qualityElement",
+                    "name": "Temporal Validity",
+                    "weight": 9,
+                    "description": "Validity of data with respect to time. [ISO 19157-1:2021].",
+                    "nodes": {
+                        "Currentness": {
+                            "type": "measure",
+                            "name": "Currentness",
+                            "weight": 8,
+                            "description": "Degree to which data has attributes that are of the right age in a specific context of use [25012:2008].",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Date Of Creation",
+                                    "weight": 5,
+                                    "description": "Date of creation",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:identificationInfo[1]//gmd:citation//gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue='creation']/gmd:date/gco:Date",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule":{
+                                        "type": "date",
+                                        "minimum": "2015-01-01",
+                                        "maximum": "2023-01-01",
+                                        "description": "Date of creation should be included in user requested period"
+                                    }
+
+                                },
+                                "metric2": {
+                                    "type": "metric",
+                                    "name": "Date Of Publication",
+                                    "weight": 5,
+                                    "description": "Date of publication",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:identificationInfo[1]//gmd:citation//gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue='publication']/gmd:date/gco:Date",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule":{
+                                        "type": "date",
+                                        "minimum": "2016-01-01",
+                                        "maximum": "2023-01-01",
+                                        "description": "Date of publication should be included in user requested period"
+                                    }
+                                },
+                                "metric3": {
+                                    "type": "metric",
+                                    "name": "Date Of Revision",
+                                    "weight": 5,
+                                    "description": "Date of revision declared in the Metadata",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:identificationInfo[1]//gmd:citation//gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue='revision']/gmd:date/gco:Date",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule":{
+                                        "type": "date",
+                                        "minimum": "2022-01-01",
+                                        "maximum": "2023-01-01",
+                                        "description": "Date of last revision should be included in user requested period"
+                                    }
+                                }
+                            }
+                        },
+                        "MaintenanceFrequency": {
+                            "type": "measure",
+                            "name": "Maintenance Frequency",
+                            "weight": 7,
+                            "description": "evaluation if a dataset is maintained as set as maintenance frequency [ISO 19157-3:2021].",
+                            "nodes": {
+                                
+                                "metric2": {
+                                    "type": "metric",
+                                    "name": "MatchMaintenanceFreqRequested",
+                                    "weight": 9,
+                                    "description": "Checks that the requested maintenance frequency by the user matches the declared maintenance frequency",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:MD_Metadata //gmd:identificationInfo//gmd:MD_DataIdentification//gmd:resourceMaintenance//gmd:MD_MaintenanceInformation//gmd:maintenanceAndUpdateFrequency//gmd:MD_MaintenanceFrequencyCode/@codeListValue",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule":{
+                                        "type": "comparison",
+                                        "referenceValue": "continual",
+                                        "operator": "is",
+                                        "description": "Should return true if matches user request of maintenance requency. Should be implemented when requests on dahsboard can be personnalized."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "positionnalAccuracy": {
+            "type": "dimension",
+            "name": "Positionnal Accuracy",
+            "weight": 5,
+            "description": "Accuracy of the position of features [ISO 19157-1:2021].",
+            "nodes": {
+                "AbsolutePositionalAccuracy": {
+                    "type": "qualityElement",
+                    "name": "Absolute Positional Accuracy",
+                    "weight": 8,
+                    "description": "Closeness of reported coordinate values to values accepted as true in a standard coordinate reference system [ISO 19157-1:2021].",
+                    "nodes": {
+                        "MeanValuePosUncertainties": {
+                            "type": "measure",
+                            "name": "MeanValuePosUncertainties",
+                            "weight": 8,
+                            "description": "Mean value of the positional uncertainties for a set of positions where the positional uncertainties are defined as the distance between a measured position and what is accepted as the corresponding true position [ISO 19157-3:2021].",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "MeanValuePosUncertainties",
+                                    "weight": 5,
+                                    "description": "Mean value of positionnal uncertainty of the dataset",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:PositionalAccuracy//gmd:AbsolutePositionalAccuracy//gmd:MeanValuePositionalUncertainties",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "range",
+                                        "minimum": 0,
+                                        "maximum": 0.8,
+                                        "description": "Mean value of positionnal uncertainty should be between 0m and 0.8m (user request)"
+                                }
+                            }
+                        },
+                        "Lineage": {
+                            "type": "measure",
+                            "name": "Lineage",
+                            "weight": 10,
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Statement",
+                                    "weight": 5,
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:dataQualityInfo//gmd:lineage//gmd:statement ",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Check presence of lineage statement."
+                                    }
+                                }   
+                            }
+                        }
+                        }
+                    }
+                },
+                "RelativePositionalAccuracy": {
+                    "type": "qualityElement",
+                    "name": "Relative Positional Accuracy",
+                    "weight": 8,
+                    "description": "Closeness of the relative positions of features in the scope to their respective relative positions accepted as true in a local coordinate reference system [ISO 19157-1:2021].",
+                    "nodes": {
+                        "RelativeVerticalError": {
+                            "type": "measure",
+                            "name": "Relative Vertical Error",
+                            "weight": 5,
+                            "description": "evaluation of the random errors of one relief feature to another in the same dataset or on the same map/chart [ISO 19157-3:2021].",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Relative Vertical Error",
+                                    "weight": 5,
+                                    "description": "A comparison of the data (measured) and the control (true). Calculation method of the Relative LE (Rel LE90): see ISO19157-3, Table D.59",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:PositionalAccuracy//gmd:RelativePositionalAccuracy//gmd:RelativeVerticalError",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "range",
+                                        "minimum": 0,
+                                        "maximum": 0.9,
+                                        "description": "The vertical relative error should be between x and x (user request)"
+                                    }
+                                }
+                            }
+                        },
+                        "RelativeHorizontalError": {
+                            "type": "measure",
+                            "name": "Relative Horizontal Error",
+                            "weight": 5,
+                            "description": "Evaluation of the random errors in the horizontal position of one feature to another in the same dataset or on the same map/chart [ISO 19157-3:2021].",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "RelativeHorizontalError",
+                                    "weight": 5,
+                                    "description": "A comparison of the data (measured) and the control (true). Calculation method of the Relative LE (Rel CE90): see ISO19157-3, Table D.60",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:PositionalAccuracy//gmd:RelativePositionalAccuracy//gmd:RelativeHorizontalError",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "range",
+                                        "minimum": 0,
+                                        "maximum": 0.9,
+                                        "description": "The horizontal relative error should be between x and x (user request)"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "GriddedPositionalAccuracy": {
+                    "type": "qualityElement",
+                    "name": "Gridded Positional Accuracy",
+                    "weight": 5,
+                    "description": "Closeness of gridded data position values to values accepted as true [ISO 19157-1:2021].",
+                    "nodes":{
+                        "CircularSD": {
+                            "type": "measure",
+                            "name": "Circular Standard Deviation",
+                            "weight": 5,
+                            "description": "Circular standard deviation, also known as circular standard error, Helmert’s point error, CSE [ISO 19157-3:2021].",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Circular Standard Deviation",
+                                    "weight": 5,
+                                    "description": "Radius describing a circle, in which the true point location lies with the probability of a normal distribution at 39,4 % (see ISO19157-3, Table D.49)",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:PositionalAccuracy//gmd:GriddedPositionalAccuracy//gmd:CircularSD",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "range",
+                                        "minimum": 0,
+                                        "maximum": 0.9,
+                                        "description": "The circular standard deviation should be between x and x (user request)"
+
+                                    }
+                                }
+                            }
+                        },
+                        "RMSErrorPlanimetry": {
+                            "type": "measure",
+                            "name": "RMS Error Planimetry",
+                            "weight": 10,
+                            "description": "Root mean square error of planimetry [ISO 19157-3:2021].",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "RMS Error Planimetry",
+                                    "weight": 5,
+                                    "description": "Radius of a circle around the given point, in which the true value lies with probability P [ISO 19157-3:2021].s",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:PositionalAccuracy//gmd:GriddedPositionalAccuracy//gmd:RMSEPlanimetry",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "referenceValue": 20,
+                                        "operator": "<",
+                                        "description": "The circular standard deviation should be under 20m (user request)"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "SpatialResolution": {
+                    "type": "qualityElement",
+                    "name": "Spatial Resolution",
+                    "weight": 16,
+                    "description": "Spatial resolution of the dataset.",
+                    "nodes":{
+                        "equivalentScale": {
+                            "type": "measure",
+                            "name": "Equivalent Scale",
+                            "weight": 5,
+                            "description": "Level of detail expressed as the scale denominator of a comparable hardcopy map or chart [MD_IR_and_ISO_20081219].",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Equivalent Scale",
+                                    "weight": 5,
+                                    "description": "Level of detail expressed as the scale denominator of a comparable hardcopy map or chart. Each spatialResoultion element must contain either an equivalent scale or a distance but not both",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:identificationInfo[1]//gmd:spatialResolution//gmd:equivalentScale//gmd:denominator",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "range",
+                                        "minimum": 490,
+                                        "maximum": 510,
+                                        "description": "Map scale should be between 1/4900 and 1/5100 (user request)."
+                                    }
+                                }
+                            }
+                        },
+                        "distance": {
+                            "type": "measure",
+                            "name": "Distance",
+                            "weight": 5,
+                            "description": "Ground sample distance [MD_IR_and_ISO_20081219].", 
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Distance",
+                                    "weight": 5,
+                                    "description": "Ground sample distance. Each 'spatialResoultion' element must contain either an equivalent scale or a distance but not both",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:identificationInfo[1]//gmd:spatialResolution//gmd:distance",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "range",
+                                        "minimum": 15,
+                                        "maximum": 20,
+                                        "description": "Distance should be between 15-20m (user request)."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+},
+"Interoperability": {
+    "type": "viewpoint",
+    "name": "interoperability",
+    "weight": 1,
+    "description": "Viewpoint focused on the interoperability capacity of the dataset and service. Includes evaluations from the GeoE3 Data Maturity Model and Interoperability Map.",
+    "nodes":{
+        "Reusability": {
+            "type": "dimension",
+            "name": "FAIR Reusability",
+            "weight": 7,
+            "description": "Data and metadata are sufficiently annotated so machine and human users can determine fit-for-purpose in the context of their analysis (FAIR principles).",
+            "nodes":{
+                "Information":{
+                    "type": "qualityElement",
+                    "name": "Information",
+                    "weight": 8,
+                    "description": "Data is sufficiently annotated.",
+                    "nodes": {
+                        "LicenseInformation": {
+                            "type": "measure",
+                            "name": "License Information",
+                            "weight": 10,
+                            "description": "License Information is present.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "License Information",
+                                    "weight": 5,
+                                    "description": "License Information is present.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-metadata",
+                                        "rule": "//ows:AccessConstraints",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Map scale should be between 1/4900 and 1/5100 (user request)."
+                                    }
+                                }
+                            }
+                        },
+                        "AccessRestrictions": {
+                            "type": "measure",
+                            "name": "Access Restrictions",
+                            "weight": 10,
+                            "description": "Checks whether the access to the data is public or restricted.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Access Restrictions",
+                                    "weight": 5,
+                                    "description": "Checks whether the access to the data is public or restricted.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-metadata",
+                                        "rule": "//ows:AccessConstraints",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks that access constraints are filled."
+                                    }
+                                }
+                            }
+                        },
+                        "PointOfContact": {
+                            "type": "measure",
+                            "name": "Point of Contact",
+                            "weight": 10,
+                            "description": "Checks whether the access to the data is public or restricted.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Contact's name",
+                                    "weight": 5,
+                                    "description": "Checks whether contact's name is filled.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:contact//gmd:individualName",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks presence of contact's name."
+                                    }
+                                },
+                                "metric2": {
+                                    "type": "metric",
+                                     "name": "Contact's email",
+                                    "weight": 5,
+                                    "description": "Checks whether contact's email address is filled.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:contact//gmd:contactInfo//gmd:electronicMailAddress",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks presence of contact's email address."
+                                    }
+                                },
+                                "metric3": {
+                                    "type": "metric",
+                                    "name": "Organisation name",
+                                    "weight": 5,
+                                    "description": "Checks whether organisation is filled.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:contact//gmd:organisationName",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks presence of organisation name."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "versioning":{
+                    "type": "qualityElement",
+                    "name": "Versioning",
+                    "weight": 5,
+                    "description": "Describes whether the versions of standards used is filled.",
+                    "nodes": {
+                        "metadataStandardName": {
+                            "type": "measure",
+                            "name": "Metadata Standard Name",
+                            "weight": 5,
+                            "description": "Metadata Standard Name.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Metadata Standard Name",
+                                    "weight": 5,
+                                    "description": "Metadata Standard Name is present.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:metadataStandardName",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks presence of Metadata standard name."
+                                    }
+                                }
+                            }
+                        },
+                        "metadataStandardVersion": {
+                            "type": "measure",
+                            "name": "Metadata Standard Version",
+                            "weight": 5,
+                            "description": "Metadata Standard Version.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Metadata Standard Version",
+                                    "weight": 5,
+                                    "description": "Metadata Standard Version is present.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:metadataStandardVersion",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks presence of Metadata standard version."
+                                    }
+                                }
+                            }                            
+                        }
+                    }
+                }
+
+            }
+        },
+        "Traceability": {
+            "type": "qualityElement",
+            "name": "Traceability",
+            "weight": 6,
+            "description": "Describes whether the data process is described adequately.",
+            "nodes": {
+                "Traceability": {
+                    "type": "measure",
+                    "name": "Traceability",
+                    "weight": 5,
+                    "description": "Describes whether the data process is described adequately.",
+                    "nodes": {
+                        "LineageStatment": {
+                            "type": "measure",
+                            "name": "Lineage Statment",
+                            "weight": 5,
+                            "description": "Describes whether the data has a lineage statment.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Lineage Statment",
+                                    "weight": 5,
+                                    "description": "Describes whether the data has a lineage statment.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:lineage//gmd:statement",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks that lineage statement is present."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Interoperability": {
+            "type": "dimension",
+            "name": "FAIR Interoperability",
+            "weight": 7,
+            "description": "Data and metadata are consistently structured and described, both syntactically and semantically, so that algorithms can parse and ensure like data are accurately compared to like (FAIR principles).",
+            "nodes": {
+                "Interoperability": {
+                    "type": "measure",
+                    "name": "FAIR Interoperability",
+                    "weight": 5,
+                    "description": "Describes whether the dataset is interoperable.",
+                    "nodes": {
+                        "Format": {
+                            "type": "measure",
+                            "name": "Format",
+                            "weight": 7,
+                            "description": "Describes the file format of the distribution.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Format",
+                                    "weight": 5,
+                                    "description": "Describes the file format of the distribution.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-metadata",
+                                        "rule": "//FeatureTypeList//FeatureType//OutputFormats//Format",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks that the property is set."
+                                    }
+                                }
+                            }
+                        },
+                        "mediaType": {
+                            "type": "measure",
+                            "name": "Media type",
+                            "weight": 3,
+                            "description": "Describes the media type of the distribution.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Media type",
+                                    "weight": 5,
+                                    "description": "Describes the file media type of the distribution.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-metadata",
+                                        "rule": "//ows:ExtendedCapabilities//inspire_dls:ExtendedCapabilities//inspire_common:MediaType",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks that the property is set."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "Accessibility": {
+                    "type": "dimension",
+                    "name": "FAIR Accessibility",
+                    "weight": 9,
+                    "description": "Data and metadata are retrievable in machine-actionable form, with downloading options clearly described (including any needed authentication) (FAIR principles).",
+                    "nodes": {
+                        "Accessibility": {
+                            "type": "qualityElement",
+                            "name": "FAIR Accessibility",
+                            "weight": 5,
+                            "description": "Describes whether access to the data referenced by the distributions is guaranteed.",
+                            "nodes": {
+                                "DownloadURL": {
+                                    "type": "measure",
+                                    "name": "Download URL",
+                                    "weight": 4,
+                                    "description": "The downloadURL is a direct link to the referenced data.",
+                                    "nodes": {
+                                        "metric1": {
+                                            "type": "metric",
+                                            "name": "Download URL",
+                                            "weight": 5,
+                                            "description": "The downloadURL is a direct link to the referenced data.",
+                                            "extractionRule": {
+                                                "type": "xpath",
+                                                "source": "service-metadata",
+                                                "rule": "//ows:ExtendedCapabilities//inspire_dls:ExtendedCapabilities//inspire_common:MediaType",
+                                                "value": "text"
+                                            },
+                                            "evaluationRule": {
+                                                "type": "presence",
+                                                "description": "Checks that the property is set."
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+}

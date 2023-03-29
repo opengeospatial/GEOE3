@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WFS_Capabilities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ows="http://www.opengis.net/ows/1.1"
+xmlns:fes="http://www.opengis.net/fes/2.0" version="2.0.0" xmlns="http://www.opengis.net/wfs/2.0"
+xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd http://inspire.ec.europa.eu/schemas/inspire_dls/1.0 http://inspire.ec.europa.eu/schemas/inspire_dls/1.0/inspire_dls.xsd">
+
+    <ows:ServiceIdentification>
+    <ows:Title>Spanish INSPIRE Download Service - Buildings</ows:Title>
+    <ows:Abstract>
+      WFS from Spanish General Directorate for Cadastre . The download service provides harmonized data from the theme Buildings (BU) 
+	  in GML format according to INSPIRE. The service fulfils technical guidance for INSPIRE download services v. 3.0.1 and
+      simultaneously fulfils the OGC WFS 2.0.0 standard.
+    </ows:Abstract>
+    <ows:ServiceType>OGC WFS</ows:ServiceType>
+    <ows:ServiceTypeVersion>2.0.0</ows:ServiceTypeVersion>
+  </ows:ServiceIdentification>
+  <ows:ServiceProvider>
+    <ows:ProviderName>Spanish General Directorate for Cadastre</ows:ProviderName>
+    <ows:ProviderSite xlink:type="simple" xlink:href="www.catastro.minhap.es/"/>
+    <ows:ServiceContact>
+      <ows:ContactInfo>
+        <ows:Phone>
+          <ows:Voice>+34 902 373 635 +34 913 874 550</ows:Voice>
+          <ows:Facsimile>+34 91 583 67 32</ows:Facsimile>
+        </ows:Phone>
+        <ows:Address>
+          <ows:DeliveryPoint>Paseo de la Castellana, 272</ows:DeliveryPoint>
+          <ows:City>Madrid</ows:City>
+          <ows:AdministrativeArea>Catastro</ows:AdministrativeArea>
+          <ows:PostalCode>28046</ows:PostalCode>
+          <ows:Country>Spain</ows:Country>
+          <ows:ElectronicMailAddress>productosyservicios@catastro.minhap.es</ows:ElectronicMailAddress>
+        </ows:Address>
+        <ows:OnlineResource xlink:type="simple" xlink:href="http://www.catastro.minhap.es/webinspire/documentos/inspire-bu-wfs.pdf"/>
+        <ows:HoursOfService>Mo-Fr 9:00 - 20:00</ows:HoursOfService>
+      </ows:ContactInfo>
+    </ows:ServiceContact>
+  </ows:ServiceProvider>
+  <ows:OperationsMetadata>
+    <ows:Operation name="GetCapabilities">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="http://ovc.catastro.meh.es/INSPIRE/wfsBU.aspx?"/>
+          <ows:Post xlink:type="simple" xlink:href="http://ovc.catastro.meh.es/INSPIRE/wfsBU.aspx?"/>
+        </ows:HTTP>
+      </ows:DCP>
+    </ows:Operation>
+    <ows:Operation name="DescribeFeatureType">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="http://ovc.catastro.meh.es/INSPIRE/wfsBU.aspx?"/>
+          <ows:Post xlink:type="simple" xlink:href="http://ovc.catastro.meh.es/INSPIRE/wfsBU.aspx?"/>
+        </ows:HTTP>
+      </ows:DCP>
+    </ows:Operation>
+    <ows:Operation name="ListStoredQueries">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="http://ovc.catastro.meh.es/INSPIRE/wfsBU.aspx?"/>
+          <ows:Post xlink:type="simple" xlink:href="http://ovc.catastro.meh.es/INSPIRE/wfsBU.aspx?"/>
+        </ows:HTTP>
+      </ows:DCP>
+    </ows:Operation>
+    <ows:Operation name="DescribeStoredQueries">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="http://ovc.catastro.meh.es/INSPIRE/wfsBU.aspx?"/>
+          <ows:Post xlink:type="simple" xlink:href="http://ovc.catastro.meh.es/INSPIRE/wfsBU.aspx?"/>
+        </ows:HTTP>
+      </ows:DCP>
+    </ows:Operation>
+    <ows:Operation name="GetFeature">
+      <ows:DCP>
+        <ows:HTTP>
+          <ows:Get xlink:type="simple" xlink:href="http://ovc.catastro.meh.es/INSPIRE/wfsBU.aspx?"/>
+          <ows:Post xlink:type="simple" xlink:href="http://ovc.catastro.meh.es/INSPIRE/wfsBU.aspx?"/>
+        </ows:HTTP>
+      </ows:DCP>
+    </ows:Operation>
+    <ows:Parameter name="AcceptVersions">
+      <ows:AllowedValues>
+        <ows:Value>2.0.0</ows:Value>
+        <ows:Value>1.0.0</ows:Value>
+      </ows:AllowedValues>
+    </ows:Parameter>     
+    <ows:Constraint name="ImplementsBasicWFS">
+      <ows:NoValues/>
+      <ows:DefaultValue>TRUE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsTransactionalWFS">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsLockingWFS">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="KVPEncoding">
+      <ows:NoValues/>
+      <ows:DefaultValue>TRUE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="XMLEncoding">
+      <ows:NoValues/>
+      <ows:DefaultValue>TRUE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="SOAPEncoding">
+      <ows:NoValues/>
+      <ows:DefaultValue>TRUE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsInheritance">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsRemoteResolve">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsResultPaging">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsStandardJoins">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsSpatialJoins">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsTemporalJoins">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ImplementsFeatureVersioning">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:Constraint name="ManageStoredQueries">
+      <ows:NoValues/>
+      <ows:DefaultValue>FALSE</ows:DefaultValue>
+    </ows:Constraint>
+    <ows:ExtendedCapabilities>
+      <inspire_dls:ExtendedCapabilities xmlns:inspire_dls="http://inspire.ec.europa.eu/schemas/inspire_dls/1.0">
+        <inspire_common:MetadataUrl xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0">
+          <!--ENLACE AL IGN DE LOS METADATOS DEL SERVICIO-->            
+          <inspire_common:URL>http://www.idee.es/csw-inspire-idee/srv/spa/csw?SERVICE=CSW&amp;VERSION=2.0.2&amp;REQUEST=GetRecordById&amp;outputSchema=http://www.isotc211.org/2005/gmd&amp;ElementSetName=full&amp;ID=ES_SDGC_BU_WFS</inspire_common:URL>
+        </inspire_common:MetadataUrl>
+        <inspire_common:SupportedLanguages xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0">
+          <inspire_common:DefaultLanguage>
+            <inspire_common:Language>eng</inspire_common:Language>
+          </inspire_common:DefaultLanguage>
+        </inspire_common:SupportedLanguages>
+        <inspire_common:ResponseLanguage xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0">
+          <inspire_common:Language>eng</inspire_common:Language>
+        </inspire_common:ResponseLanguage>
+      <inspire_dls:SpatialDataSetIdentifier>
+          <inspire_common:Code xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0">BU</inspire_common:Code>
+          <inspire_common:Namespace xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0">SDGC</inspire_common:Namespace>
+        </inspire_dls:SpatialDataSetIdentifier>
+      </inspire_dls:ExtendedCapabilities>
+    </ows:ExtendedCapabilities>
+  </ows:OperationsMetadata>
+  <FeatureTypeList>
+    <FeatureType xmlns:bu="urn:x-inspire:specification:gmlas:Buildings:3.0">
+      <Name>bu:Building</Name>
+      <Title>Building</Title>
+      <Abstract>The data correspond with the INSPIRE Directive for the theme Buildings (BU)</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>Building</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::25830</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25831</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3035</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32627</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32628</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox>
+        <ows:LowerCorner>-18.5 26.2</ows:LowerCorner>
+        <ows:UpperCorner>5.3 44.8</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+    <!--URL DE METADATOS DEL IGN DE DATOS-->  
+      <MetadataURL xlink:type="simple" xlink:href="http://www.idee.es/csw-inspire-idee/srv/spa/csw?SERVICE=CSW&amp;VERSION=2.0.2&amp;REQUEST=GetRecordById&amp;outputSchema=http://www.isotc211.org/2005/gmd&amp;ElementSetName=full&amp;ID=ES_SDGC_BU"/>
+    </FeatureType>
+    <FeatureType xmlns:bu="urn:x-inspire:specification:gmlas:Buildings:3.0">
+      <Name>bu:BuildingPart</Name>
+      <Title>BuildingPart</Title>
+      <Abstract>The data correspond with the INSPIRE Directive for the theme Buildings Parts (BU)</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>BuildingsPart</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::25830</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25831</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3035</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32627</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32628</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox>
+        <ows:LowerCorner>-18.5 26.2</ows:LowerCorner>
+        <ows:UpperCorner>5.3 44.8</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <!--URL DE METADATOS DEL IGN DE DATOS-->  
+      <MetadataURL xlink:type="simple" xlink:href="http://www.idee.es/csw-inspire-idee/srv/spa/csw?SERVICE=CSW&amp;VERSION=2.0.2&amp;REQUEST=GetRecordById&amp;outputSchema=http://www.isotc211.org/2005/gmd&amp;ElementSetName=full&amp;ID=ES_SDGC_BU"/>
+    </FeatureType>
+    <FeatureType xmlns:bu="urn:x-inspire:specification:gmlas:Buildings:3.0">
+      <Name>bu:OtherConstruction</Name>
+      <Title>OtherConstruction</Title>
+      <Abstract>The data correspond with the INSPIRE Directive for the theme Other Constructions (BU)</Abstract>
+      <ows:Keywords>
+        <ows:Keyword>OtherConstruction</ows:Keyword>
+      </ows:Keywords>
+      <DefaultCRS>urn:ogc:def:crs:EPSG::25830</DefaultCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::4258</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::25831</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3785</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::3035</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32627</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:EPSG::32628</OtherCRS>
+      <OtherCRS>urn:ogc:def:crs:CRS::84</OtherCRS>
+      <OutputFormats>
+        <Format>text/xml; subtype=gml/3.2.1</Format>
+        <Format>application/gml+xml; version=3.2</Format>
+      </OutputFormats>
+      <ows:WGS84BoundingBox>
+        <ows:LowerCorner>-18.5 26.2</ows:LowerCorner>
+        <ows:UpperCorner>5.3 44.8</ows:UpperCorner>
+      </ows:WGS84BoundingBox>
+      <!--URL DE METADATOS DEL IGN DE DATOS-->  
+      <MetadataURL xlink:type="simple" xlink:href="http://www.idee.es/csw-inspire-idee/srv/spa/csw?SERVICE=CSW&amp;VERSION=2.0.2&amp;REQUEST=GetRecordById&amp;outputSchema=http://www.isotc211.org/2005/gmd&amp;ElementSetName=full&amp;ID=ES_SDGC_BU"/>
+    </FeatureType>
+  </FeatureTypeList>
+  <fes:Filter_Capabilities>    
+    <fes:Conformance>
+      <fes:Constraint name="ImplementsQuery">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsAdHocQuery">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsFunctions">
+        <ows:NoValues/>
+        <ows:DefaultValue>FALSE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsMinStandardFilter">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsStandardFilter">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsMinSpatialFilter">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsSpatialFilter">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsMinTemporalFilter">
+        <ows:NoValues/>
+        <ows:DefaultValue>FALSE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsTemporalFilter">
+        <ows:NoValues/>
+        <ows:DefaultValue>FALSE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsVersionNav">
+        <ows:NoValues/>
+        <ows:DefaultValue>FALSE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsSorting">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsExtendedOperators">
+        <ows:NoValues/>
+        <ows:DefaultValue>FALSE</ows:DefaultValue>
+      </fes:Constraint>
+      <fes:Constraint name="ImplementsResourceId">
+        <ows:NoValues/>
+        <ows:DefaultValue>TRUE</ows:DefaultValue>
+      </fes:Constraint>
+    </fes:Conformance>
+    <fes:Id_Capabilities>
+        <fes:ResourceIdentifier name="fes:ResourceId"/>
+    </fes:Id_Capabilities>
+    <fes:Scalar_Capabilities>
+      <fes:LogicalOperators/>
+      <fes:ComparisonOperators>
+        <fes:ComparisonOperator name="PropertyIsEqualTo"/>
+        <fes:ComparisonOperator name="PropertyIsNotEqualTo"/>
+        <fes:ComparisonOperator name="PropertyIsLessThan"/>
+        <fes:ComparisonOperator name="PropertyIsGreaterThan"/>
+        <fes:ComparisonOperator name="PropertyIsLessThanOrEqualTo"/>
+        <fes:ComparisonOperator name="PropertyIsGreaterThanOrEqualTo"/>
+        <fes:ComparisonOperator name="PropertyIsLike"/>
+        <fes:ComparisonOperator name="PropertyIsNull"/>
+        <fes:ComparisonOperator name="PropertyIsNil"/>
+        <fes:ComparisonOperator name="PropertyIsBetween"/>
+      </fes:ComparisonOperators>
+    </fes:Scalar_Capabilities>
+    <fes:Spatial_Capabilities>
+      <fes:GeometryOperands xmlns:gml="http://www.opengis.net/gml" xmlns:gml32="http://www.opengis.net/gml">
+        <fes:GeometryOperand name="gml:Box"/>  
+        </fes:GeometryOperands>
+        <fes:SpatialOperators>
+        <fes:SpatialOperator name="BBOX"/>
+        </fes:SpatialOperators>
+    </fes:Spatial_Capabilities>      
+  </fes:Filter_Capabilities>
+</WFS_Capabilities>

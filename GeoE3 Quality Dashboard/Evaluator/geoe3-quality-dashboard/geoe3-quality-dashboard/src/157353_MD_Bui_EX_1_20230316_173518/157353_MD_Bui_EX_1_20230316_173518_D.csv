@@ -1,0 +1,8 @@
+Viewpoint,Dimension,Dimension_Weight,Dimension_Description,Dimension_Score
+useCase,Understandability,5,Quality Dimension under the Use Case Viewpoint. Describes wether the dataset can easily be understood by potential users.,5.0
+serviceAndDataset,serviceQuality,6,Dimension under the Service and Dataset Viewpoint. Evaluates the quality of the service that provides the data.,3.967741935483871
+serviceAndDataset,Completeness,5,"Presence and absence of features, their attributes and their relationship [ISO 19157-1:2021].",5.0
+serviceAndDataset,ThematicQuality,5,Thematic quality is defined as the accuracy of quantitative attributes and the correctness of non-quantitative attributes and of the classifications of features and their relationships [ISO 19157-1:2021].,1.6666666666666667
+serviceAndDataset,LogicalConsistency,5,"Degree of adherence to logical rules of data structure, attribution and relationships (data structure can be conceptual, logical or physical) [ISO 19157-1:2021].",4.6088090408577225
+serviceAndDataset,TemporalQuality,7,Accuracy of the temporal attributes and temporal relationships of features [ISO 19157-1:2021].,4.242105263157894
+serviceAndDataset,PositionnalAccuracy,5,Accuracy of the position of features [ISO 19157-1:2021].,4.045045045045045

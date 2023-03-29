@@ -1,0 +1,41 @@
+Element,Measure,Measure_Weight,Measure_Description,Measure_Score
+Language,LanguagePresence,5,Language should be specified.,5.0
+Language,LanguageEnglish,8,Describes wether English is available.,5.0
+serviceRobustness,availability,5,Displays availability statistics of the service.,3.967741935483871
+Omission,missingItem,5,Evaluation based on missing items in the data.,5.0
+Comission,itemDuplicate,2,Evaluation based on duplicate items in the data.,5.0
+QuantitativeAttributeAccuracy,dateLastEvalQAA,8,Evaluation based on the date of last Evaluation.,0.0
+QuantitativeAttributeAccuracy,AttributeValueUncertainty,5,Attribute value uncertainty.,0.0
+NonQuantitativeAttributeCorrectness,dateLastEvalNQAC,8,Evaluation based on the date of last Evaluation.,0.0
+NonQuantitativeAttributeCorrectness,missclassNQAC,6,Evaluation based on the missclassification of non-quantitative attributes.,0.0
+ClassificationCorrectness,dateLastEvalThematicQuality,8,Evaluation based on the date of last Evaluation.,5.0
+ClassificationCorrectness,missclassTCC,5,Evaluation based on thematic missclassification.,5.0
+ConceptualConsistency,FailsOGC,7,Evaluation based on wether the data follows OGC principles.,5.0
+ConceptualConsistency,MissingVertexNormals,5,Evaluation based on wether the data is missing vertex normals.,1.0
+ConceptualConsistency,SurfacesWronglyOriented,5,Evaluation based on wether the data has mistakes in the orientation of surfaces.,5.0
+DomainConsistency,AttributeValueNotInAllowedRange,5,Describes wether the attribute value is within allowed range.,5.0
+FormatConsistency,MismatchedDimensions,5,Evaluates the presence of mismatched dimensions.,5.0
+FormatConsistency,Not3D,5,Describes wether the coordinate reference system is in 3D (as it should) or not.,5.0
+FormatConsistency,WrongDataType,5,Desctibes wether the data type of attriute is valid.,5.0
+GeometricConsistency,GroundOverlappingIn2D,5,Describes wether features overlap.,5.0
+GeometricConsistency,DegenerateCorruptGeometries,5,Describe wether the geometry of features is valid.,1.0
+GeometricConsistency,NonPlanarSurfaces,5,Describes wether surfaces are planar.,5.0
+GeometricConsistency,GroundHigherThanRoof,5,Describes errors due to incoherent heights of ground an roof in relation with each other.,5.0
+GeometricConsistency,FeatureHasSpikes,5,Evaluation based on spikes in dataset that exceed tolerance.,5.0
+GeometricConsistency,GeometryTooSmall,5,Describes wether some geometry are too small.,3.0
+GeometricConsistency,Orientation,5,Evaluation based on presence of inccorect orientation.,5.0
+TopologicalConsistency,MissingConnections,5,Describes wether connections are missing.,5.0
+TopologicalConsistency,InvalidSolidVoids,5,Describes wether the solid contains problems.,5.0
+TopologicalConsistency,InvalidSelfInterestOverlapErrors,5,Describes wether vertices of the feature are correctly connected.,5.0
+TopologicalConsistency,InvalidSolidBoundaries,5,The solid boundaries must be valid.,5.0
+AccuracyTimeMeasurment,TimeAccuracy,5,Time accuracy at XX.X % significance level [ISO 19157-3:2021]..,5.0
+TemporalConsistency,ChronologicalOrder,5,"Time accuracy at 99,8 % significance level [ISO 19157-3:2021]",5.0
+TemporalValidity,Currentness,8,Degree to which data has attributes that are of the right age in a specific context of use [25012:2008].,2.0
+TemporalValidity,MaintenanceFrequency,7,evaluation if a dataset is maintained as set as maintenance frequency [ISO 19157-3:2021].,5.0
+AbsolutePositionalAccuracy,MeanValuePosUncertainties,8,Mean value of the positional uncertainties for a set of positions where the positional uncertainties are defined as the distance between a measured position and what is accepted as the corresponding true position [ISO 19157-3:2021].,5.0
+RelativePositionalAccuracy,RelativeVerticalError,5,evaluation of the random errors of one relief feature to another in the same dataset or on the same map/chart [ISO 19157-3:2021].,5.0
+RelativePositionalAccuracy,RelativeHorizontalError,5,Evaluation of the random errors in the horizontal position of one feature to another in the same dataset or on the same map/chart [ISO 19157-3:2021].,5.0
+GriddedPositionalAccuracy,CircularSD,5,"Circular standard deviation, also known as circular standard error, Helmertâ€™s point error, CSE [ISO 19157-3:2021].",5.0
+GriddedPositionalAccuracy,RMSErrorPlanimetry,10,Root mean square error of planimetry [ISO 19157-3:2021].,4.0
+SpatialResolution,equivalentScale,5,Level of detail expressed as the scale denominator of a comparable hardcopy map or chart [MD_IR_and_ISO_20081219].,5.0
+SpatialResolution,distance,5,Ground sample distance [MD_IR_and_ISO_20081219].,1.0
