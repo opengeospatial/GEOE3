@@ -9,6 +9,7 @@ from lxml import etree
 from xml_ import *
 from loader import load_API, load_dataset_metadata, load_cvs
 from evaluate import evaluate, evaluate_categories
+import re
 
 
 
@@ -107,7 +108,7 @@ def extract_all_info(my_dict, metadata_file, service_metadata_file, serviceId, q
                                                                             'quality-evaluation': qualityEvaluation_file,
                                                                             'interoperability-maturity-model': interoperability_file
                                                                         }
-                                                                        row["Extraction_Rule_value"] = func(row["Extraction_Rule"],model,api_file,serviceId)   
+                                                                        row["Extraction_Rule_value"] = func(row["Extraction_Rule"],model,api_file,serviceId)
                                                                     elif value10["source"] == "quality-evaluation":
                                                                         row["Extraction_Rule_value"] = func(row["Extraction_Rule"],model,qualityEvaluation_file,serviceId)                                              
                                                                     elif value10["source"] == "dataset-metadata":
@@ -115,7 +116,13 @@ def extract_all_info(my_dict, metadata_file, service_metadata_file, serviceId, q
                                                                     elif value10["source"] == "service-metadata":
                                                                         row["Extraction_Rule_value"] = func(row["Extraction_Rule"],model,service_metadata_file,serviceId)
                                                                     elif value10["source"] == "interoperability-maturity-model":
-                                                                       row["Extraction_Rule_value"] = func(row["Extraction_Rule"],model,interoperability_file,serviceId)                                                                   
+                                                                       row["Extraction_Rule_value"] = func(row["Extraction_Rule"],model,interoperability_file,serviceId)
+                                                                    
+                                                                    if type(row["Extraction_Rule_value"]) == str:
+                                                                        row["Extraction_Rule_value"] = extract_all_text(row["Extraction_Rule_value"])
+                                                                        row["Extraction_Rule_value"] = row["Extraction_Rule_value"].replace("\n", "")
+                                                                        row["Extraction_Rule_value"] = re.sub(r'\s+', ' ', row["Extraction_Rule_value"])
+
                                                             if key10 == "evaluationRule":
                                                                 value = row["Extraction_Rule_value"]
                                                                 evaluationRule = value9["evaluationRule"]
@@ -160,28 +167,29 @@ def extract_rule(rule, model,metadata,serviceId):
         raise f"Unknown rule extractor type {rule['type']}"
     return extractor(rule, model,metadata,serviceId)
 
+
+def extract_all_text(node_or_nodes, delimiter=' '):
+    """extracts all non-whitespace text from an etree node or list of etree nodes"""
+    def flatten(list_of_lists):
+        return [item for sublist in list_of_lists for item in sublist]
+    if isinstance(node_or_nodes, list):
+        nodes = node_or_nodes
+    else:
+        nodes = [node_or_nodes]
+    tmp = [
+        [
+            str(value) for value in filter(lambda str : str != '',
+            map(lambda str : str.strip(), node.xpath(".//text()")))
+        ]
+        if isinstance(node, lxml.etree._Element)
+        else [str(node) if not isinstance(node, float) else str(int(node))]
+        for node in nodes
+    ]
+    return delimiter.join(flatten(tmp))
+
 # This function executes xpath extraction rules
 def execute_xpath_rule(rule, model,file,serviceId=None):
     """Executes xpath extraction rule and returns the result value"""
-    def extract_all_text(node_or_nodes, delimiter=' '):
-        """extracts all non-whitespace text from an etree node or list of etree nodes"""
-        def flatten(list_of_lists):
-            return [item for sublist in list_of_lists for item in sublist]
-        if isinstance(node_or_nodes, list):
-            nodes = node_or_nodes
-        else:
-            nodes = [node_or_nodes]
-        tmp = [
-            [
-                str(value) for value in filter(lambda str : str != '',
-                map(lambda str : str.strip(), node.xpath(".//text()")))
-            ]
-            if isinstance(node, lxml.etree._Element)
-            else [str(node) if not isinstance(node, float) else str(int(node))]
-            for node in nodes
-        ]
-        return delimiter.join(flatten(tmp))
-
     source = model[rule['source']]
     xpath_rule = rule['rule']
     value_method = rule['value']

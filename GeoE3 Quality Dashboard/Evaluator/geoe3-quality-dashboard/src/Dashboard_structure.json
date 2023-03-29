@@ -53,13 +53,13 @@
                             "type": "measure",
                             "name": "Title",
                             "weight": 8,
-                            "description": "Title.",
+                            "description": "Title",
                             "nodes": {
                                 "metric1": {
                                     "type": "metric",
                                     "name": "Title.",
                                     "weight": 5,
-                                    "description": "Title.",
+                                    "description": "Title",
                                     "extractionRule": {
                                         "type": "xpath",
                                         "source": "service-metadata",
@@ -1941,7 +1941,7 @@
 },
 "Interoperability": {
     "type": "viewpoint",
-    "name": "interoperability",
+    "name": "Interoperability",
     "weight": 1,
     "description": "Viewpoint focused on the interoperability capacity of the dataset and service. Includes evaluations from the GeoE3 Data Maturity Model and Interoperability Map.",
     "nodes":{

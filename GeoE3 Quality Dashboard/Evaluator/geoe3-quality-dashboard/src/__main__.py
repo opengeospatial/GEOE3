@@ -20,7 +20,7 @@ def main():
 
     # Read rules from JSON file that describes the structure of the dashboard and its rules.
     structure_file = read_rules_from_json("Dashboard_structure.json")
-    
+
     metadata_file = 'MD_Bui_EX_1.xml'
     service_metadata_file = 'SMD_Bui_EX_1.xml'
     qualityEvaluation_file = 'buildings_and_errors/results_NO_cc.csv'
@@ -45,10 +45,10 @@ def main():
     if not os.path.exists(folder_name):
         os.makedirs(folder_name)
 
-    name_excel_file = serviceId + '_' + metadata_file.replace('.xml', '')
+    name_excel_file = metadata_file.replace('.xml', '')
     scores_table.to_csv(os.path.join(folder_name, name_excel_file + '_Metrics'+'.csv'), index=False)
     VP.to_csv(os.path.join(folder_name, name_excel_file + '_VP' + '.csv'), index=False)
-    D.to_csv(os.path.join(folder_name, name_excel_file + '_Dimension' + '.csv'), index=False)
+    D.to_csv(os.path.join(folder_name, name_excel_file + '_Dimensions' + '.csv'), index=False)
     E.to_csv(os.path.join(folder_name, name_excel_file + '_Elements' + '.csv'), index=False)
     M.to_csv(os.path.join(folder_name, name_excel_file + '_Measures' + '.csv'), index=False)
     print('Results have been saved in a folder named : ', name_excel_file)
