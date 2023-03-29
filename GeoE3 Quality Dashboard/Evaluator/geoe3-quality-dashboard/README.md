@@ -100,7 +100,8 @@ When using miniconda for the first time, run these commands
 ```
 $ conda create --name geoe3
 $ conda activate geoe3
-$ conda config --add chanels conda-forge
+$ conda config --add channels conda-forge
 $ cd c:\whereever\this\project\is\geoe3-quality-dashboard\
 $ conda install pytest lxml isodate==0.6.1
 ```
+Then run "pip install XXX" with XXX being the modules listed in the requirements. 
