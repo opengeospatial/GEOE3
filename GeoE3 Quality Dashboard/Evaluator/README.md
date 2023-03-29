@@ -1,4 +1,4 @@
-# geoe3-quality-dashboard
+# Extraction and evaluation of the data
 GeoE3 quality dashboard - method for scoring services using metadata and monitoring information. You can read more about the project at https://geoe3.eu/ and https://geoe3platform.eu/geoe3/
 
 ## Data flow of the program, from Python to Power BI
