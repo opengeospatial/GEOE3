@@ -21,7 +21,6 @@ The output of the program is (5):
 - CVS file for the quality metrics.
 
 Name of those file is formatted as follow :
-
 *'service ID'_'name of metadata file'_date_time.cvs*
 
 
