@@ -1,33 +1,29 @@
-# geoe3-quality-dashboard
+# Extraction and evaluation of the data
 GeoE3 quality dashboard - method for scoring services using metadata and monitoring information. You can read more about the project at https://geoe3.eu/ and https://geoe3platform.eu/geoe3/
 
-## Data flow of the program, from Python to Power BI
+## Required input 
 
-The program requires the following input :
-- JSON structure file path;
-- service ID number ;
-- xml metadata file path ;
-- cvs quality evaluation file from GeoE3 quality software path ;
-- cvs interoperability map / maturity model path.
+The program will ask for the following input (6):
+- JSON structure file path ;
+- Service ID number ;
+- XML dataset metadata file path ;
+- XML service metadata file path ;
+- CVS quality evaluation file from GeoE3 quality software path ;
+- CVS interoperability map / maturity model path.
 
-Output of the program is :
-- 5 cvs files for the metrics / measures / elements / dimensions / viewpoints.
+## Output
 
-Input in the Power BI dashboard : 
-- 5 cvs files for the metrics / measures / elements / dimensions / viewpoints ;
-- cvs interoperability map / maturity model path.
+The output of the program is (5):
+- CVS file for the quality viewpoint ;
+- CVS file for the quality dimensions ;
+- CVS file for the quality elements ;
+- CVS file for the quality measures ;
+- CVS file for the quality metrics.
 
-## Starting point
+Name of those file is formatted as follow :  
+>*'service ID'_'name of metadata file'_date_time_X.cvs*  
 
-Start implementation with a subset of metrics and a single service. The service chosen is the Norwegian building service.
-
-Service metadata: `https://www.geonorge.no/geonetwork/srv/nor/xml_iso19139?uuid=dc0f80e3-3f4d-486b-9393-da8244f37e47`
-
-Dataset metadata: `https://www.geonorge.no/geonetwork/srv/nor/xml_iso19139?uuid=8b4304ea-4fb0-479c-a24d-fa225e2c6e97`
-
-Endpoint: `https://wfs.geonorge.no/skwms1/wfs.inspire-bu-core2d_limited?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetCapabilities`
-
-Spatineo Directory: `https://directory.spatineo.com/service/164572/`
+with 'X' being V,D,E or M for Viewpoint, Dimension, Element or Measure. The metrics CSV does not have a letter at the end.
 
 
 ## Source of the dashboard data
