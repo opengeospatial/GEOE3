@@ -21,7 +21,7 @@ The output of the program is (5):
 - CVS file for the quality metrics.
 
 Name of those file is formatted as follow :  
->*'service ID'_'name of metadata file'_date_time_X.cvs*  
+>*'service ID'_'name of metadata file'_date_time_X.cvs*  <
 with 'X' being V,D,E or M for Viewpoint, Dimension, Element or Measure. The metrics CSV does not have a letter at the end.
 
 
