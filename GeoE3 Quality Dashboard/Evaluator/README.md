@@ -3,9 +3,9 @@ GeoE3 quality dashboard - method for scoring services using metadata and monitor
 
 ## Required input 
 
-The program will ask for the following input :
+The program will ask for the following input (6):
 - JSON structure file path ;
-- service ID number ;
+- Service ID number ;
 - XML dataset metadata file path ;
 - XML service metadata file path ;
 - CVS quality evaluation file from GeoE3 quality software path ;
@@ -13,7 +13,7 @@ The program will ask for the following input :
 
 ## Output
 
-The output of the program is :
+The output of the program is (5):
 - CVS file for the quality viewpoint ;
 - CVS file for the quality dimensions ;
 - CVS file for the quality elements ;
