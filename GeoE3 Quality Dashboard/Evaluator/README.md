@@ -1,17 +1,29 @@
 # Extraction and evaluation of the data
 GeoE3 quality dashboard - method for scoring services using metadata and monitoring information. You can read more about the project at https://geoe3.eu/ and https://geoe3platform.eu/geoe3/
 
-## Data flow of the program, from Python to Power BI
+## Required input 
 
-The program requires the following input :
-- JSON structure file path;
+The program will ask for the following input :
+- JSON structure file path ;
 - service ID number ;
-- xml metadata file path ;
-- cvs quality evaluation file from GeoE3 quality software path ;
-- cvs interoperability map / maturity model path.
+- XML dataset metadata file path ;
+- XML service metadata file path ;
+- CVS quality evaluation file from GeoE3 quality software path ;
+- CVS interoperability map / maturity model path.
 
-Output of the program is :
-- 5 cvs files for the metrics / measures / elements / dimensions / viewpoints.
+## Output
+
+The output of the program is :
+- CVS file for the quality viewpoint ;
+- CVS file for the quality dimensions ;
+- CVS file for the quality elements ;
+- CVS file for the quality measures ;
+- CVS file for the quality metrics.
+
+Name of those file is formatted as follow :
+
+'service ID' + '_' + 'name of metadata file' + '_' + date + time + '.cvs'name of metadata file
+
 
 Input in the Power BI dashboard : 
 - 5 cvs files for the metrics / measures / elements / dimensions / viewpoints ;
