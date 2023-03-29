@@ -46,7 +46,7 @@ def main():
     if not os.path.exists(folder_name):
         os.makedirs(folder_name)
 
-    name_excel_file = serviceId + '_' + metadata_file.replace('.xml', '') + '_' + datetime.now().strftime('%Y%m%d_%H%M%S')
+    name_excel_file = serviceId + '_' + metadata_file.replace('.xml', '')
     scores_table.to_csv(os.path.join(folder_name, name_excel_file + '_Metrics'+'.csv'), index=False)
     VP.to_csv(os.path.join(folder_name, name_excel_file + '_VP' + '.csv'), index=False)
     D.to_csv(os.path.join(folder_name, name_excel_file + '_Dimension' + '.csv'), index=False)
