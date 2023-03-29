@@ -1,0 +1,26 @@
+Dimension,Element,Element_Weight,Element_Description,Element_Score
+Understandability,FAIR Findability,7,Data and metadata are online and openly searchable with a persistent link that is uniquely attached to each specific dataset. ,5.0
+Understandability,Contextuality,4,Context is provided to the user.,5.0
+Understandability,Language,6,"Quality Element under the Understandability Dimension. Evaluates language requirements (specification of language, English available..). ",5.0
+Service Quality,Service Robustness,5,Quality Element evaluating the service's robustness.,3.967741935483871
+Completeness,Omission,5,"Data absent from the dataset, as described by the scope [ISO 19157-1:2021].",5.0
+Completeness,Comission,5,"Excess data present in the dataset, as described by the scope [ISO 19157-1:2021].",5.0
+Thematic Quality,Quantitative Attribute Accuracy,7,Closeness of the value of a quantitative attribute to a value accepted as or known to be true [ISO 19157-1:2021].,0.0
+Thematic Quality,Non Quantitative Attribute Correctness,7,Correctness of non-quantitative attributes is correct or incorrect [ISO 19157-1:2021].,0.0
+Thematic Quality,Classification Correctness,7,Comparison of the classes assigned to features or their attributes to a universe of discourse [ISO 19157-1:2021].,5.0
+Logical Consistency,Conceptual Consistency,6,Adherence to rules of the conceptual schema [ISO 19157-1:2021].,3.823529411764706
+Logical Consistency,Domain Consistency,5,Adherence of values to the value domains [ISO 19157-1:2021].,5.0
+Logical Consistency,Format Consistency,8,"Degree to which data are stored in accordance with the physical structure of the dataset, as described by the scope [ISO 19157-1:2021].",5.0
+Logical Consistency,Geometric Consistency,5,Refers to the property of a set of geometric objects or transformations that preserve their relative position or shape.,4.142857142857143
+Logical Consistency,Topological Consistency,5,Correctness of the explicitly encoded topological characteristics of the dataset as described by the scope [ISO 19157-1:2021].,5.0
+Temporal Quality,Accuracy Time Measurment,5,Closeness of reported time measurements to values accepted as true [ISO 19157-1:2021].,5.0
+Temporal Quality,Temporal Consistency,5,Evaluates the correctness of the order of events [ISO 19157-1:2021].,5.0
+Temporal Quality,Temporal Validity,9,Validity of data with respect to time. [ISO 19157-1:2021].,3.4
+Positionnal Accuracy,Absolute Positional Accuracy,8,Closeness of reported coordinate values to values accepted as true in a standard coordinate reference system [ISO 19157-1:2021].,5.0
+Positionnal Accuracy,Relative Positional Accuracy,8,Closeness of the relative positions of features in the scope to their respective relative positions accepted as true in a local coordinate reference system [ISO 19157-1:2021].,5.0
+Positionnal Accuracy,Gridded Positional Accuracy,5,Closeness of gridded data position values to values accepted as true [ISO 19157-1:2021].,4.333333333333333
+Positionnal Accuracy,Spatial Resolution,16,Spatial resolution of the dataset.,3.0
+FAIR Reusability,Information,8,Data is sufficiently annotated.,5.0
+FAIR Reusability,Versioning,5,Describes whether the versions of standards used is filled.,5.0
+Traceability,Traceability,5,Describes whether the data process is described adequately.,5.0
+FAIR Interoperability,FAIR Interoperability,5,Describes whether the dataset is interoperable.,1.5

@@ -19,14 +19,14 @@ def main():
     serviceId = input("Please enter the service ID (list of service Id : 39859,164572,157386,88383,157353) :")
     # Read rules from JSON file that describes the structure of the dashboard and its rules.
 
-    structure_file = read_rules_from_json("C:/Users/CCOSSEC/Work Folders/Evaluator configuration/geoe3-quality-dashboard/geoe3-quality-dashboard/Dashboard_structure.json")
+    structure_file = read_rules_from_json("Dashboard_structure.json")
     
  
     metadata_file = 'MD_Bui_EX_1.xml'
     service_metadata_file = 'SMD_Bui_EX_1.xml'
-    qualityEvaluation_file = 'C:/Users/CCOSSEC/Work Folders/Evaluator configuration/geoe3-quality-dashboard/geoe3-quality-dashboard/src/buildings_and_errors/results_NO_cc.csv'
+    qualityEvaluation_file = 'buildings_and_errors/results_NO_cc.csv'
     serviceId = '157353'
-    interoperability_file = 'C:/Users/CCOSSEC/Work Folders/Evaluator configuration/geoe3-quality-dashboard/geoe3-quality-dashboard/src/interoperability_maturityModel.csv'
+    interoperability_file = 'interoperability_maturityModel.csv'
 
 
 
@@ -41,14 +41,18 @@ def main():
     # Extract rules from Structure file (JSON) and executes them. Result is a Dataframe table
     scores_table, M, E, D, VP = extract_all_info(structure_file, metadata_file, service_metadata_file, serviceId, qualityEvaluation_file,interoperability_file, func = extract_rule)
     
-    # Save the DataFrames to an csv file  
+    # Save the DataFrames to csv files in one folder
+    folder_name = serviceId + '_' + metadata_file.replace('.xml', '') + '_' + datetime.now().strftime('%Y%m%d_%H%M%S')
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)
+
     name_excel_file = serviceId + '_' + metadata_file.replace('.xml', '') + '_' + datetime.now().strftime('%Y%m%d_%H%M%S')
-    scores_table.to_csv(name_excel_file + '.csv', index=False)
-    VP.to_csv(name_excel_file + '_VP' + '.csv', index=False)
-    D.to_csv(name_excel_file + '_D' + '.csv', index=False)
-    E.to_csv(name_excel_file + '_E' + '.csv', index=False)
-    M.to_csv(name_excel_file + '_M' + '.csv', index=False)
-    print('Results have been saved in an Excel file named : ', name_excel_file)
+    scores_table.to_csv(os.path.join(folder_name, name_excel_file + '_Metrics'+'.csv'), index=False)
+    VP.to_csv(os.path.join(folder_name, name_excel_file + '_VP' + '.csv'), index=False)
+    D.to_csv(os.path.join(folder_name, name_excel_file + '_Dimension' + '.csv'), index=False)
+    E.to_csv(os.path.join(folder_name, name_excel_file + '_Elements' + '.csv'), index=False)
+    M.to_csv(os.path.join(folder_name, name_excel_file + '_Measures' + '.csv'), index=False)
+    print('Results have been saved in a folder named : ', name_excel_file)
 
 
 

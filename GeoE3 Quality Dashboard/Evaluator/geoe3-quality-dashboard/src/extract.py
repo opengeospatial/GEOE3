@@ -116,7 +116,6 @@ def extract_all_info(my_dict, metadata_file, service_metadata_file, serviceId, q
                                                                         row["Extraction_Rule_value"] = func(row["Extraction_Rule"],model,service_metadata_file,serviceId)
                                                                     elif value10["source"] == "interoperability-maturity-model":
                                                                        row["Extraction_Rule_value"] = func(row["Extraction_Rule"],model,interoperability_file,serviceId)                                                                   
-                                                            print(key7)
                                                             if key10 == "evaluationRule":
                                                                 value = row["Extraction_Rule_value"]
                                                                 evaluationRule = value9["evaluationRule"]
