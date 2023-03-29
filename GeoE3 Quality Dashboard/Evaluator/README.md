@@ -22,7 +22,7 @@ The output of the program is :
 
 Name of those file is formatted as follow :
 
-'service ID' + '_' + 'name of metadata file' + '_' + date + time + '.cvs'name of metadata file
+*'service ID' + '_' + 'name of metadata file' + '_' + date + time + '.cvs'name of metadata file*
 
 
 Input in the Power BI dashboard : 
