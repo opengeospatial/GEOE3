@@ -1,0 +1,8 @@
+﻿"details,error_name,error_count,severity_level,dataset"
+"Miscellaneous,Fails OGC Compliant,2430,FIXED,C:\Users\ATURUNEN\Downloads\buildings_NO.json"
+"The feature does not contain vertex normals.,Missing Vertex Normals,2430,NOTE,C:\Users\ATURUNEN\Downloads\buildings_NO.json"
+"Miscellaneous,Fails OGC Simple,947,NOTE,C:\Users\ATURUNEN\Downloads\buildings_NO.json"
+"Miscellaneous,Self-Intersections in 2D,11412,FAIL,C:\Users\ATURUNEN\Downloads\buildings_NO.json"
+"The geometry of two or more GroundSurfaces cannot overlap more than 0 % of their areas.,GroundOverlappingIn2D,10,NOTE,C:\Users\ATURUNEN\Downloads\buildings_NO.json"
+"The building contain surfaces which area is smaller than 1 units,AreaTooSmall,2296,NOTE,C:\Users\ATURUNEN\Downloads\buildings_NO.json"
+"Miscellaneous,Degenerate or Corrupt Geometries,2156,FIXED,C:\Users\ATURUNEN\Downloads\buildings_NO.json"

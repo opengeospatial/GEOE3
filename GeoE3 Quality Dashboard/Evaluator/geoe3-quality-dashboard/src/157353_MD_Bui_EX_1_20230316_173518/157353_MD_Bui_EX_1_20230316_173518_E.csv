@@ -1,0 +1,20 @@
+Dimension,Element,Element_Weight,Element_Description,Element_Score
+Understandability,Language,5,"Quality Element under the Understandability Dimension. Evaluates language requirements (specification of language, English available..). ",5.0
+serviceQuality,serviceRobustness,5,Quality Element evaluating the service's robustness.,3.967741935483871
+Completeness,Omission,5,"Data absent from the dataset, as described by the scope [ISO 19157-1:2021].",5.0
+Completeness,Comission,5,"Excess data present in the dataset, as described by the scope [ISO 19157-1:2021].",5.0
+ThematicQuality,QuantitativeAttributeAccuracy,7,Closeness of the value of a quantitative attribute to a value accepted as or known to be true [ISO 19157-1:2021].,0.0
+ThematicQuality,NonQuantitativeAttributeCorrectness,7,Correctness of non-quantitative attributes is correct or incorrect [ISO 19157-1:2021].,0.0
+ThematicQuality,ClassificationCorrectness,7,Comparison of the classes assigned to features or their attributes to a universe of discourse [ISO 19157-1:2021].,5.0
+LogicalConsistency,ConceptualConsistency,6,Adherence to rules of the conceptual schema [ISO 19157-1:2021].,3.823529411764706
+LogicalConsistency,DomainConsistency,5,Adherence of values to the value domains [ISO 19157-1:2021].,5.0
+LogicalConsistency,FormatConsistency,8,"Degree to which data are stored in accordance with the physical structure of the dataset, as described by the scope [ISO 19157-1:2021].",5.0
+LogicalConsistency,GeometricConsistency,5,Refers to the property of a set of geometric objects or transformations that preserve their relative position or shape.,4.142857142857143
+LogicalConsistency,TopologicalConsistency,5,Correctness of the explicitly encoded topological characteristics of the dataset as described by the scope [ISO 19157-1:2021].,5.0
+TemporalQuality,AccuracyTimeMeasurment,5,Closeness of reported time measurements to values accepted as true [ISO 19157-1:2021].,5.0
+TemporalQuality,TemporalConsistency,5,Evaluates the correctness of the order of events [ISO 19157-1:2021].,5.0
+TemporalQuality,TemporalValidity,9,Validity of data with respect to time. [ISO 19157-1:2021].,3.4
+PositionnalAccuracy,AbsolutePositionalAccuracy,8,Closeness of reported coordinate values to values accepted as true in a standard coordinate reference system [ISO 19157-1:2021].,5.0
+PositionnalAccuracy,RelativePositionalAccuracy,8,Closeness of the relative positions of features in the scope to their respective relative positions accepted as true in a local coordinate reference system [ISO 19157-1:2021].,5.0
+PositionnalAccuracy,GriddedPositionalAccuracy,5,Closeness of gridded data position values to values accepted as true [ISO 19157-1:2021].,4.333333333333333
+PositionnalAccuracy,SpatialResolution,16,Spatial resolution of the dataset.,3.0
