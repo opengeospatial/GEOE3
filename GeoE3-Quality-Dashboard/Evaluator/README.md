@@ -31,12 +31,6 @@ Name of the folder is formatted as follow :
 3. In the shell, run `cd c:\whereever\this\project\is\geoe3-quality-dashboard\`
 4. Use the project as normal
 
-### Run the program
-
-Rune the ```__main__.py``` program.
-It will ask for the path of source files and a service ID.  
-The data from the availability API is downloaded into a temp file located in the temp folder. This file should be automatically deleted after the program is run.
-
 #### When using miniconda for the first time
 When using miniconda for the first time, run these commands :
 ```
@@ -47,6 +41,12 @@ $ cd c:\whereever\this\project\is\geoe3-quality-dashboard\
 $ conda install pytest lxml isodate==0.6.1
 ```
 Then install the required modules specified in the requirements file : ```pip install name_module```
+
+### Run the program
+
+Rune the ```__main__.py``` program.
+It will ask for the path of source files and a service ID.  
+The data from the availability API is downloaded into a temp file located in the temp folder. This file should be automatically deleted after the program is run.
 
 ## Source of the dashboard data
 
