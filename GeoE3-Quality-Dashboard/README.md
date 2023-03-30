@@ -30,11 +30,11 @@ The interoperability map CSV file is located in the src folder (same folder as P
 
 ### 2. Setting up the Power BI file
 
-#### Open the Power BI file
+#### 2.1. Open the Power BI file
 After opening the Quality dashboard Power BI file, the dashboard should be displayed in the software.
 The data displayed may not be up to date. You need to rectify that.
 
-#### Using the right data : 2 parameters to enter
+#### 2.2. Using the right data : 2 parameters to enter
 Import of the data is automated. You only have to enter 2 parameters.
 - In the "Home" ribbon tag, select the down arrow of the "Transform data" button.
 ![Screenshot of "Transform data" button in Power BI desktop](https://user-images.githubusercontent.com/114493409/228851429-78dc0f41-f203-400c-9bf9-a180b9c0cc09.png)
@@ -45,4 +45,6 @@ Import of the data is automated. You only have to enter 2 parameters.
 - Click "OK".
 
 The quality dashboard should now show the right data.
+
+### 3. Navigating the dashboard 
 
