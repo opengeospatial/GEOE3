@@ -1,678 +1,776 @@
-<WFS_Capabilities xmlns="http://www.opengis.net/wfs/2.0" xmlns:wfs="http://www.opengis.net/wfs/2.0"
-    xmlns:ows="http://www.opengis.net/ows/2.0" xmlns:ogc="http://www.opengis.net/ogc"
-    xmlns:fes="http://www.opengis.net/fes/2.0" xmlns:gml="http://www.opengis.net/gml"
-    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    version="2.0.0"
-    xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd">
-    <ows:ServiceIdentification>
-        <ows:Title>Download Service for INSPIRE Buildings</ows:Title>
-        <ows:Abstract>Limited dataset for test purpose. Direct Access Download Service. Norwegian
-            Buildings for INSPIRE</ows:Abstract>
-        <ows:ServiceType codeSpace="http://www.opengeospatial.org/">WFS</ows:ServiceType>
-        <ows:ServiceTypeVersion>2.0.0</ows:ServiceTypeVersion>
-        <ows:ServiceTypeVersion>1.1.0</ows:ServiceTypeVersion>
-        <!-- Added : keywords, accessconstraints -->
-        <ows:Keywords>
-            <ows:Keyword>WCS</ows:Keyword>
-            <ows:Keyword>MDS</ows:Keyword>
-            <ows:Keyword>Modelo Digital de Superficies</ows:Keyword>
-            <ows:Keyword>Descarga</ows:Keyword>
-            <ows:Keyword>Download</ows:Keyword>
-            <ows:Keyword>IGN</ows:Keyword>
-            <ows:Keyword>Instituto Geográfico Nacional</ows:Keyword>
-            <ows:Keyword>CNIG</ows:Keyword>
-            <ows:Keyword>España</ows:Keyword>
-            <ows:Keyword>Spain</ows:Keyword>
-            <ows:Keyword>infoCoverageAccessService</ows:Keyword>
-            <ows:Keyword>PNOA-LiDAR</ows:Keyword>
-        </ows:Keywords>
-        <ows:AccessConstraints>None</ows:AccessConstraints>
-        <!-- / Added : keywords, accessconstraints -->
-    </ows:ServiceIdentification>
-    <ows:ServiceProvider>
-        <ows:ProviderName>Norwegian Mapping Authorty</ows:ProviderName>
-        <ows:ProviderSite xlink:href="http://www.kartverket.no" />
-        <ows:ServiceContact>
-            <ows:ContactInfo>
-                <ows:Phone>
-                    <ows:Voice />
-                    <ows:Facsimile />
-                </ows:Phone>
-                <ows:Address>
-                    <ows:DeliveryPoint>Kartverksveien 21</ows:DeliveryPoint>
-                    <ows:City>Hønefoss</ows:City>
-                    <ows:AdministrativeArea>Ringrike</ows:AdministrativeArea>
-                    <ows:PostalCode>3507</ows:PostalCode>
-                    <ows:Country>Norway</ows:Country>
-                    <ows:ElectronicMailAddress>tjenestedrift@kartverket.no</ows:ElectronicMailAddress>
-                </ows:Address>
-                <ows:OnlineResource xlink:href="http://www.kartverket.no" />
-                <ows:HoursOfService />
-                <ows:ContactInstructions />
-            </ows:ContactInfo>
-            <ows:Role>PointOfContact</ows:Role>
-        </ows:ServiceContact>
-    </ows:ServiceProvider>
-    <ows:OperationsMetadata>
-        <ows:Operation name="GetCapabilities">
-            <ows:DCP>
-                <ows:HTTP>
-                    <ows:Get
-                        xlink:href="https://wfs.geonorge.no/skwms1/wfs.inspire-bu-core2d_limited?" />
-                    <ows:Post
-                        xlink:href="https://wfs.geonorge.no/skwms1/wfs.inspire-bu-core2d_limited?" />
-                </ows:HTTP>
-            </ows:DCP>
-            <ows:Parameter name="AcceptVersions">
-                <ows:AllowedValues>
-                    <ows:Value>2.0.0</ows:Value>
-                    <ows:Value>1.1.0</ows:Value>
-                </ows:AllowedValues>
-            </ows:Parameter>
-            <ows:Parameter name="AcceptFormats">
-                <ows:AllowedValues>
-                    <ows:Value>text/xml</ows:Value>
-                </ows:AllowedValues>
-            </ows:Parameter>
-            <ows:Parameter name="Sections">
-                <ows:AllowedValues>
-                    <ows:Value>ServiceIdentification</ows:Value>
-                    <ows:Value>ServiceProvider</ows:Value>
-                    <ows:Value>OperationsMetadata</ows:Value>
-                    <ows:Value>FeatureTypeList</ows:Value>
-                    <ows:Value>Filter_Capabilities</ows:Value>
-                </ows:AllowedValues>
-            </ows:Parameter>
-        </ows:Operation>
-        <ows:Operation name="DescribeFeatureType">
-            <ows:DCP>
-                <ows:HTTP>
-                    <ows:Get
-                        xlink:href="https://wfs.geonorge.no/skwms1/wfs.inspire-bu-core2d_limited?" />
-                    <ows:Post
-                        xlink:href="https://wfs.geonorge.no/skwms1/wfs.inspire-bu-core2d_limited?" />
-                </ows:HTTP>
-            </ows:DCP>
-        </ows:Operation>
-        <ows:Operation name="ListStoredQueries">
-            <ows:DCP>
-                <ows:HTTP>
-                    <ows:Get
-                        xlink:href="https://wfs.geonorge.no/skwms1/wfs.inspire-bu-core2d_limited?" />
-                    <ows:Post
-                        xlink:href="https://wfs.geonorge.no/skwms1/wfs.inspire-bu-core2d_limited?" />
-                </ows:HTTP>
-            </ows:DCP>
-        </ows:Operation>
-        <ows:Operation name="DescribeStoredQueries">
-            <ows:DCP>
-                <ows:HTTP>
-                    <ows:Get
-                        xlink:href="https://wfs.geonorge.no/skwms1/wfs.inspire-bu-core2d_limited?" />
-                    <ows:Post
-                        xlink:href="https://wfs.geonorge.no/skwms1/wfs.inspire-bu-core2d_limited?" />
-                </ows:HTTP>
-            </ows:DCP>
-        </ows:Operation>
-        <ows:Operation name="GetFeature">
-            <ows:DCP>
-                <ows:HTTP>
-                    <ows:Get
-                        xlink:href="https://wfs.geonorge.no/skwms1/wfs.inspire-bu-core2d_limited?" />
-                    <ows:Post
-                        xlink:href="https://wfs.geonorge.no/skwms1/wfs.inspire-bu-core2d_limited?" />
-                </ows:HTTP>
-            </ows:DCP>
-        </ows:Operation>
-        <ows:Operation name="GetPropertyValue">
-            <ows:DCP>
-                <ows:HTTP>
-                    <ows:Get
-                        xlink:href="https://wfs.geonorge.no/skwms1/wfs.inspire-bu-core2d_limited?" />
-                    <ows:Post
-                        xlink:href="https://wfs.geonorge.no/skwms1/wfs.inspire-bu-core2d_limited?" />
-                </ows:HTTP>
-            </ows:DCP>
-        </ows:Operation>
-        <ows:Parameter name="version">
-            <ows:AllowedValues>
-                <ows:Value>2.0.0</ows:Value>
-                <ows:Value>1.1.0</ows:Value>
-            </ows:AllowedValues>
-        </ows:Parameter>
-        <ows:Parameter name="srsName">
-            <ows:AllowedValues>
-                <ows:Value>urn:ogc:def:crs:EPSG::4258</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::3035</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::3044</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::3045</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::3046</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::3047</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::3048</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::4326</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::25829</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::25830</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::25831</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::25832</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::25833</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::25834</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::25835</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::25836</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::32632</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::32633</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::32634</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::32635</ows:Value>
-                <ows:Value>urn:ogc:def:crs:EPSG::3857</ows:Value>
-            </ows:AllowedValues>
-        </ows:Parameter>
-        <ows:Parameter name="outputFormat">
-            <ows:AllowedValues>
-                <ows:Value>application/gml+xml; version=3.2</ows:Value>
-                <ows:Value>text/xml; subtype=gml/3.2.1</ows:Value>
-            </ows:AllowedValues>
-        </ows:Parameter>
-        <ows:Parameter name="resolve">
-            <ows:AllowedValues>
-                <ows:Value>none</ows:Value>
-                <ows:Value>local</ows:Value>
-                <ows:Value>remote</ows:Value>
-                <ows:Value>all</ows:Value>
-            </ows:AllowedValues>
-        </ows:Parameter>
-        <ows:Constraint name="ImplementsSimpleWFS">
-            <ows:NoValues />
-            <ows:DefaultValue>TRUE</ows:DefaultValue>
-        </ows:Constraint>
-        <ows:Constraint name="ImplementsBasicWFS">
-            <ows:NoValues />
-            <ows:DefaultValue>TRUE</ows:DefaultValue>
-        </ows:Constraint>
-        <ows:Constraint name="ImplementsTransactionalWFS">
-            <ows:NoValues />
-            <ows:DefaultValue>FALSE</ows:DefaultValue>
-        </ows:Constraint>
-        <ows:Constraint name="ImplementsLockingWFS">
-            <ows:NoValues />
-            <ows:DefaultValue>FALSE</ows:DefaultValue>
-        </ows:Constraint>
-        <ows:Constraint name="KVPEncoding">
-            <ows:NoValues />
-            <ows:DefaultValue>TRUE</ows:DefaultValue>
-        </ows:Constraint>
-        <ows:Constraint name="XMLEncoding">
-            <ows:NoValues />
-            <ows:DefaultValue>TRUE</ows:DefaultValue>
-        </ows:Constraint>
-        <ows:Constraint name="SOAPEncoding">
-            <ows:NoValues />
-            <ows:DefaultValue>FALSE</ows:DefaultValue>
-        </ows:Constraint>
-        <ows:Constraint name="ImplementsInheritance">
-            <ows:NoValues />
-            <ows:DefaultValue>FALSE</ows:DefaultValue>
-        </ows:Constraint>
-        <ows:Constraint name="ImplementsRemoteResolve">
-            <ows:NoValues />
-            <ows:DefaultValue>FALSE</ows:DefaultValue>
-        </ows:Constraint>
-        <ows:Constraint name="ImplementsResultPaging">
-            <ows:NoValues />
-            <ows:DefaultValue>FALSE</ows:DefaultValue>
-        </ows:Constraint>
-        <ows:Constraint name="ImplementsStandardJoins">
-            <ows:NoValues />
-            <ows:DefaultValue>FALSE</ows:DefaultValue>
-        </ows:Constraint>
-        <ows:Constraint name="ImplementsSpatialJoins">
-            <ows:NoValues />
-            <ows:DefaultValue>FALSE</ows:DefaultValue>
-        </ows:Constraint>
-        <ows:Constraint name="ImplementsTemporalJoins">
-            <ows:NoValues />
-            <ows:DefaultValue>FALSE</ows:DefaultValue>
-        </ows:Constraint>
-        <ows:Constraint name="ImplementsFeatureVersioning">
-            <ows:NoValues />
-            <ows:DefaultValue>FALSE</ows:DefaultValue>
-        </ows:Constraint>
-        <ows:Constraint name="ManageStoredQueries">
-            <ows:NoValues />
-            <ows:DefaultValue>FALSE</ows:DefaultValue>
-        </ows:Constraint>
-        <ows:Constraint name="CountDefault">
-            <ows:NoValues />
-            <ows:DefaultValue>10000</ows:DefaultValue>
-        </ows:Constraint>
-        <ows:Constraint name="ResolveLocalScope">
-            <ows:NoValues />
-            <ows:DefaultValue>*</ows:DefaultValue>
-        </ows:Constraint>
-        <ows:Constraint name="QueryExpressions">
-            <ows:AllowedValues>
-                <ows:Value>wfs:Query</ows:Value>
-                <ows:Value>wfs:StoredQuery</ows:Value>
-            </ows:AllowedValues>
-        </ows:Constraint>
-        <ows:ExtendedCapabilities xmlns="http://www.deegree.org/services/metadata"
-            xmlns:bu-core2d="http://inspire.ec.europa.eu/schemas/bu-core2d/4.0">
-            <inspire_dls:ExtendedCapabilities
-                xmlns:inspire_dls="http://inspire.ec.europa.eu/schemas/inspire_dls/1.0"
-                xmlns:inspire_common="http://inspire.ec.europa.eu/schemas/common/1.0"
-                xsi:schemaLocation="http://inspire.ec.europa.eu/schemas/common/1.0 http://inspire.ec.europa.eu/schemas/common/1.0/common.xsd">
-                <inspire_common:MetadataUrl>
-                    <inspire_common:URL>
-                        https://www.geonorge.no/geonetwork/srv/nor/xml_iso19139?uuid=dc0f80e3-3f4d-486b-9393-da8244f37e47</inspire_common:URL>
-                    <inspire_common:MediaType>application/vnd.iso.19139+xml</inspire_common:MediaType>
-                </inspire_common:MetadataUrl>
-                <inspire_common:SupportedLanguages>
-                    <inspire_common:DefaultLanguage>
-                        <inspire_common:Language>eng</inspire_common:Language>
-                    </inspire_common:DefaultLanguage>
-                </inspire_common:SupportedLanguages>
-                <inspire_common:ResponseLanguage>
-                    <inspire_common:Language>eng</inspire_common:Language>
-                </inspire_common:ResponseLanguage>
-                <inspire_dls:SpatialDataSetIdentifier
-                    metadataURL="https://www.geonorge.no/geonetwork/srv/nor/xml_iso19139?uuid=bff47a2e-693d-49f3-987a-e8becce72f4c">
-                    <inspire_common:Code>bu-core2d</inspire_common:Code>
-                </inspire_dls:SpatialDataSetIdentifier>
-            </inspire_dls:ExtendedCapabilities>
-        </ows:ExtendedCapabilities>
-    </ows:OperationsMetadata>
-    <FeatureTypeList>
-        <FeatureType>
-            <Name xmlns:bu-core2d="http://inspire.ec.europa.eu/schemas/bu-core2d/4.0">
-                bu-core2d:Building</Name>
-            <Title>bu-core2d:Building</Title>
-            <DefaultCRS>urn:ogc:def:crs:EPSG::4258</DefaultCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::3035</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::3044</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::3045</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::3046</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::3047</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::3048</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::4326</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::25829</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::25830</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::25831</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::25832</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::25833</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::25834</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::25835</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::25836</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::32632</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::32633</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::32634</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::32635</OtherCRS>
-            <OtherCRS>urn:ogc:def:crs:EPSG::3857</OtherCRS>
-            <OutputFormats>
-                <Format>application/gml+xml; version=3.2</Format>
-                <Format>text/xml; subtype=gml/3.2.1</Format>
-            </OutputFormats>
-            <ows:WGS84BoundingBox>
-                <ows:LowerCorner>9.734664 60.028582</ows:LowerCorner>
-                <ows:UpperCorner>29.072681 70.679412</ows:UpperCorner>
-            </ows:WGS84BoundingBox>
-        </FeatureType>
-    </FeatureTypeList>
-    <fes:Filter_Capabilities>
-        <fes:Conformance>
-            <fes:Constraint name="ImplementsQuery">
-                <ows:NoValues />
-                <ows:DefaultValue>TRUE</ows:DefaultValue>
-            </fes:Constraint>
-            <fes:Constraint name="ImplementsAdHocQuery">
-                <ows:NoValues />
-                <ows:DefaultValue>TRUE</ows:DefaultValue>
-            </fes:Constraint>
-            <fes:Constraint name="ImplementsFunctions">
-                <ows:NoValues />
-                <ows:DefaultValue>TRUE</ows:DefaultValue>
-            </fes:Constraint>
-            <fes:Constraint name="ImplementsResourceId">
-                <ows:NoValues />
-                <ows:DefaultValue>TRUE</ows:DefaultValue>
-            </fes:Constraint>
-            <fes:Constraint name="ImplementsMinStandardFilter">
-                <ows:NoValues />
-                <ows:DefaultValue>TRUE</ows:DefaultValue>
-            </fes:Constraint>
-            <fes:Constraint name="ImplementsStandardFilter">
-                <ows:NoValues />
-                <ows:DefaultValue>TRUE</ows:DefaultValue>
-            </fes:Constraint>
-            <fes:Constraint name="ImplementsMinSpatialFilter">
-                <ows:NoValues />
-                <ows:DefaultValue>TRUE</ows:DefaultValue>
-            </fes:Constraint>
-            <fes:Constraint name="ImplementsSpatialFilter">
-                <ows:NoValues />
-                <ows:DefaultValue>TRUE</ows:DefaultValue>
-            </fes:Constraint>
-            <fes:Constraint name="ImplementsMinTemporalFilter">
-                <ows:NoValues />
-                <ows:DefaultValue>TRUE</ows:DefaultValue>
-            </fes:Constraint>
-            <fes:Constraint name="ImplementsTemporalFilter">
-                <ows:NoValues />
-                <ows:DefaultValue>TRUE</ows:DefaultValue>
-            </fes:Constraint>
-            <fes:Constraint name="ImplementsVersionNav">
-                <ows:NoValues />
-                <ows:DefaultValue>FALSE</ows:DefaultValue>
-            </fes:Constraint>
-            <fes:Constraint name="ImplementsSorting">
-                <ows:NoValues />
-                <ows:DefaultValue>TRUE</ows:DefaultValue>
-            </fes:Constraint>
-            <fes:Constraint name="ImplementsExtendedOperators">
-                <ows:NoValues />
-                <ows:DefaultValue>FALSE</ows:DefaultValue>
-            </fes:Constraint>
-            <fes:Constraint name="ImplementsMinimumXPath">
-                <ows:NoValues />
-                <ows:DefaultValue>TRUE</ows:DefaultValue>
-            </fes:Constraint>
-            <fes:Constraint name="ImplementsSchemaElementFunc">
-                <ows:NoValues />
-                <ows:DefaultValue>FALSE</ows:DefaultValue>
-            </fes:Constraint>
-        </fes:Conformance>
-        <fes:Id_Capabilities>
-            <fes:ResourceIdentifier name="fes:ResourceId" />
-        </fes:Id_Capabilities>
-        <fes:Scalar_Capabilities>
-            <fes:LogicalOperators />
-            <fes:ComparisonOperators>
-                <fes:ComparisonOperator name="PropertyIsEqualTo" />
-                <fes:ComparisonOperator name="PropertyIsNotEqualTo" />
-                <fes:ComparisonOperator name="PropertyIsLessThan" />
-                <fes:ComparisonOperator name="PropertyIsGreaterThan" />
-                <fes:ComparisonOperator name="PropertyIsLessThanOrEqualTo" />
-                <fes:ComparisonOperator name="PropertyIsGreaterThanOrEqualTo" />
-                <fes:ComparisonOperator name="PropertyIsLike" />
-                <fes:ComparisonOperator name="PropertyIsNull" />
-                <fes:ComparisonOperator name="PropertyIsNil" />
-                <fes:ComparisonOperator name="PropertyIsBetween" />
-            </fes:ComparisonOperators>
-        </fes:Scalar_Capabilities>
-        <fes:Spatial_Capabilities>
-            <fes:GeometryOperands xmlns:gml32="http://www.opengis.net/gml/3.2">
-                <fes:GeometryOperand name="gml:Box" />
-                <fes:GeometryOperand name="gml:Envelope" />
-                <fes:GeometryOperand name="gml:Point" />
-                <fes:GeometryOperand name="gml:LineString" />
-                <fes:GeometryOperand name="gml:Curve" />
-                <fes:GeometryOperand name="gml:Polygon" />
-                <fes:GeometryOperand name="gml:Surface" />
-                <fes:GeometryOperand name="gml:MultiPoint" />
-                <fes:GeometryOperand name="gml:MultiLineString" />
-                <fes:GeometryOperand name="gml:MultiCurve" />
-                <fes:GeometryOperand name="gml:MultiPolygon" />
-                <fes:GeometryOperand name="gml:MultiSurface" />
-                <fes:GeometryOperand name="gml:CompositeCurve" />
-                <fes:GeometryOperand name="gml:CompositeSurface" />
-                <fes:GeometryOperand name="gml32:Envelope" />
-                <fes:GeometryOperand name="gml32:Point" />
-                <fes:GeometryOperand name="gml32:LineString" />
-                <fes:GeometryOperand name="gml32:Curve" />
-                <fes:GeometryOperand name="gml32:Polygon" />
-                <fes:GeometryOperand name="gml32:Surface" />
-                <fes:GeometryOperand name="gml32:MultiPoint" />
-                <fes:GeometryOperand name="gml32:MultiLineString" />
-                <fes:GeometryOperand name="gml32:MultiCurve" />
-                <fes:GeometryOperand name="gml32:MultiPolygon" />
-                <fes:GeometryOperand name="gml32:MultiSurface" />
-                <fes:GeometryOperand name="gml32:CompositeCurve" />
-                <fes:GeometryOperand name="gml32:CompositeSurface" />
-            </fes:GeometryOperands>
-            <fes:SpatialOperators>
-                <fes:SpatialOperator name="BBOX" />
-                <fes:SpatialOperator name="Equals" />
-                <fes:SpatialOperator name="Disjoint" />
-                <fes:SpatialOperator name="Intersects" />
-                <fes:SpatialOperator name="Touches" />
-                <fes:SpatialOperator name="Crosses" />
-                <fes:SpatialOperator name="Within" />
-                <fes:SpatialOperator name="Contains" />
-                <fes:SpatialOperator name="Overlaps" />
-                <fes:SpatialOperator name="Beyond" />
-                <fes:SpatialOperator name="DWithin" />
-            </fes:SpatialOperators>
-        </fes:Spatial_Capabilities>
-        <fes:Temporal_Capabilities>
-            <fes:TemporalOperands xmlns:gml32="http://www.opengis.net/gml/3.2">
-                <fes:TemporalOperand name="gml:TimeInstant" />
-                <fes:TemporalOperand name="gml:TimePeriod" />
-                <fes:TemporalOperand name="gml32:TimeInstant" />
-                <fes:TemporalOperand name="gml32:TimePeriod" />
-            </fes:TemporalOperands>
-            <fes:TemporalOperators>
-                <fes:TemporalOperator name="After" />
-                <fes:TemporalOperator name="Before" />
-                <fes:TemporalOperator name="During" />
-                <fes:TemporalOperator name="TEquals" />
-            </fes:TemporalOperators>
-        </fes:Temporal_Capabilities>
-        <fes:Functions>
-            <fes:Function name="Area">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:double</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type>gml:_Geometry</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="Area">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:double</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type xmlns:gml32="http://www.opengis.net/gml/3.2">
-                            gml32:AbstractGeometry</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="Centroid">
-                <fes:Returns>gml:Point</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type>gml:_Geometry</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="Centroid">
-                <fes:Returns xmlns:gml32="http://www.opengis.net/gml/3.2">gml32:Point</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type xmlns:gml32="http://www.opengis.net/gml/3.2">
-                            gml32:AbstractGeometry</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="env">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:anyType</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:string</fes:Type>
-                    </fes:Argument>
-                    <fes:Argument name="arg2">
-                        <fes:Type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:anyType</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="ExtraProp">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:anyType</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:string</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="GeometryFromWKT">
-                <fes:Returns>gml:_Geometry</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:string</fes:Type>
-                    </fes:Argument>
-                    <fes:Argument name="arg2">
-                        <fes:Type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:string</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="GeometryFromWKT">
-                <fes:Returns xmlns:gml32="http://www.opengis.net/gml/3.2">gml32:AbstractGeometry</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:string</fes:Type>
-                    </fes:Argument>
-                    <fes:Argument name="arg2">
-                        <fes:Type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:string</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="GetCurrentScale">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:double</fes:Returns>
-            </fes:Function>
-            <fes:Function name="IDiv">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:integer</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:integer</fes:Type>
-                    </fes:Argument>
-                    <fes:Argument name="arg2">
-                        <fes:Type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:integer</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="IMod">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:integer</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:integer</fes:Type>
-                    </fes:Argument>
-                    <fes:Argument name="arg2">
-                        <fes:Type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:integer</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="InteriorPoint">
-                <fes:Returns>gml:Point</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type>gml:_Geometry</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="InteriorPoint">
-                <fes:Returns xmlns:gml32="http://www.opengis.net/gml/3.2">gml32:Point</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type xmlns:gml32="http://www.opengis.net/gml/3.2">
-                            gml32:AbstractGeometry</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="IsCurve">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:boolean</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type>gml:_Geometry</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="IsCurve">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:boolean</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type xmlns:gml32="http://www.opengis.net/gml/3.2">
-                            gml32:AbstractGeometry</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="IsPoint">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:boolean</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type>gml:_Geometry</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="IsPoint">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:boolean</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type xmlns:gml32="http://www.opengis.net/gml/3.2">
-                            gml32:AbstractGeometry</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="IsSurface">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:boolean</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type>gml:_Geometry</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="IsSurface">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:boolean</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type xmlns:gml32="http://www.opengis.net/gml/3.2">
-                            gml32:AbstractGeometry</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="Length">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:double</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type>gml:_Geometry</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="Length">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:double</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type xmlns:gml32="http://www.opengis.net/gml/3.2">
-                            gml32:AbstractGeometry</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="Lower">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:integer</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:double</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="MoveGeometry">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:double</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type>gml:_Geometry</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="MoveGeometry">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:double</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type xmlns:gml32="http://www.opengis.net/gml/3.2">
-                            gml32:AbstractGeometry</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-            <fes:Function name="Upper">
-                <fes:Returns xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:integer</fes:Returns>
-                <fes:Arguments>
-                    <fes:Argument name="arg1">
-                        <fes:Type xmlns:xsd="http://www.w3.org/2001/XMLSchema">xsd:double</fes:Type>
-                    </fes:Argument>
-                </fes:Arguments>
-            </fes:Function>
-        </fes:Functions>
-    </fes:Filter_Capabilities>
-</WFS_Capabilities>
+<?xml version="1.0" encoding="UTF-8"?>
+<gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd"
+                 xmlns:gco="http://www.isotc211.org/2005/gco"
+                 xmlns:geonet="http://www.fao.org/geonetwork"
+                 xmlns:gml="http://www.opengis.net/gml/3.2"
+                 xmlns:gmx="http://www.isotc211.org/2005/gmx"
+                 xmlns:gts="http://www.isotc211.org/2005/gts"
+                 xmlns:srv="http://www.isotc211.org/2005/srv"
+                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 xsi:schemaLocation="http://www.isotc211.org/2005/gmd https://inspire.ec.europa.eu/draft-schemas/inspire-md-schemas-temp/apiso-inspire/apiso-inspire.xsd">
+  <gmd:fileIdentifier>
+      <gco:CharacterString>dc0f80e3-3f4d-486b-9393-da8244f37e47</gco:CharacterString>
+  </gmd:fileIdentifier>
+  <gmd:language>
+      <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="nor">Norsk</gmd:LanguageCode>
+  </gmd:language>
+  <gmd:parentIdentifier/>
+  <gmd:hierarchyLevel>
+      <gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                        codeListValue="service"/>
+  </gmd:hierarchyLevel>
+  <gmd:hierarchyLevelName>
+      <gco:CharacterString>service</gco:CharacterString>
+  </gmd:hierarchyLevelName>
+  <gmd:contact>
+      <gmd:CI_ResponsibleParty>
+         <gmd:individualName/>
+         <gmd:organisationName xsi:type="gmd:PT_FreeText_PropertyType">
+            <gco:CharacterString>Kartverket</gco:CharacterString>
+            <gmd:PT_FreeText>
+               <gmd:textGroup>
+                  <gmd:LocalisedCharacterString locale="#ENG">Norwegian Mapping Authority</gmd:LocalisedCharacterString>
+               </gmd:textGroup>
+            </gmd:PT_FreeText>
+         </gmd:organisationName>
+         <gmd:contactInfo>
+            <gmd:CI_Contact>
+               <gmd:address>
+                  <gmd:CI_Address>
+                     <gmd:electronicMailAddress>
+                        <gco:CharacterString>kundesenter@kartverket.no</gco:CharacterString>
+                     </gmd:electronicMailAddress>
+                  </gmd:CI_Address>
+               </gmd:address>
+            </gmd:CI_Contact>
+         </gmd:contactInfo>
+         <gmd:role>
+            <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_RoleCode"
+                             codeListValue="pointOfContact"/>
+         </gmd:role>
+      </gmd:CI_ResponsibleParty>
+  </gmd:contact>
+  <gmd:dateStamp>
+      <gco:Date>2021-09-21</gco:Date>
+  </gmd:dateStamp>
+  <gmd:metadataStandardName>
+      <gco:CharacterString>ISO19115</gco:CharacterString>
+  </gmd:metadataStandardName>
+  <gmd:metadataStandardVersion>
+      <gco:CharacterString>2003</gco:CharacterString>
+  </gmd:metadataStandardVersion>
+  <gmd:locale>
+      <gmd:PT_Locale id="ENG">
+         <gmd:languageCode>
+            <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="eng"/>
+         </gmd:languageCode>
+         <gmd:characterEncoding>
+            <gmd:MD_CharacterSetCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_CharacterSetCode"
+                                     codeListValue="utf8"/>
+         </gmd:characterEncoding>
+      </gmd:PT_Locale>
+  </gmd:locale>
+  <gmd:metadataExtensionInfo>
+      <gmd:MD_MetadataExtensionInformation>
+         <gmd:extensionOnLineResource>
+            <gmd:CI_OnlineResource>
+               <gmd:linkage/>
+               <gmd:protocol>
+                  <gco:CharacterString>WWW:LINK-1.0-http--related</gco:CharacterString>
+               </gmd:protocol>
+               <gmd:applicationProfile>
+                  <gco:CharacterString>produktspesifikasjon</gco:CharacterString>
+               </gmd:applicationProfile>
+               <gmd:name xsi:type="gmd:PT_FreeText_PropertyType">
+                  <gco:CharacterString>produktspesifikasjon</gco:CharacterString>
+                  <gmd:PT_FreeText>
+                     <gmd:textGroup>
+                        <gmd:LocalisedCharacterString locale="#ENG">data product specification</gmd:LocalisedCharacterString>
+                     </gmd:textGroup>
+                  </gmd:PT_FreeText>
+               </gmd:name>
+            </gmd:CI_OnlineResource>
+         </gmd:extensionOnLineResource>
+      </gmd:MD_MetadataExtensionInformation>
+  </gmd:metadataExtensionInfo>
+  <gmd:metadataExtensionInfo>
+      <gmd:MD_MetadataExtensionInformation>
+         <gmd:extensionOnLineResource>
+            <gmd:CI_OnlineResource>
+               <gmd:linkage/>
+               <gmd:protocol>
+                  <gco:CharacterString>WWW:LINK-1.0-http--related</gco:CharacterString>
+               </gmd:protocol>
+               <gmd:applicationProfile>
+                  <gco:CharacterString>produktark</gco:CharacterString>
+               </gmd:applicationProfile>
+               <gmd:name xsi:type="gmd:PT_FreeText_PropertyType">
+                  <gco:CharacterString>produktark</gco:CharacterString>
+                  <gmd:PT_FreeText>
+                     <gmd:textGroup>
+                        <gmd:LocalisedCharacterString locale="#ENG">product sheet</gmd:LocalisedCharacterString>
+                     </gmd:textGroup>
+                  </gmd:PT_FreeText>
+               </gmd:name>
+            </gmd:CI_OnlineResource>
+         </gmd:extensionOnLineResource>
+      </gmd:MD_MetadataExtensionInformation>
+  </gmd:metadataExtensionInfo>
+  <gmd:metadataExtensionInfo>
+      <gmd:MD_MetadataExtensionInformation>
+         <gmd:extensionOnLineResource>
+            <gmd:CI_OnlineResource>
+               <gmd:linkage/>
+               <gmd:protocol>
+                  <gco:CharacterString>WWW:LINK-1.0-http--related</gco:CharacterString>
+               </gmd:protocol>
+               <gmd:applicationProfile>
+                  <gco:CharacterString>produktside</gco:CharacterString>
+               </gmd:applicationProfile>
+               <gmd:name xsi:type="gmd:PT_FreeText_PropertyType">
+                  <gco:CharacterString>produktside</gco:CharacterString>
+                  <gmd:PT_FreeText>
+                     <gmd:textGroup>
+                        <gmd:LocalisedCharacterString locale="#ENG">website</gmd:LocalisedCharacterString>
+                     </gmd:textGroup>
+                  </gmd:PT_FreeText>
+               </gmd:name>
+            </gmd:CI_OnlineResource>
+         </gmd:extensionOnLineResource>
+      </gmd:MD_MetadataExtensionInformation>
+  </gmd:metadataExtensionInfo>
+  <gmd:metadataExtensionInfo>
+      <gmd:MD_MetadataExtensionInformation>
+         <gmd:extensionOnLineResource>
+            <gmd:CI_OnlineResource>
+               <gmd:linkage/>
+               <gmd:protocol>
+                  <gco:CharacterString>WWW:LINK-1.0-http--related</gco:CharacterString>
+               </gmd:protocol>
+               <gmd:applicationProfile>
+                  <gco:CharacterString>tegnforklaring</gco:CharacterString>
+               </gmd:applicationProfile>
+               <gmd:name xsi:type="gmd:PT_FreeText_PropertyType">
+                  <gco:CharacterString>tegnforklaring</gco:CharacterString>
+                  <gmd:PT_FreeText>
+                     <gmd:textGroup>
+                        <gmd:LocalisedCharacterString locale="#ENG">cartography</gmd:LocalisedCharacterString>
+                     </gmd:textGroup>
+                  </gmd:PT_FreeText>
+               </gmd:name>
+            </gmd:CI_OnlineResource>
+         </gmd:extensionOnLineResource>
+      </gmd:MD_MetadataExtensionInformation>
+  </gmd:metadataExtensionInfo>
+  <gmd:metadataExtensionInfo>
+      <gmd:MD_MetadataExtensionInformation>
+         <gmd:extensionOnLineResource>
+            <gmd:CI_OnlineResource>
+               <gmd:linkage/>
+               <gmd:protocol>
+                  <gco:CharacterString>WWW:LINK-1.0-http--related</gco:CharacterString>
+               </gmd:protocol>
+               <gmd:applicationProfile>
+                  <gco:CharacterString>dekningsoversikt</gco:CharacterString>
+               </gmd:applicationProfile>
+               <gmd:name xsi:type="gmd:PT_FreeText_PropertyType">
+                  <gco:CharacterString>dekningsoversikt</gco:CharacterString>
+                  <gmd:PT_FreeText>
+                     <gmd:textGroup>
+                        <gmd:LocalisedCharacterString locale="#ENG">coverage map</gmd:LocalisedCharacterString>
+                     </gmd:textGroup>
+                  </gmd:PT_FreeText>
+               </gmd:name>
+            </gmd:CI_OnlineResource>
+         </gmd:extensionOnLineResource>
+      </gmd:MD_MetadataExtensionInformation>
+  </gmd:metadataExtensionInfo>
+  <gmd:metadataExtensionInfo>
+      <gmd:MD_MetadataExtensionInformation>
+         <gmd:extensionOnLineResource>
+            <gmd:CI_OnlineResource>
+               <gmd:linkage/>
+               <gmd:protocol>
+                  <gco:CharacterString>WWW:LINK-1.0-http--related</gco:CharacterString>
+               </gmd:protocol>
+               <gmd:applicationProfile>
+                  <gco:CharacterString>hjelp</gco:CharacterString>
+               </gmd:applicationProfile>
+               <gmd:name xsi:type="gmd:PT_FreeText_PropertyType">
+                  <gco:CharacterString>hjelp</gco:CharacterString>
+                  <gmd:PT_FreeText>
+                     <gmd:textGroup>
+                        <gmd:LocalisedCharacterString locale="#ENG">help</gmd:LocalisedCharacterString>
+                     </gmd:textGroup>
+                  </gmd:PT_FreeText>
+               </gmd:name>
+            </gmd:CI_OnlineResource>
+         </gmd:extensionOnLineResource>
+      </gmd:MD_MetadataExtensionInformation>
+  </gmd:metadataExtensionInfo>
+  <gmd:identificationInfo>
+      <srv:SV_ServiceIdentification>
+         <gmd:citation>
+            <gmd:CI_Citation>
+               <gmd:title xsi:type="gmd:PT_FreeText_PropertyType">
+                  <gco:CharacterString>INSPIRE Buildings WFS</gco:CharacterString>
+                  <gmd:PT_FreeText>
+                     <gmd:textGroup>
+                        <gmd:LocalisedCharacterString locale="#ENG">ELF Buildings WFS</gmd:LocalisedCharacterString>
+                     </gmd:textGroup>
+                  </gmd:PT_FreeText>
+               </gmd:title>
+               <gmd:date>
+                  <gmd:CI_Date>
+                     <gmd:date>
+                        <gco:Date>2016-02-10</gco:Date>
+                     </gmd:date>
+                     <gmd:dateType>
+                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
+                                             codeListValue="publication"/>
+                     </gmd:dateType>
+                  </gmd:CI_Date>
+               </gmd:date>
+               <gmd:date>
+                  <gmd:CI_Date>
+                     <gmd:date>
+                        <gco:Date>0001-01-01</gco:Date>
+                     </gmd:date>
+                     <gmd:dateType>
+                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_DateTypeCode"
+                                             codeListValue="creation"/>
+                     </gmd:dateType>
+                  </gmd:CI_Date>
+               </gmd:date>
+               <gmd:date>
+                  <gmd:CI_Date>
+                     <gmd:date>
+                        <gco:Date>0001-01-01</gco:Date>
+                     </gmd:date>
+                     <gmd:dateType>
+                        <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_DateTypeCode"
+                                             codeListValue="revision"/>
+                     </gmd:dateType>
+                  </gmd:CI_Date>
+               </gmd:date>
+            </gmd:CI_Citation>
+         </gmd:citation>
+         <gmd:abstract xsi:type="gmd:PT_FreeText_PropertyType">
+            <gco:CharacterString>Norwegian Download service for INSPIRE Buildings.</gco:CharacterString>
+            <gmd:PT_FreeText>
+               <gmd:textGroup>
+                  <gmd:LocalisedCharacterString locale="#ENG">Norwegian Download service for ELF Buildings.</gmd:LocalisedCharacterString>
+               </gmd:textGroup>
+            </gmd:PT_FreeText>
+         </gmd:abstract>
+         <gmd:purpose>
+            <gco:CharacterString/>
+         </gmd:purpose>
+         <gmd:status>
+            <gmd:MD_ProgressCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#MD_ProgressCode"
+                                 codeListValue="onGoing"/>
+         </gmd:status>
+         <gmd:pointOfContact>
+            <gmd:CI_ResponsibleParty>
+               <gmd:organisationName>
+                  <gco:CharacterString>Norwegian Mapping
+									Authority</gco:CharacterString>
+               </gmd:organisationName>
+               <gmd:contactInfo>
+                  <gmd:CI_Contact>
+                     <gmd:address>
+                        <gmd:CI_Address>
+                           <gmd:electronicMailAddress>
+                              <gco:CharacterString>tjenestedrift@kartverket.no@kartverket.no</gco:CharacterString>
+                           </gmd:electronicMailAddress>
+                        </gmd:CI_Address>
+                     </gmd:address>
+                  </gmd:CI_Contact>
+               </gmd:contactInfo>
+               <gmd:role>
+                  <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#CI_RoleCode"
+                                   codeListValue="custodian"/>
+               </gmd:role>
+            </gmd:CI_ResponsibleParty>
+         </gmd:pointOfContact>
+         <gmd:pointOfContact>
+            <gmd:CI_ResponsibleParty>
+               <gmd:individualName/>
+               <gmd:organisationName xsi:type="gmd:PT_FreeText_PropertyType">
+                  <gco:CharacterString>Kartverket</gco:CharacterString>
+                  <gmd:PT_FreeText>
+                     <gmd:textGroup>
+                        <gmd:LocalisedCharacterString locale="#ENG">Norwegian Mapping Authority</gmd:LocalisedCharacterString>
+                     </gmd:textGroup>
+                  </gmd:PT_FreeText>
+               </gmd:organisationName>
+               <gmd:contactInfo>
+                  <gmd:CI_Contact>
+                     <gmd:address>
+                        <gmd:CI_Address>
+                           <gmd:electronicMailAddress>
+                              <gco:CharacterString>kundesenter@kartverket.no</gco:CharacterString>
+                           </gmd:electronicMailAddress>
+                        </gmd:CI_Address>
+                     </gmd:address>
+                  </gmd:CI_Contact>
+               </gmd:contactInfo>
+               <gmd:role>
+                  <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_RoleCode"
+                                   codeListValue="publisher"/>
+               </gmd:role>
+            </gmd:CI_ResponsibleParty>
+         </gmd:pointOfContact>
+         <gmd:pointOfContact>
+            <gmd:CI_ResponsibleParty>
+               <gmd:individualName/>
+               <gmd:organisationName xsi:type="gmd:PT_FreeText_PropertyType">
+                  <gco:CharacterString>Kartverket</gco:CharacterString>
+                  <gmd:PT_FreeText>
+                     <gmd:textGroup>
+                        <gmd:LocalisedCharacterString locale="#ENG">Norwegian Mapping Authority</gmd:LocalisedCharacterString>
+                     </gmd:textGroup>
+                  </gmd:PT_FreeText>
+               </gmd:organisationName>
+               <gmd:contactInfo>
+                  <gmd:CI_Contact>
+                     <gmd:address>
+                        <gmd:CI_Address>
+                           <gmd:electronicMailAddress>
+                              <gco:CharacterString>kundesenter@kartverket.no</gco:CharacterString>
+                           </gmd:electronicMailAddress>
+                        </gmd:CI_Address>
+                     </gmd:address>
+                  </gmd:CI_Contact>
+               </gmd:contactInfo>
+               <gmd:role>
+                  <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_RoleCode"
+                                   codeListValue="owner"/>
+               </gmd:role>
+            </gmd:CI_ResponsibleParty>
+         </gmd:pointOfContact>
+         <gmd:resourceMaintenance>
+            <gmd:MD_MaintenanceInformation>
+               <gmd:maintenanceAndUpdateFrequency>
+                  <gmd:MD_MaintenanceFrequencyCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#MD_MaintenanceFrequencyCode"
+                                                   codeListValue="weekly"/>
+               </gmd:maintenanceAndUpdateFrequency>
+            </gmd:MD_MaintenanceInformation>
+         </gmd:resourceMaintenance>
+         <gmd:graphicOverview>
+            <gmd:MD_BrowseGraphic>
+               <gmd:fileName>
+                  <gco:CharacterString>https://editor.geonorge.no/thumbnails/dc0f80e3-3f4d-486b-9393-da8244f37e47_20180514145859_mini_building.PNG</gco:CharacterString>
+               </gmd:fileName>
+               <gmd:fileDescription>
+                  <gco:CharacterString>miniatyrbilde</gco:CharacterString>
+               </gmd:fileDescription>
+            </gmd:MD_BrowseGraphic>
+         </gmd:graphicOverview>
+         <gmd:graphicOverview>
+            <gmd:MD_BrowseGraphic>
+               <gmd:fileName>
+                  <gco:CharacterString>https://editor.geonorge.no/thumbnails/dc0f80e3-3f4d-486b-9393-da8244f37e47_20180514145859_medium_building.PNG</gco:CharacterString>
+               </gmd:fileName>
+               <gmd:fileDescription>
+                  <gco:CharacterString>medium</gco:CharacterString>
+               </gmd:fileDescription>
+            </gmd:MD_BrowseGraphic>
+         </gmd:graphicOverview>
+         <gmd:graphicOverview>
+            <gmd:MD_BrowseGraphic>
+               <gmd:fileName>
+                  <gco:CharacterString>https://editor.geonorge.no/thumbnails/dc0f80e3-3f4d-486b-9393-da8244f37e47_20180514145859_building.PNG</gco:CharacterString>
+               </gmd:fileName>
+               <gmd:fileDescription>
+                  <gco:CharacterString>large_thumbnail</gco:CharacterString>
+               </gmd:fileDescription>
+            </gmd:MD_BrowseGraphic>
+         </gmd:graphicOverview>
+         <gmd:descriptiveKeywords>
+            <gmd:MD_Keywords>
+               <gmd:keyword>
+                  <gco:CharacterString>Buildings</gco:CharacterString>
+               </gmd:keyword>
+               <gmd:thesaurusName>
+                  <gmd:CI_Citation>
+                     <gmd:title>
+                        <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/theme">GEMET - INSPIRE themes, version 1.0</gmx:Anchor>
+                     </gmd:title>
+                     <gmd:date>
+                        <gmd:CI_Date>
+                           <gmd:date>
+                              <gco:Date>2008-06-01</gco:Date>
+                           </gmd:date>
+                           <gmd:dateType>
+                              <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                                                   codeListValue="publication"/>
+                           </gmd:dateType>
+                        </gmd:CI_Date>
+                     </gmd:date>
+                  </gmd:CI_Citation>
+               </gmd:thesaurusName>
+            </gmd:MD_Keywords>
+         </gmd:descriptiveKeywords>
+         <gmd:descriptiveKeywords>
+            <gmd:MD_Keywords>
+               <gmd:keyword>
+                  <gco:CharacterString>Inspire</gco:CharacterString>
+               </gmd:keyword>
+               <gmd:thesaurusName>
+                  <gmd:CI_Citation>
+                     <gmd:title>
+                        <gmx:Anchor xlink:href="https://register.geonorge.no/subregister/metadata-kodelister/kartverket/samarbeid-og-lover">Nasjonal inndeling i geografiske initiativ og SDI-er</gmx:Anchor>
+                     </gmd:title>
+                     <gmd:date>
+                        <gmd:CI_Date>
+                           <gmd:date>
+                              <gco:Date>2014-03-20</gco:Date>
+                           </gmd:date>
+                           <gmd:dateType>
+                              <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                                                   codeListValue="publication"/>
+                           </gmd:dateType>
+                        </gmd:CI_Date>
+                     </gmd:date>
+                  </gmd:CI_Citation>
+               </gmd:thesaurusName>
+            </gmd:MD_Keywords>
+         </gmd:descriptiveKeywords>
+         <gmd:descriptiveKeywords>
+            <gmd:MD_Keywords>
+               <gmd:keyword xsi:type="gmd:PT_FreeText_PropertyType">
+                  <gco:CharacterString>Basis geodata</gco:CharacterString>
+                  <gmd:PT_FreeText>
+                     <gmd:textGroup>
+                        <gmd:LocalisedCharacterString locale="#ENG">Base maps</gmd:LocalisedCharacterString>
+                     </gmd:textGroup>
+                  </gmd:PT_FreeText>
+               </gmd:keyword>
+               <gmd:thesaurusName>
+                  <gmd:CI_Citation>
+                     <gmd:title>
+                        <gmx:Anchor xlink:href="https://register.geonorge.no/subregister/metadata-kodelister/kartverket/nasjonal-temainndeling">Nasjonal tematisk inndeling (DOK-kategori)</gmx:Anchor>
+                     </gmd:title>
+                     <gmd:date>
+                        <gmd:CI_Date>
+                           <gmd:date>
+                              <gco:Date>2014-10-28</gco:Date>
+                           </gmd:date>
+                           <gmd:dateType>
+                              <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                                                   codeListValue="publication"/>
+                           </gmd:dateType>
+                        </gmd:CI_Date>
+                     </gmd:date>
+                  </gmd:CI_Citation>
+               </gmd:thesaurusName>
+            </gmd:MD_Keywords>
+         </gmd:descriptiveKeywords>
+         <gmd:descriptiveKeywords>
+            <gmd:MD_Keywords>
+               <gmd:keyword>
+                  <gco:CharacterString>Buildings</gco:CharacterString>
+               </gmd:keyword>
+               <gmd:type>
+                  <gmd:MD_KeywordTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#MD_KeywordTypeCode"
+                                          codeListValue="theme"/>
+               </gmd:type>
+            </gmd:MD_Keywords>
+         </gmd:descriptiveKeywords>
+         <gmd:descriptiveKeywords>
+            <gmd:MD_Keywords>
+               <gmd:keyword>
+                  <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoFeatureAccessService">infoFeatureAccessService</gmx:Anchor>
+               </gmd:keyword>
+               <gmd:thesaurusName>
+                  <gmd:CI_Citation>
+                     <gmd:title>
+                        <gco:CharacterString>COMMISSION REGULATION (EC) No 1205/2008 of 3 December 2008 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards metadata, Part D 4, Classification of Spatial Data Services</gco:CharacterString>
+                     </gmd:title>
+                     <gmd:date>
+                        <gmd:CI_Date>
+                           <gmd:date>
+                              <gco:Date>2008-12-03</gco:Date>
+                           </gmd:date>
+                           <gmd:dateType>
+                              <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                                                   codeListValue="publication"/>
+                           </gmd:dateType>
+                        </gmd:CI_Date>
+                     </gmd:date>
+                  </gmd:CI_Citation>
+               </gmd:thesaurusName>
+            </gmd:MD_Keywords>
+         </gmd:descriptiveKeywords>
+         <gmd:resourceSpecificUsage>
+            <gmd:MD_Usage>
+               <gmd:specificUsage>
+                  <gco:CharacterString/>
+               </gmd:specificUsage>
+               <gmd:userContactInfo>
+                  <gmd:CI_ResponsibleParty>
+                     <gmd:role>
+                        <gmd:CI_RoleCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_RoleCode"
+                                         codeListValue="owner"/>
+                     </gmd:role>
+                  </gmd:CI_ResponsibleParty>
+               </gmd:userContactInfo>
+            </gmd:MD_Usage>
+         </gmd:resourceSpecificUsage>
+         <gmd:resourceConstraints>
+            <gmd:MD_Constraints>
+               <gmd:useLimitation xsi:type="gmd:PT_FreeText_PropertyType">
+                  <gco:CharacterString>Ingen begrensninger på bruk er oppgitt.</gco:CharacterString>
+                  <gmd:PT_FreeText>
+                     <gmd:textGroup>
+                        <gmd:LocalisedCharacterString locale="#ENG">No conditions apply</gmd:LocalisedCharacterString>
+                     </gmd:textGroup>
+                  </gmd:PT_FreeText>
+               </gmd:useLimitation>
+            </gmd:MD_Constraints>
+         </gmd:resourceConstraints>
+         <gmd:resourceConstraints>
+            <gmd:MD_LegalConstraints>
+               <gmd:accessConstraints>
+                  <gmd:MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#MD_RestrictionCode"
+                                          codeListValue="otherRestrictions"/>
+               </gmd:accessConstraints>
+               <gmd:otherConstraints>
+                  <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/INSPIRE_Directive_Article13_1d">Norge digitalt begrenset</gmx:Anchor>
+               </gmd:otherConstraints>
+            </gmd:MD_LegalConstraints>
+         </gmd:resourceConstraints>
+         <gmd:resourceConstraints>
+            <gmd:MD_LegalConstraints>
+               <gmd:useConstraints>
+                  <gmd:MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#MD_RestrictionCode"
+                                          codeListValue="otherRestrictions"/>
+               </gmd:useConstraints>
+               <gmd:otherConstraints>
+                  <gmx:Anchor xlink:href="https://creativecommons.org/licenses/by/4.0/">Creative Commons BY 4.0 (CC BY 4.0)</gmx:Anchor>
+               </gmd:otherConstraints>
+            </gmd:MD_LegalConstraints>
+         </gmd:resourceConstraints>
+         <gmd:resourceConstraints>
+            <gmd:MD_LegalConstraints>
+               <gmd:otherConstraints/>
+            </gmd:MD_LegalConstraints>
+         </gmd:resourceConstraints>
+         <gmd:resourceConstraints>
+            <gmd:MD_SecurityConstraints>
+               <gmd:classification>
+                  <gmd:MD_ClassificationCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/gmxCodelists.xml#MD_ClassificationCode"
+                                             codeListValue=""/>
+               </gmd:classification>
+               <gmd:userNote>
+                  <gco:CharacterString/>
+               </gmd:userNote>
+            </gmd:MD_SecurityConstraints>
+         </gmd:resourceConstraints>
+         <srv:serviceType>
+            <gco:LocalName>download</gco:LocalName>
+         </srv:serviceType>
+         <srv:accessProperties>
+            <gmd:MD_StandardOrderProcess>
+               <gmd:orderingInstructions/>
+            </gmd:MD_StandardOrderProcess>
+         </srv:accessProperties>
+         <srv:extent>
+            <gmd:EX_Extent>
+               <gmd:geographicElement>
+                  <gmd:EX_GeographicBoundingBox>
+                     <gmd:westBoundLongitude>
+                        <gco:Decimal>-2.0</gco:Decimal>
+                     </gmd:westBoundLongitude>
+                     <gmd:eastBoundLongitude>
+                        <gco:Decimal>33.0</gco:Decimal>
+                     </gmd:eastBoundLongitude>
+                     <gmd:southBoundLatitude>
+                        <gco:Decimal>57.0</gco:Decimal>
+                     </gmd:southBoundLatitude>
+                     <gmd:northBoundLatitude>
+                        <gco:Decimal>72.0</gco:Decimal>
+                     </gmd:northBoundLatitude>
+                  </gmd:EX_GeographicBoundingBox>
+               </gmd:geographicElement>
+               <gmd:temporalElement>
+                  <gmd:EX_TemporalExtent>
+                     <gmd:extent>
+                        <gml:TimePeriod gml:id="id_1">
+                           <gml:beginPosition>0001-01-01</gml:beginPosition>
+                           <gml:endPosition indeterminatePosition="now"/>
+                        </gml:TimePeriod>
+                     </gmd:extent>
+                  </gmd:EX_TemporalExtent>
+               </gmd:temporalElement>
+            </gmd:EX_Extent>
+         </srv:extent>
+         <srv:couplingType>
+            <srv:SV_CouplingType codeList="" codeListValue="loose"/>
+         </srv:couplingType>
+         <srv:containsOperations/>
+         <srv:operatesOn uuidref="bff47a2e-693d-49f3-987a-e8becce72f4c"
+                         xlink:href="https://www.geonorge.no/geonetwork/srv/nor/xml_iso19139?uuid=bff47a2e-693d-49f3-987a-e8becce72f4c"/>
+      </srv:SV_ServiceIdentification>
+  </gmd:identificationInfo>
+  <gmd:distributionInfo>
+      <gmd:MD_Distribution>
+         <gmd:distributionFormat>
+            <gmd:MD_Format>
+               <gmd:name>
+                  <gco:CharacterString>GML</gco:CharacterString>
+               </gmd:name>
+               <gmd:version>
+                  <gco:CharacterString>3.2.1</gco:CharacterString>
+               </gmd:version>
+            </gmd:MD_Format>
+         </gmd:distributionFormat>
+         <gmd:transferOptions>
+            <gmd:MD_DigitalTransferOptions>
+               <gmd:onLine>
+                  <gmd:CI_OnlineResource>
+                     <gmd:linkage>
+                        <gmd:URL>https://wfs.geonorge.no/skwms1/wfs.inspire-bu-core2d?service=wfs&amp;request=getcapabilities</gmd:URL>
+                     </gmd:linkage>
+                     <gmd:protocol>
+                        <gco:CharacterString>OGC:WFS</gco:CharacterString>
+                     </gmd:protocol>
+                  </gmd:CI_OnlineResource>
+               </gmd:onLine>
+            </gmd:MD_DigitalTransferOptions>
+         </gmd:transferOptions>
+      </gmd:MD_Distribution>
+  </gmd:distributionInfo>
+  <gmd:dataQualityInfo>
+      <gmd:DQ_DataQuality>
+         <gmd:scope>
+            <gmd:DQ_Scope>
+               <gmd:level>
+                  <gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                                    codeListValue="service"/>
+               </gmd:level>
+               <gmd:levelDescription>
+                  <gmd:MD_ScopeDescription>
+                     <gmd:other>
+                        <gco:CharacterString>service</gco:CharacterString>
+                     </gmd:other>
+                  </gmd:MD_ScopeDescription>
+               </gmd:levelDescription>
+            </gmd:DQ_Scope>
+         </gmd:scope>
+         <gmd:report>
+            <gmd:DQ_DomainConsistency>
+               <gmd:result>
+                  <gmd:DQ_ConformanceResult>
+                     <gmd:specification>
+                        <gmd:CI_Citation>
+                           <gmd:title>
+                              <gco:CharacterString>COMMISSION REGULATION (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services</gco:CharacterString>
+                           </gmd:title>
+                           <gmd:date>
+                              <gmd:CI_Date>
+                                 <gmd:date>
+                                    <gco:Date>2010-12-08</gco:Date>
+                                 </gmd:date>
+                                 <gmd:dateType>
+                                    <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                                                         codeListValue="publication"/>
+                                 </gmd:dateType>
+                              </gmd:CI_Date>
+                           </gmd:date>
+                           <gmd:identifier>
+                              <gmd:MD_Identifier>
+                                 <gmd:authority>
+                                    <gmd:CI_Citation>
+                                       <gmd:title>
+                                          <gco:CharacterString>inspire</gco:CharacterString>
+                                       </gmd:title>
+                                       <gmd:date/>
+                                    </gmd:CI_Citation>
+                                 </gmd:authority>
+                                 <gmd:code>
+                                    <gco:CharacterString/>
+                                 </gmd:code>
+                              </gmd:MD_Identifier>
+                           </gmd:identifier>
+                        </gmd:CI_Citation>
+                     </gmd:specification>
+                     <gmd:explanation xsi:type="gmd:PT_FreeText_PropertyType">
+                        <gco:CharacterString>Dataene er i henhold til produktspesifikasjonen</gco:CharacterString>
+                        <gmd:PT_FreeText>
+                           <gmd:textGroup>
+                              <gmd:LocalisedCharacterString locale="#ENG">The data is according to the product specification</gmd:LocalisedCharacterString>
+                           </gmd:textGroup>
+                        </gmd:PT_FreeText>
+                     </gmd:explanation>
+                     <gmd:pass>
+                        <gco:Boolean>true</gco:Boolean>
+                     </gmd:pass>
+                  </gmd:DQ_ConformanceResult>
+               </gmd:result>
+               <gmd:result>
+                  <gmd:DQ_ConformanceResult>
+                     <gmd:specification xlink:href="http://inspire.ec.europa.eu/id/citation/ir/reg-976-2009">
+                        <gmd:CI_Citation>
+                           <gmd:title>
+                              <gmx:Anchor xlink:href="http://data.europa.eu/eli/reg/2009/976">COMMISSION REGULATION (EC) No 976/2009 of 19 October 2009 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards the Network Services</gmx:Anchor>
+                           </gmd:title>
+                           <gmd:date>
+                              <gmd:CI_Date>
+                                 <gmd:date>
+                                    <gco:Date>2010-12-08</gco:Date>
+                                 </gmd:date>
+                                 <gmd:dateType>
+                                    <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                                                         codeListValue="publication"/>
+                                 </gmd:dateType>
+                              </gmd:CI_Date>
+                           </gmd:date>
+                           <gmd:identifier>
+                              <gmd:MD_Identifier>
+                                 <gmd:authority>
+                                    <gmd:CI_Citation>
+                                       <gmd:title>
+                                          <gco:CharacterString>inspire-networkservice</gco:CharacterString>
+                                       </gmd:title>
+                                       <gmd:date/>
+                                    </gmd:CI_Citation>
+                                 </gmd:authority>
+                                 <gmd:code>
+                                    <gco:CharacterString/>
+                                 </gmd:code>
+                              </gmd:MD_Identifier>
+                           </gmd:identifier>
+                        </gmd:CI_Citation>
+                     </gmd:specification>
+                     <gmd:explanation xsi:type="gmd:PT_FreeText_PropertyType">
+                        <gco:CharacterString>Dette datasettet er ikke evaluert mot INSPIRE Implementeringsregler for nettverkstjenester</gco:CharacterString>
+                        <gmd:PT_FreeText>
+                           <gmd:textGroup>
+                              <gmd:LocalisedCharacterString locale="#ENG">This data set is not evaluated conformant with the INSPIRE Implementing Rules for Network Services</gmd:LocalisedCharacterString>
+                           </gmd:textGroup>
+                        </gmd:PT_FreeText>
+                     </gmd:explanation>
+                     <gmd:pass gco:nilReason="unknown"/>
+                  </gmd:DQ_ConformanceResult>
+               </gmd:result>
+            </gmd:DQ_DomainConsistency>
+         </gmd:report>
+         <gmd:lineage>
+            <gmd:LI_Lineage>
+               <gmd:statement xsi:type="gmd:PT_FreeText_PropertyType">
+                  <gco:CharacterString>Ingen prosesshistorie tilgjengelig</gco:CharacterString>
+                  <gmd:PT_FreeText>
+                     <gmd:textGroup>
+                        <gmd:LocalisedCharacterString locale="#ENG">No lineage available</gmd:LocalisedCharacterString>
+                     </gmd:textGroup>
+                  </gmd:PT_FreeText>
+               </gmd:statement>
+            </gmd:LI_Lineage>
+         </gmd:lineage>
+      </gmd:DQ_DataQuality>
+  </gmd:dataQualityInfo>
+</gmd:MD_Metadata>
