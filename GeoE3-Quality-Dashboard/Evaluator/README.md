@@ -146,11 +146,7 @@ When you need a new type of extractor:
 
 Similar thing with evaluators, choose a keyword, write the function in `src/evaluate.py` and write tests in a new file.
 
-## Testing
-
-To run tests:
-
-`$ pytest`
+# Run the program
 
 ## Miniconda3 help
 
@@ -168,3 +164,4 @@ $ conda config --add chanels conda-forge
 $ cd c:\whereever\this\project\is\geoe3-quality-dashboard\
 $ conda install pytest lxml isodate==0.6.1
 ```
+Then install the required modules specified in the requirements file : ```pip install *name_module```
