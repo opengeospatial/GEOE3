@@ -51,8 +51,12 @@ The GeoE3 quality dashboard is made of 7 windows, which are :
 - Home : displays scores for the 3 viewpoints as well as the menu. Click on those viewpoints to access the next window in the hierarchy, ie. the Viewpoints window. An "information" button is also available to users for further information on how to navigate the dashboard ;
 - Viewpoints : displays quality dimensions of one or several selected viewpoints (to select several, ctrl + click). The definition and score of the viewpoint(s) and its dimension(s) are visible on this page.![Screenshot of Viewpoint page in the quality dashboard](https://user-images.githubusercontent.com/114493409/228858962-9e371fb0-57c7-44f8-85a8-01994dce8a63.png)  
   To go see the next level, either click on the right arrow at the top-left corner of the dashboard or directly in the next level in the menu on the left ;
- 
-- Dimensions, Elements, Metrics, Interoperability Map and Tree
+- Dimensions : displays the quality elements of one or several selected dimension(s) (within the previously selected viewpoint(s) ; to see all dimensions of all viewpoints, reset using the curved arrow in the corner) ;
+- Elements : displays the measures of one or several selected elements(s) (within the previously selected dimension(s) ;
+- Metrics : gives the option to display as many metrics as you want, their description, score and raw value.
+
+- Interoperability Map : Diplays data from the interoperability map created for the GeoE3 project. Use the "select the use case", "select the type of data" and Europe map slicers to display the level of interoperability of relevant datasets. When several datasets are selected, levels of interoperability are averaged (hover to see the averaged value, as the gauge round it) ;
+- Tree : this page allows you to navigate through the herarchy tree used to classify quality indicators in this projects, from viewpoints to metric.
 
 
 Hovering over elements in the dashboard often displays additionnal information?
