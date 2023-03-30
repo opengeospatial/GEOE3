@@ -109,8 +109,8 @@ It is in the form of noded dictionaries with keys and values.
   }
 ```
 
-`source` = one of `dataset-metadata`, `service-metadata`, `quality-evaluation`, `service-description` (e.g. WFS Capabilities document), or `service-availability`
-
+`source` = one of `dataset-metadata`, `service-metadata`, `quality-evaluation`, `service-description` (e.g. WFS Capabilities document), or `service-availability`  
+`type` = one of `xpath` or  `formula` (for CSV documents)
 ## Adding extractors / evaluators
 
 When you need a new type of extractor:
