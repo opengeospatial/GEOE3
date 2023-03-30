@@ -31,7 +31,7 @@
                                     "extractionRule": {
                                         "type": "xpath",
                                         "source": "service-metadata",
-                                        "rule": "//ows:Keywords",
+                                        "rule": "//gmd:descriptiveKeywords//gmd:keywords",
                                         "value": "text"
                                     },
                                     "evaluationRule": {
@@ -63,7 +63,7 @@
                                     "extractionRule": {
                                         "type": "xpath",
                                         "source": "service-metadata",
-                                        "rule": "//ows:ServiceIdentification//ows:Title",
+                                        "rule": "//gmd:identificationInfo//gmd:title//gco:CharacterString",
                                         "value": "text"
                                     },
                                     "evaluationRule": {
@@ -87,7 +87,7 @@
                                     "extractionRule": {
                                         "type": "xpath",
                                         "source": "service-metadata",
-                                        "rule": "//ows:ServiceIdentification//ows:Abstract",
+                                        "rule": "//gmd:identificationInfo//gmd:abstract//gco:CharacterString",
                                         "value": "text"
                                     },
                                     "evaluationRule": {
@@ -1951,36 +1951,12 @@
             "weight": 7,
             "description": "Data and metadata are sufficiently annotated so machine and human users can determine fit-for-purpose in the context of their analysis (FAIR principles).",
             "nodes":{
-                "Information":{
+                "Accessibility":{
                     "type": "qualityElement",
-                    "name": "Information",
+                    "name": "Accessibility",
                     "weight": 8,
-                    "description": "Data is sufficiently annotated.",
+                    "description": "Data is accessible.",
                     "nodes": {
-                        "LicenseInformation": {
-                            "type": "measure",
-                            "name": "License Information",
-                            "weight": 10,
-                            "description": "License Information is present.",
-                            "nodes": {
-                                "metric1": {
-                                    "type": "metric",
-                                    "name": "License Information",
-                                    "weight": 5,
-                                    "description": "License Information is present.",
-                                    "extractionRule": {
-                                        "type": "xpath",
-                                        "source": "service-metadata",
-                                        "rule": "//ows:AccessConstraints",
-                                        "value": "text"
-                                    },
-                                    "evaluationRule": {
-                                        "type": "presence",
-                                        "description": "Map scale should be between 1/4900 and 1/5100 (user request)."
-                                    }
-                                }
-                            }
-                        },
                         "AccessRestrictions": {
                             "type": "measure",
                             "name": "Access Restrictions",
@@ -1989,18 +1965,50 @@
                             "nodes": {
                                 "metric1": {
                                     "type": "metric",
-                                    "name": "Access Restrictions",
+                                    "name": "Public Access Restrictions",
                                     "weight": 5,
-                                    "description": "Checks whether the access to the data is public or restricted.",
+                                    "description": "Access constraints applied to assure the protection of privacy or intellectual property, and any special restrictions or limitations on obtaining the resource.",
                                     "extractionRule": {
                                         "type": "xpath",
-                                        "source": "service-metadata",
-                                        "rule": "//ows:AccessConstraints",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:identificationInfo//gmd:resourceContraints//gmd:accessConstraints",
                                         "value": "text"
                                     },
                                     "evaluationRule": {
-                                        "type": "presence",
-                                        "description": "Checks that access constraints are filled."
+                                        "type": "restrictionCode",
+                                        "description": "Assesses the accessibility based on restrictions and limitations on the resource."
+                                    }
+                                },
+                                "metric2": {
+                                    "type": "metric",
+                                    "name": "Other Public Access Restrictions (other constraints)",
+                                    "weight": 5,
+                                    "description": "Other restrictions and legal prerequisites for accessing and using the resource or metadata.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:identificationInfo//gmd:resourceContraints//gmd:otherConstraints",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "restrictionCode",
+                                        "description": "Assesses the accessibility based on restrictions and limitations on the resource."
+                                    }
+                                },
+                                "metric3": {
+                                    "type": "metric",
+                                    "name": "Conditions applying to access and use",
+                                    "weight": 5,
+                                    "description": "Restrictions on the access and use of a resource or metadata.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:identificationInfo//gmd:useLimitation",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "restrictionCode",
+                                        "description": "Assesses the accessibility based on restrictions and limitations on the resource."
                                     }
                                 }
                             }
@@ -2008,7 +2016,7 @@
                         "PointOfContact": {
                             "type": "measure",
                             "name": "Point of Contact",
-                            "weight": 10,
+                            "weight": 4,
                             "description": "Checks whether the access to the data is public or restricted.",
                             "nodes": {
                                 "metric1": {
@@ -2165,54 +2173,78 @@
         "Interoperability": {
             "type": "dimension",
             "name": "FAIR Interoperability",
-            "weight": 7,
+            "weight": 8,
             "description": "Data and metadata are consistently structured and described, both syntactically and semantically, so that algorithms can parse and ensure like data are accurately compared to like (FAIR principles).",
             "nodes": {
-                "Interoperability": {
-                    "type": "measure",
-                    "name": "FAIR Interoperability",
-                    "weight": 5,
-                    "description": "Describes whether the dataset is interoperable.",
+                "ReferenceSystem": {
+                    "type": "qualityElement",
+                    "name": "Reference System",
+                    "weight": 9,
+                    "description": "Description of the reference system(s) used in the data set.",
                     "nodes": {
-                        "Format": {
+                        "CoordinateReferenceSystem": {
                             "type": "measure",
-                            "name": "Format",
-                            "weight": 7,
-                            "description": "Describes the file format of the distribution.",
+                            "name": "Coordinate Reference System",
+                            "weight": 5,
+                            "description": "Description of the coordinate reference system(s) used in the data set.",
                             "nodes": {
                                 "metric1": {
                                     "type": "metric",
-                                    "name": "Format",
+                                    "name": "West Bound Longitude",
                                     "weight": 5,
-                                    "description": "Describes the file format of the distribution.",
+                                    "description": "Parameter must be set",
                                     "extractionRule": {
                                         "type": "xpath",
-                                        "source": "service-metadata",
-                                        "rule": "//FeatureTypeList//FeatureType//OutputFormats//Format",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:identificationInfo//gmd:extent//gmd:geographicElement//gmd:westBoundLongitude",
                                         "value": "text"
                                     },
                                     "evaluationRule": {
                                         "type": "presence",
                                         "description": "Checks that the property is set."
                                     }
-                                }
-                            }
-                        },
-                        "mediaType": {
-                            "type": "measure",
-                            "name": "Media type",
-                            "weight": 3,
-                            "description": "Describes the media type of the distribution.",
-                            "nodes": {
-                                "metric1": {
+                                },
+                                "metric2": {
                                     "type": "metric",
-                                    "name": "Media type",
+                                    "name": "East Bound Longitude",
                                     "weight": 5,
-                                    "description": "Describes the file media type of the distribution.",
+                                    "description": "Parameter must be set",
                                     "extractionRule": {
                                         "type": "xpath",
-                                        "source": "service-metadata",
-                                        "rule": "//ows:ExtendedCapabilities//inspire_dls:ExtendedCapabilities//inspire_common:MediaType",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:identificationInfo//gmd:extent//gmd:geographicElement//gmd:eastBoundLongitude",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks that the property is set."
+                                    }
+                                },
+                                "metric3": {
+                                    "type": "metric",
+                                    "name": "South Bound Latitude",
+                                    "weight": 5,
+                                    "description": "Parameter must be set",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:identificationInfo//gmd:extent//gmd:geographicElement//gmd:southBoundLatitude",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks that the property is set."
+                                    }
+                                },
+                                "metric4": {
+                                    "type": "metric",
+                                    "name": "North Bound Latitude",
+                                    "weight": 5,
+                                    "description": "Parameter must be set",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "///gmd:identificationInfo//gmd:extent//gmd:geographicElement//gmd:northBoundLatitude",
                                         "value": "text"
                                     },
                                     "evaluationRule": {
@@ -2224,45 +2256,119 @@
                         }
                     }
                 },
-                "Accessibility": {
-                    "type": "dimension",
-                    "name": "FAIR Accessibility",
-                    "weight": 9,
-                    "description": "Data and metadata are retrievable in machine-actionable form, with downloading options clearly described (including any needed authentication) (FAIR principles).",
+                "Format": {
+                    "type": "qualityElement",
+                    "name": "Format",
+                    "weight": 5,
+                    "description": "Describes the file format of the distribution.",
                     "nodes": {
-                        "Accessibility": {
-                            "type": "qualityElement",
-                            "name": "FAIR Accessibility",
+                        "Format": {
+                            "type": "measure",
+                            "name": "Format",
                             "weight": 5,
-                            "description": "Describes whether access to the data referenced by the distributions is guaranteed.",
+                            "description": "Describes the file format of the distribution.",
                             "nodes": {
-                                "DownloadURL": {
-                                    "type": "measure",
-                                    "name": "Download URL",
-                                    "weight": 4,
-                                    "description": "The downloadURL is a direct link to the referenced data.",
-                                    "nodes": {
-                                        "metric1": {
-                                            "type": "metric",
-                                            "name": "Download URL",
-                                            "weight": 5,
-                                            "description": "The downloadURL is a direct link to the referenced data.",
-                                            "extractionRule": {
-                                                "type": "xpath",
-                                                "source": "service-metadata",
-                                                "rule": "//ows:ExtendedCapabilities//inspire_dls:ExtendedCapabilities//inspire_common:MediaType",
-                                                "value": "text"
-                                            },
-                                            "evaluationRule": {
-                                                "type": "presence",
-                                                "description": "Checks that the property is set."
-                                            }
-                                        }
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Format name",
+                                    "weight": 5,
+                                    "description": "Describes the file format of the distribution.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-metadata",
+                                        "rule": "//gmd:distributionFormat//gmd:MD_Format//gmd:name",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks that the property is set."
+                                    }
+                                },
+                                "metric2": {
+                                    "type": "metric",
+                                    "name": "Format version",
+                                    "weight": 5,
+                                    "description": "Describes the file format of the distribution.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-metadata",
+                                        "rule": "//gmd:distributionFormat//gmd:MD_Format//gmd:version",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks that the property is set."
                                     }
                                 }
                             }
                         }
                     }
+                },
+                "Encoding":{
+                    "type": "qualityElement",
+                    "name": "Encoding",
+                    "weight": 5,
+                    "description": "Description of the computer language construct(s) specifying the representation of data objects in a record, file, message, storage device or transmission channel.",
+                    "nodes": {
+                        "Encoding": {
+                            "type": "measure",
+                            "name": "Encoding",
+                            "weight": 5,
+                            "description": "Describes the encoding.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Character Encoding",
+                                    "weight": 5,
+                                    "description": "The character encoding used in the data set.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:locale//gmd:characterEncoding//gmd:MD_CharacterSetCode/@codeListValue",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks that the property is set."
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                },
+                "SpatialRepresentation":{
+                    "type": "qualityElement",
+                    "name": "SpatialRepresentation",
+                    "weight": 5,
+                    "description": "The method used to spatially represent geographic information.",
+                    "nodes": {
+                        "SpatialRepresentationType": {
+                            "type": "measure",
+                            "name": "Spatial representation type",
+                            "weight": 5,
+                             "description": "Describes the spatial representation type.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Spatial representation type",
+                                    "weight": 5,
+                                    "description": "Describes the spatial representation type.",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:spatialRepresentationType//gmd:MD_SpatialRepresentationTypeCode/@codeListValue",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks that the property is set."
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                 }
             }
         }
