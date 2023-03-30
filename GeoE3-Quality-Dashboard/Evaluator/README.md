@@ -31,7 +31,7 @@ Name of the folder is formatted as follow :
 
 Sources 1 and 2 are XML files that can be downloaded from wherever catalogues they reside from.
 
-Source 3 data is provided by a Quality Software. The Quality software is based on FME and the workbench which analyses the actual contenst of the dataset. It could produce a machine readable file that the dashboard could read in. Currently, for each dataset, we are interested in the produced CSV result file that puts together the list and count of errors the software has identified. The products of the software should be downloaded from 'somewhere' - still undetermined where the software would run from and where the data would be stored.
+Source 3 data is provided by a Quality Software. The Quality software is based on FME and the workbench which analyses the actual contenst of the dataset. It could produce a machine readable file that the dashboard could read in. Currently, for each dataset, we are interested in the produced CSV result file that puts together the list and count of errors the software has identified.
 
 Source 4 data is downloaded from an API provided by Spatineo.
 
@@ -50,7 +50,49 @@ Source 4 data is downloaded from an API provided by Spatineo.
 
 ## Configuration file format
 
+The configuration file is named 'Dashboard_structure.json' and is in a JSON format.
+It is in the form of noded dictionaries with keys and values.
 
+`"viewpoint1": {
+    "type": "viewpoint",
+    "name": "name of viewpoint",
+    "weight": 1,
+    "description": "Description of viewpoint.",
+    "nodes": {
+        "dimension1":{
+            "type": "dimension",
+            "name": "name of dimension",
+            "weight": 6,
+            "description": "Description of dimension.",
+            "nodes": {
+                "element1": {
+                    "type": "qualityElement",
+                    "name": "name of element",
+                    "weight": 5,
+                    "description": "Description of quality element.",
+                    "nodes": {
+                        "measure1": {
+                            "type": "measure",
+                            "name": "name of measure",
+                            "weight": 5,
+                            "description": "Description of measure.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "name of metric",
+                                    "weight": 0,
+                                    "description": "Description of metric",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-availability",
+                                        "url_start": "https://xxxxx",
+                                        "rule": "//xpathxxxxxx",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks presence"
+                                    }`
 ### Extraction rules
 
 ```
