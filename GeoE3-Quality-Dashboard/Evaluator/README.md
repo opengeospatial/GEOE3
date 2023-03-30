@@ -53,7 +53,7 @@ Source 4 data is downloaded from an API provided by Spatineo.
 The configuration file is named 'Dashboard_structure.json' and is in a JSON format.
 It is in the form of noded dictionaries with keys and values.
 
-'''
+```
 ...
 "viewpoint1": {
     "type": "viewpoint",
@@ -96,7 +96,7 @@ It is in the form of noded dictionaries with keys and values.
                                         "description": "Checks presence"
                                     }
                                     ...
-                                '''
+                                ```
 ### Extraction rules
 
 ```
