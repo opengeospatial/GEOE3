@@ -1,11 +1,10 @@
 # Extraction and evaluation of the data
-GeoE3 quality dashboard - method for scoring services using metadata and monitoring information. You can read more about the project at https://geoe3.eu/ and https://geoe3platform.eu/geoe3/
 
 ## Required input 
 
 The program will ask for the following input (6):
 - JSON structure file path ;
-- Service ID number ;
+- Service ID number (for service availability evaluation, provided by Spatineo API) ;
 - XML dataset metadata file path ;
 - XML service metadata file path ;
 - CVS quality evaluation file from GeoE3 quality software path ;
@@ -13,24 +12,21 @@ The program will ask for the following input (6):
 
 ## Output
 
-The output of the program is (5):
+The output of the program is 5 files located in one folder:
 - CVS file for the quality viewpoint ;
 - CVS file for the quality dimensions ;
 - CVS file for the quality elements ;
 - CVS file for the quality measures ;
 - CVS file for the quality metrics.
 
-Name of those file is formatted as follow :  
->*'service ID'_'name of metadata file'_date_time_X.cvs*  
-
-with 'X' being V,D,E or M for Viewpoint, Dimension, Element or Measure. The metrics CSV does not have a letter at the end.
-
+Name of the folder is formatted as follow :  
+> *'service ID'_'name of metadata file'_date_time*  
 
 ## Source of the dashboard data
 
 1. Dataset metadata (data provider)
 2. Service metadata OR Service description Capabilities document (data or service provider)
-3. Quality evaluation results (part of the GeoE3 project)
+3. Quality evaluation results (see [GeoE3 Quality Software](https://github.com/opengeospatial/GEOE3/tree/main/GeoE3-Quality-Software)
 4. Service availability information (Spatineo)
 
 Sources 1 and 2 are XML files that can be downloaded from wherever catalogues they reside from.
