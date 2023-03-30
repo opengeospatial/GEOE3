@@ -5,17 +5,14 @@ Read more about the project at https://geoe3.eu/ and https://geoe3platform.eu/ge
 ## Process
 
 Two steps :
-- Extracting and evaluating the data (see folder [Evaluator](https://github.com/opengeospatial/GEOE3/tree/main/GeoE3-Quality-Dashboard/Evaluator)) ;
-- Visualising the quality of the data in a dashboard.
+1. Get the data (see folder [Evaluator](https://github.com/opengeospatial/GEOE3/tree/main/GeoE3-Quality-Dashboard/Evaluator)) ;
+2. Visualise the quality of the data in a dashboard.
 
-### 1. Get the data from the [Evaluator](https://github.com/opengeospatial/GEOE3/tree/main/GeoE3-Quality-Dashboard/Evaluator)
-
-
-### 2. Operating the quality dashboard on Power BI
+## Operating the quality dashboard on Power BI
 
 You need to have Microsoft Power BI installed.
 
-#### Input files
+### Input files
 
 The dashboards expects the following 6 input files :
 - CVS interoperability map / maturity model path ;
@@ -25,5 +22,11 @@ The dashboards expects the following 6 input files :
 - CVS file for the quality measures ;
 - CVS file for the quality metrics.
 
+### Location of input files
+
 The last 5 files are the output of the Evaluator ; they are located in a folder whose name is formatted as follows :  
 >*'service ID'_'name of metadata file'_date_time*  
+
+The interoperability map CSV file is located in the src folder (same folder as Python code).
+
+#### Open
