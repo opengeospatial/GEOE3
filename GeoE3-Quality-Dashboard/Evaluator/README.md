@@ -103,14 +103,38 @@ It is in the form of noded dictionaries with keys and values.
 ```
   ... 
   "extractionRule": {
-    "source": "dataset-metadata", 
     "type": "xpath",
-    "rule": ".//gmd:MD_Metadata/gmd:contact/gmd:CI_ResponsibleParty/gmd:individualName/gco:CharacterString"
+    "source": "dataset-metadata", 
+    "rule": "//gmd:MD_Metadata//gmd:contact//gmd:CI_ResponsibleParty//gmd:individualName//gco:CharacterString",
+    "value": "text"
   }
 ```
 
 `source` = one of `dataset-metadata`, `service-metadata`, `quality-evaluation`, `service-description` (e.g. WFS Capabilities document), or `service-availability`  
+    `service-availability` and `quality-evaluation` have additional keys :
+```
+  "extractionRule": {
+    "type": "xpath",
+    "source": "service-availability",
+    "url_start": "https://...",
+    "rule": "//daysOfAvailabilityMetrics",
+    "value": "text"  
+ }
+```
+```
+    "extractionRule": {
+      "type": "formula",
+      "source": "quality-evaluation",
+      "column": "error_count",
+      "rule": "Fails OGC Valid",
+      "value": "text"                                       
+}
+```
+
 `type` = one of `xpath` or  `formula` (for CSV documents)
+
+
+
 ## Adding extractors / evaluators
 
 When you need a new type of extractor:
