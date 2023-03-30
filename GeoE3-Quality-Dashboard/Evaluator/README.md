@@ -109,6 +109,7 @@ It is in the form of noded dictionaries with keys and values.
     "value": "text"
   }
 ```
+#### `Source`
 
 `source` = one of `dataset-metadata`, `service-metadata`, `quality-evaluation`, `service-description` (e.g. WFS Capabilities document), or `service-availability`  
     `service-availability` and `quality-evaluation` have additional keys :
@@ -130,7 +131,7 @@ It is in the form of noded dictionaries with keys and values.
       "value": "text"                                       
 }
 ```
-
+#### `type`
 `type` = one of `xpath` or  `formula` (for CSV documents)
 
 
