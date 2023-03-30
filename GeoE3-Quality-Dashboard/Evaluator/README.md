@@ -22,6 +22,32 @@ The output of the program is 5 files located in one folder:
 Name of the folder is formatted as follow :  
 > *'service ID'_'name of metadata file'_date_time*  
 
+## Run the program
+
+### Miniconda3 help
+
+1. Start "Anaconda Powershell Prompt (Miniconda3)" from the start menu
+2. In the shell, run `conda activate geoe3`
+3. In the shell, run `cd c:\whereever\this\project\is\geoe3-quality-dashboard\`
+4. Use the project as normal
+
+### Run the program
+
+Rune the ```__main__.py``` program.
+It will ask for the path of source files and a service ID.  
+The data from the availability API is downloaded into a temp file located in the temp folder. This file should be automatically deleted after the program is run.
+
+#### When using miniconda for the first time
+When using miniconda for the first time, run these commands :
+```
+$ conda create --name geoe3
+$ conda activate geoe3
+$ conda config --add chanels conda-forge
+$ cd c:\whereever\this\project\is\geoe3-quality-dashboard\
+$ conda install pytest lxml isodate==0.6.1
+```
+Then install the required modules specified in the requirements file : ```pip install name_module```
+
 ## Source of the dashboard data
 
 1. Dataset metadata (data provider)
@@ -157,29 +183,3 @@ When you need a new type of extractor:
 3. Register the keyword in the dict `extractor_by_type` in `src/extract.py`
 
 Similar thing with evaluators.
-
-# Run the program
-
-## Miniconda3 help
-
-1. Start "Anaconda Powershell Prompt (Miniconda3)" from the start menu
-2. In the shell, run `conda activate geoe3`
-3. In the shell, run `cd c:\whereever\this\project\is\geoe3-quality-dashboard\`
-4. Use the project as normal
-
-## When using miniconda for the first time
-When using miniconda for the first time, run these commands :
-```
-$ conda create --name geoe3
-$ conda activate geoe3
-$ conda config --add chanels conda-forge
-$ cd c:\whereever\this\project\is\geoe3-quality-dashboard\
-$ conda install pytest lxml isodate==0.6.1
-```
-Then install the required modules specified in the requirements file : ```pip install name_module```
-
-## Whenever
-
-Rune the ```__main__.py``` program.
-It will ask for the path of source files and a service ID.  
-The data from the availability API is downloaded into a temp file located in the temp folder. This file should be automatically deleted after the program is run.
