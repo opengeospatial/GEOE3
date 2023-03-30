@@ -135,16 +135,14 @@ It is in the form of noded dictionaries with keys and values.
 `type` = one of `xpath` or  `formula` (for CSV documents)
 
 
-
 ## Adding extractors / evaluators
 
 When you need a new type of extractor:
 1. Choose a keyword for it (for example "***xpath***")
 2. Write a function in `src/extract.py` that follows the format `def execute_[your_chosen_keyword_with_underscores]_rule(rule, model):`
 3. Register the keyword in the dict `extractor_by_type` in `src/extract.py`
-4. Write tests for that extractor in a new file `test/test_extractor_[your_chosen_keyword_with_underscores].py`
 
-Similar thing with evaluators, choose a keyword, write the function in `src/evaluate.py` and write tests in a new file.
+Similar thing with evaluators.
 
 # Run the program
 
@@ -155,8 +153,8 @@ Similar thing with evaluators, choose a keyword, write the function in `src/eval
 3. In the shell, run `cd c:\whereever\this\project\is\geoe3-quality-dashboard\`
 4. Use the project as normal
 
-When using miniconda for the first time, run these commands
-
+## When using miniconda for the first time
+When using miniconda for the first time, run these commands :
 ```
 $ conda create --name geoe3
 $ conda activate geoe3
@@ -164,4 +162,10 @@ $ conda config --add chanels conda-forge
 $ cd c:\whereever\this\project\is\geoe3-quality-dashboard\
 $ conda install pytest lxml isodate==0.6.1
 ```
-Then install the required modules specified in the requirements file : ```pip install *name_module```
+Then install the required modules specified in the requirements file : ```pip install name_module```
+
+## Whenever
+
+Rune the ```__main__.py``` program.
+It will ask for the path of source files and a service ID.  
+The data from the availability API is downloaded into a temp file located in the temp folder. This file should be automatically deleted after the program is run.
