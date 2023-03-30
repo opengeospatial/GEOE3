@@ -59,10 +59,15 @@ The GeoE3 quality dashboard is made of 7 windows, which are :
 - Tree : this page allows you to navigate through the herarchy tree used to classify quality indicators in this projects, from viewpoints to metric.
 ![Screenshot of hierarchy tree](https://user-images.githubusercontent.com/114493409/228862308-b7c3d28b-82c2-4bd1-952d-3adb2abeef40.png)
 
-For additionnal information on the metrics and classification, see this index file : file
+For additionnal information on the metrics and classification, see this index [file](GeoE3-Quality-Dashboard/Evaluator/Quality metrics and where to find them.xlsx)
 
-## Note on navigating Power BI
+## Notes on navigating Power BI
 
 - Hovering over elements in the dashboard often displays additionnal information ;
 - In the Power BI desktop software, you need to ctrl+click to navigate buttons, as clicking just selects the element ;
 - In the Power BI desktop software, in the "Model" tab, make sure that the relationships between the 5 quality indicators table are set as "1 to many", the cross filter is "Both" and the "security filter in both directions" is set as Yes.
+
+# 4. Publish the dashboard
+
+You can publish the quality dashboard created, with the current data, through Power BI.
+This published dashboard can then easily be navigated (and shared with a PRO license).
