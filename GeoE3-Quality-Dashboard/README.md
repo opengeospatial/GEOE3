@@ -57,6 +57,8 @@ The GeoE3 quality dashboard is made of 7 windows, which are :
 
 - Interoperability Map : Diplays data from the interoperability map created for the GeoE3 project. Use the "select the use case", "select the type of data" and Europe map slicers to display the level of interoperability of relevant datasets. When several datasets are selected, levels of interoperability are averaged (hover to see the averaged value, as the gauge round it) ;
 - Tree : this page allows you to navigate through the herarchy tree used to classify quality indicators in this projects, from viewpoints to metric.
+![Screenshot of hierarchy tree](https://user-images.githubusercontent.com/114493409/228862308-b7c3d28b-82c2-4bd1-952d-3adb2abeef40.png)
+
 
 
 Hovering over elements in the dashboard often displays additionnal information?
