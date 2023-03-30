@@ -26,7 +26,7 @@ Name of the folder is formatted as follow :
 
 1. Dataset metadata (data provider)
 2. Service metadata OR Service description Capabilities document (data or service provider)
-3. Quality evaluation results (see [GeoE3 Quality Software](https://github.com/opengeospatial/GEOE3/tree/main/GeoE3-Quality-Software))
+3. Quality evaluation results (see [GeoE3 Quality Software](https://github.com/opengeospatial/GEOE3/tree/main/Geoe3-Quality-Software))
 4. Service availability information (Spatineo)
 
 Sources 1 and 2 are XML files that can be downloaded from wherever catalogues they reside from.
