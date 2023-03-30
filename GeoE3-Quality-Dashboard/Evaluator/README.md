@@ -144,10 +144,9 @@ It is in the form of noded dictionaries with keys and values.
 #### `type`
 `type` = one of `presence`, `comparison`, `range`, `date`
 
-`comparison` has the additional keys : `referenceValue` and `operator`.  
-- `operator` = one of `<`, `>`, `is` (for str type of value)  
- 
- `range` and `date` have the additional keys `minimum` and `maximum`
+- `comparison` has the additional keys : `referenceValue` and `operator`.  
+`operator` = one of `<`, `>`, `is` (for str type of value)  
+ - range` and `date` have the additional keys `minimum` and `maximum`
 
 
 ## Adding extractors / evaluators
