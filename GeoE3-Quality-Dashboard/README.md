@@ -37,7 +37,9 @@ The data displayed may not be up to date. You need to rectify that.
 #### Using the right data : 2 parameters to enter
 Import of the data is automated. You only have to enter 2 parameters.
 - In the "Home" ribbon tag, select the down arrow of the "Transform data" button.
--![Screenshot of "Transform data" button in Power BI desktop](https://user-images.githubusercontent.com/114493409/228851429-78dc0f41-f203-400c-9bf9-a180b9c0cc09.png)
-
-- Select "Edit parameters"
+![Screenshot of "Transform data" button in Power BI desktop](https://user-images.githubusercontent.com/114493409/228851429-78dc0f41-f203-400c-9bf9-a180b9c0cc09.png)
+- Select "Edit parameters" : a dialog window appears, asking you to enter :
+  - the path of the src folder ;
+  - the name of the folder created by the Evaluator that contains the 5 CSV files of quality metrics.  
+![Screenshot of dialog window for editing parameters in Power BI desktop](https://user-images.githubusercontent.com/114493409/228852754-b875c405-4d35-4089-9c07-199a43aba1d4.png)
 
