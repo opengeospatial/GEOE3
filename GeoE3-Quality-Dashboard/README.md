@@ -49,7 +49,8 @@ The quality dashboard should now show the right data.
 
 The GeoE3 quality dashboard is made of 7 windows, which are : 
 - Home : displays scores for the 3 viewpoints as well as the menu. Click on those viewpoints to access the next window in the hierarchy, ie. the Viewpoints window. An "information" button is also available to users for further information on how to navigate the dashboard ;
-- Viewpoints : displays quality dimensions of one or several selected viewpoints (to select several, ctrl + click). The definition and score of the viewpoint(s) and its dimension(s) are visible on this page.![Screenshot of Viewpoint page in the quality dashboard](https://user-images.githubusercontent.com/114493409/228858962-9e371fb0-57c7-44f8-85a8-01994dce8a63.png) To go see the next level, either click on the right arrow at the top-left corner of the dashboard or directly in the next level in the menu on the left ;
+- Viewpoints : displays quality dimensions of one or several selected viewpoints (to select several, ctrl + click). The definition and score of the viewpoint(s) and its dimension(s) are visible on this page.![Screenshot of Viewpoint page in the quality dashboard](https://user-images.githubusercontent.com/114493409/228858962-9e371fb0-57c7-44f8-85a8-01994dce8a63.png) 
+  To go see the next level, either click on the right arrow at the top-left corner of the dashboard or directly in the next level in the menu on the left ;
  
 - Dimensions, Elements, Metrics, Interoperability Map and Tree
 
