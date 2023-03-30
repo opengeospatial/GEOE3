@@ -36,7 +36,7 @@ The data displayed may not be up to date. You need to rectify that.
 
 #### Using the right data : 2 parameters to enter
 Import of the data is automated. You only have to enter 2 parameters.
-- In the "Home" ribbon tag, select the down arrow of the "Transform data" button. ![Screenshot of "Transform data" button in Power BI desktop](https://user-images.githubusercontent.com/114493409/228851429-78dc0f41-f203-400c-9bf9-a180b9c0cc09.png)
+- In the "Home" ribbon tag, select the down arrow of the "Transform data" button.![Screenshot of "Transform data" button in Power BI desktop](https://user-images.githubusercontent.com/114493409/228851429-78dc0f41-f203-400c-9bf9-a180b9c0cc09.png)
 
 - Select "Edit parameters"
 
