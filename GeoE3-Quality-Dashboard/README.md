@@ -2,7 +2,6 @@
 GeoE3 quality dashboard - a method for scoring services using metadata and monitoring information. 
 Read more about the project at https://geoe3.eu/ and https://geoe3platform.eu/geoe3/
 
-# Process
 
 The process is made of two steps :
 1. Get the data : this step is detailed in the [Evaluator](https://github.com/opengeospatial/GEOE3/tree/main/GeoE3-Quality-Dashboard/Evaluator) folder ;
