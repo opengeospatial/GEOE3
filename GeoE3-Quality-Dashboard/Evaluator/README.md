@@ -45,7 +45,7 @@ Source 4 data is downloaded from an API provided by Spatineo.
 2. Configuration file that includes viewpoints, their dimensions, all the way up to metrics. Each metric includes extraction rules on how to extract data from its source file. An extraction rule may target one of the sources (dataset metadata, service metadata, quality software output, or availability information).
 3. Configuration also includes the evaluation rules used to assess whether the extraction output meets requirements => gives a score for that metric.
 4. Scores are then combined up the quality hierarchy using weighted average with weights stored in the configuration file.
-5. Output is 5 *DataFrames* that are saved in tabular format (CSV) so that it is easily usable in the dashboard application (ie. Power BI)
+5. Output is 5 **DataFrames** that are saved in tabular format (CSV) so that it is easily usable in the dashboard application (ie. Power BI)
 
 ## Configuration file format
 
@@ -122,16 +122,32 @@ It is in the form of noded dictionaries with keys and values.
  }
 ```
 ```
-    "extractionRule": {
-      "type": "formula",
-      "source": "quality-evaluation",
-      "column": "error_count",
-      "rule": "Fails OGC Valid",
-      "value": "text"                                       
-}
+  "extractionRule": {
+    "type": "formula",
+    "source": "quality-evaluation",
+    "column": "error_count",
+    "rule": "Fails OGC Valid",
+    "value": "text"                                       
+  }
 ```
 #### `type`
 `type` = one of `xpath` or  `formula` (for CSV documents)
+
+### Evaluation rules
+
+```
+    "evaluationRule": {
+      "type": "presence",
+      "description": "Description of evaluation rule."
+     }
+```
+#### `type`
+`type` = one of `presence`, `comparison`, `range`, `date`
+
+`comparison` has the additional keys : `referenceValue` and `operator`.
+    `operator` = one of `<`, `>`, `is` (for str type of value)  
+ 
+ `range` and `date` have the additional keys `minimum` and `maximum`
 
 
 ## Adding extractors / evaluators
