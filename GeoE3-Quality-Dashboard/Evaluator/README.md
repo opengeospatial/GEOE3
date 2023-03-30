@@ -73,6 +73,17 @@ Source 4 data is downloaded from an API provided by Spatineo.
 4. Scores are then combined up the quality hierarchy using weighted average with weights stored in the configuration file.
 5. Output is 5 **DataFrames** that are saved in tabular format (CSV) so that it is easily usable in the dashboard application (ie. Power BI)
 
+## Origin of quality metrics and classification
+
+The source for the metrics used in this classification include :
+- ISO 19157-3 ;
+- ISO 19115 ;
+- ISO 19139 ;
+- INSPIRE Metadata Implementing Rules: Technical Guidelines based on EN ISO 19115 and EN ISO 19119 (v 1.3) ;
+- the FAIR principles.
+
+For additionnal information on the metrics and classification, see this [index file](https://github.com/opengeospatial/GEOE3/tree/main/GeoE3-Quality-Dashboard/Evaluator/Quality_metrics_and_where_to_find_them.xlsx).
+
 ## Configuration file format
 
 The configuration file is named 'Dashboard_structure.json' and is in a JSON format.
