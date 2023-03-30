@@ -136,6 +136,8 @@ def extract_all_info(my_dict, metadata_file, service_metadata_file, serviceId, q
                                                                     elif value10["type"] == "comparison":
                                                                         operator = value10["operator"]
                                                                         referenceValue = value10["referenceValue"]
+                                                                        row["Score"] = evaluate(evaluationRule, value,operator,referenceValue)  
+                                                                    elif value10["type"] == "RestrictionCode":
                                                                         row["Score"] = evaluate(evaluationRule, value,operator,referenceValue)                                                
                                                                     elif value10["type"] == "comparisonDependent":
                                                                         temp_df = pd.DataFrame(table_data_Metrics)

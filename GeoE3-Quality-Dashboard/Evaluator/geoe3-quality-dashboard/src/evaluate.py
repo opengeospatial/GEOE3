@@ -131,9 +131,23 @@ def evaluate_comparisonDependent(rule, value, df, index):
     result = evaluate_comparison(rule,value, operator_func, float(dependent_on)*multiplier)
     return result
 
+def evaluate_RestrictionCode(rule, value, RestrictionCode, tt):
+    if RestrictionCode in ['copyright', 'patent', 'patentPending', 'trademark']:
+        return 1  # return 1 if rights are exclusive
+    elif RestrictionCode in ['license', 'intellectualPropertyRights', 'restricted']:
+        return 2  # return 2 if rights are somewhat restricted
+    elif RestrictionCode in ['otherRestrictions',  'conditions unknown']:
+        return 3  # return 3 if restrictions not listed
+    elif RestrictionCode in ['No limitations', 'No conditions apply']:
+        return 5  # return 3 if restrictions not listed
+    elif RestrictionCode is None:
+        return 0
+    else :
+        return 2.5
+
 def evaluate_maintenance(rule, maintenance_date, frequency_code, tt):
     if frequency_code in ['asNeeded', 'irregular', 'notPlanned', 'unknown']:
-        return 5  # return None if declared frequency is not a fixed interval
+        return None  # return None if declared frequency is not a fixed interval
 
     maintenance_date = datetime.fromisoformat(maintenance_date)
     current_date = datetime.now()
@@ -214,7 +228,8 @@ evaluator_by_type = {
     'comparison': evaluate_comparison,
     'comparisonDependent': evaluate_comparisonDependent,
     'range': evaluate_range,
-    'maintenance': evaluate_maintenance
+    'maintenance': evaluate_maintenance,
+    'RestrictionCode': evaluate_RestrictionCode
 }
 
 # Score each category of quality element
