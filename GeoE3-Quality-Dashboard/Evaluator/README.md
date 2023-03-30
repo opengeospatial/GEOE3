@@ -95,7 +95,7 @@ It is in the form of noded dictionaries with keys and values.
                                         "type": "presence",
                                         "description": "Checks presence"
                                     }
-                                    ...
+...
 ```
 
 ### Extraction rules
