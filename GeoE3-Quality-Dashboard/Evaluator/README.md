@@ -177,7 +177,7 @@ It is in the form of noded dictionaries with keys and values.
 
 ## Adding extractors / evaluators
 
-When you need a new type of extractor:
+To add a new type of extractor:
 1. Choose a keyword for it (for example "***xpath***")
 2. Write a function in `src/extract.py` that follows the format `def execute_[your_chosen_keyword_with_underscores]_rule(rule, model):`
 3. Register the keyword in the dict `extractor_by_type` in `src/extract.py`
