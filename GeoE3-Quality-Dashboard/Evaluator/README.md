@@ -20,7 +20,7 @@ The output of the program is 5 files located in one folder:
 - CVS file for the quality metrics.
 
 Name of the folder is formatted as follow :  
->*'service ID'_'name of metadata file'_date_time.cvs*  
+*'service ID'_'name of metadata file'_date_time*  
 
 ## Source of the dashboard data
 
