@@ -47,3 +47,6 @@ The quality dashboard should now show the right data.
 
 # 3. Navigating the dashboard 
 
+The GeoE3 quality dashboard is made of 7 windows, which are : 
+- Home : displays scores for the 3 viewpoints as well as the menu. Click on those viewpoints to access more information about it. An "information" button is also available to users for further information on how to navigate the dashboard ;
+- Viewpoints ;Dimensions, Elements, Metrics, Interoperability Map and Tree
