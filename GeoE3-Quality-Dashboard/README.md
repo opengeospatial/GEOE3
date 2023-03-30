@@ -21,7 +21,7 @@ The dashboards expects the following 6 input files :
 - CVS file for the quality measures ;
 - CVS file for the quality metrics.
 
-# Location of input files
+## Location of input files
 The last 5 files are the output of the Evaluator ; they are located in a folder whose name is formatted as follows :  
 >*'service ID'_'name of metadata file'_date_time*  
 
