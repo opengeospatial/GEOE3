@@ -53,7 +53,9 @@ Source 4 data is downloaded from an API provided by Spatineo.
 The configuration file is named 'Dashboard_structure.json' and is in a JSON format.
 It is in the form of noded dictionaries with keys and values.
 
-`"viewpoint1": {
+'''
+...
+"viewpoint1": {
     "type": "viewpoint",
     "name": "name of viewpoint",
     "weight": 1,
@@ -92,7 +94,9 @@ It is in the form of noded dictionaries with keys and values.
                                     "evaluationRule": {
                                         "type": "presence",
                                         "description": "Checks presence"
-                                    }`
+                                    }
+                                    ...
+                                '''
 ### Extraction rules
 
 ```
