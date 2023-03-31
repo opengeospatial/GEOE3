@@ -10,25 +10,26 @@ def main():
     clear = lambda: os.system('cls')
     clear()
 
-    # Ask for location of files for metadata and quality evaluation results from GeoE3 software
+    # INPUT :
+    # Location of files :
     metadata_file = input("Please enter the path to Metadata file (eg. 'MD_Bui_EX_1.xml'):")
     service_metadata_file = input("Please enter the path to Service Metadata file (eg.'SMD_Bui_EX_1.xml'):")
     qualityEvaluation_file = input("Please enter the path to Quality Evaluation Software file (eg. 'buildings_and_errors/results_NO_cc.csv'): ")
     interoperability_file = input("Please enter the path to Metadatafile (eg. 'interoperability_maturityModel.csv'): ") 
-    # Ask for service ID of service we want the availability analysis from.
+    # Service ID (interoperability_maturityModel.csv to check what dataset has which serviceId)
     serviceId = input("Please enter the service ID (list of service Id : 39859,164572,157386,88383,157353) :")
 
-    # Read rules from JSON file that describes the structure of the dashboard and its rules.
-    structure_file = read_rules_from_json("Dashboard_structure.json")
-
+    ''' 
+    For testing :
     metadata_file = 'MD_Bui_EX_1.xml'
     service_metadata_file = 'SMD_Bui_EX_1.xml'
     interoperability_file = 'interoperability_maturityModel.csv'
     qualityEvaluation_file = 'buildings_and_errors/results_NO_cc.csv'
     serviceId = '164572'
+    '''
 
-
-
+    # Read rules from JSON file that describes the structure of the dashboard and its rules.
+    structure_file = read_rules_from_json("Dashboard_structure.json")
 
     # Define model object
     model = {
