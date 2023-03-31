@@ -63,7 +63,7 @@ Source 3 data is provided by a Quality Software. The Quality software is based o
 Source 4 data is downloaded from an API provided by Spatineo.
 
 Source 5 data is updated periodically through the GeoE3 project.
-**Note that the `service Id` is used to link the data of the interoperability map to the rest of the data. It must therefore be filled by the service availability provider.**
+**Note that the `service Id` column in the interoperability map file (CVS) is used to link the data of the interoperability map to the rest of the data. It must therefore be filled by the service availability provider.**
 
 ## The evaluation process
 
