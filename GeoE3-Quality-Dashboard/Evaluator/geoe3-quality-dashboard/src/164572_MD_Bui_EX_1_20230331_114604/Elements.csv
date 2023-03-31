@@ -16,10 +16,10 @@ Logical Consistency,Topological Consistency,5,Correctness of the explicitly enco
 Temporal Quality,Accuracy Time Measurment,5,Closeness of reported time measurements to values accepted as true [ISO 19157-1:2021].,5.0
 Temporal Quality,Temporal Consistency,5,Evaluates the correctness of the order of events [ISO 19157-1:2021].,5.0
 Temporal Quality,Temporal Validity,9,Validity of data with respect to time. [ISO 19157-1:2021].,3.4
-Positionnal Accuracy,Absolute Positional Accuracy,8,Closeness of reported coordinate values to values accepted as true in a standard coordinate reference system [ISO 19157-1:2021].,5.0
-Positionnal Accuracy,Relative Positional Accuracy,8,Closeness of the relative positions of features in the scope to their respective relative positions accepted as true in a local coordinate reference system [ISO 19157-1:2021].,5.0
-Positionnal Accuracy,Gridded Positional Accuracy,5,Closeness of gridded data position values to values accepted as true [ISO 19157-1:2021].,4.333333333333333
-Positionnal Accuracy,Spatial Resolution,16,Spatial resolution of the dataset.,3.0
+Positional Accuracy,Absolute Positional Accuracy,8,Closeness of reported coordinate values to values accepted as true in a standard coordinate reference system [ISO 19157-1:2021].,5.0
+Positional Accuracy,Relative Positional Accuracy,8,Closeness of the relative positions of features in the scope to their respective relative positions accepted as true in a local coordinate reference system [ISO 19157-1:2021].,5.0
+Positional Accuracy,Gridded Positional Accuracy,5,Closeness of gridded data position values to values accepted as true [ISO 19157-1:2021].,4.333333333333333
+Positional Accuracy,Spatial Resolution,16,Spatial resolution of the dataset.,3.0
 Interoperability Map,Technical Interoperability,2,Technical Interoperability,4.166666666666667
 Interoperability Map,Legal And Organizational Interoperability,1,Legal And Organizational Interoperability,0.0
 Interoperability Map,Semantic Interoperability,3,Semantic Interoperability,2.777777777777778
