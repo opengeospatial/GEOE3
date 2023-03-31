@@ -72,7 +72,7 @@ Source 5 data is updated periodically through the GeoE3 project.
     - link to service metadata for a (single) service that is used to disseminate the dataset
     - linkage to the Quality evaluation results (TBD)
     - linkage to the service availability information (TBD)
-2. Configuration file that includes viewpoints, their dimensions, all the way up to metrics. Each metric includes extraction rules on how to extract data from its source file. An extraction rule may target one of the sources (dataset metadata, service metadata, quality software output, or availability information).
+2. Configuration file that includes viewpoints, their dimensions, all the way down to metrics. Each metric includes extraction rules on how to extract data from its source file. An extraction rule may target one of the sources (dataset metadata, service metadata, quality software output, or availability information).
 3. Configuration also includes the evaluation rules used to assess whether the extraction output meets requirements => gives a score for that metric.
 4. Scores are then combined up the quality hierarchy using weighted average with weights stored in the configuration file.
 5. Output is 5 **DataFrames** that are saved in tabular format (CSV) so that it is easily usable in the dashboard application (ie. Power BI)
