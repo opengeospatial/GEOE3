@@ -131,7 +131,7 @@ def evaluate_comparisonDependent(rule, value, df, index):
     result = evaluate_comparison(rule,value, operator_func, float(dependent_on)*multiplier)
     return result
 
-def evaluate_RestrictionCode(rule, value, RestrictionCode, tt):
+def evaluate_restrictionCode(rule, value, RestrictionCode, tt):
     if RestrictionCode in ['copyright', 'patent', 'patentPending', 'trademark']:
         return 1  # return 1 if rights are exclusive
     elif RestrictionCode in ['license', 'intellectualPropertyRights', 'restricted']:
@@ -144,6 +144,12 @@ def evaluate_RestrictionCode(rule, value, RestrictionCode, tt):
         return 0
     else :
         return 2.5
+    
+def evaluate_none(rule, value, RestrictionCode, tt):
+    value = int(value)
+    score = value * 5/3
+    return score
+
 
 def evaluate_maintenance(rule, maintenance_date, frequency_code, tt):
     if frequency_code in ['asNeeded', 'irregular', 'notPlanned', 'unknown']:
@@ -229,7 +235,8 @@ evaluator_by_type = {
     'comparisonDependent': evaluate_comparisonDependent,
     'range': evaluate_range,
     'maintenance': evaluate_maintenance,
-    'RestrictionCode': evaluate_RestrictionCode
+    'restrictionCode': evaluate_restrictionCode,
+    'none': evaluate_none
 }
 
 # Score each category of quality element

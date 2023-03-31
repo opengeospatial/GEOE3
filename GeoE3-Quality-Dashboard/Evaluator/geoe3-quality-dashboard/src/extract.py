@@ -2,6 +2,7 @@
 
 import logging
 import json 
+import csv
 import os
 import pandas as pd
 import lxml
@@ -35,15 +36,14 @@ def extract_all_info(my_dict, metadata_file, service_metadata_file, serviceId, q
         'service-availability' : "",
         'service-metadata': load_dataset_metadata(service_metadata_file),
         'quality-evaluation': qualityEvaluation_file,
-        'interoperability-maturity-model': interoperability_file
+        'interopability-map': interoperability_file
     }
-    result = []
+
     table_data_Metrics = []
     table_data_VP = []
     table_data_Dimensions = []
     table_data_Elements = []
     table_data_Measures = []
-    table_data_scores = []
     url_start_previous = ""
     for key1, value1 in my_dict.items():
         rowVP = {
@@ -106,16 +106,16 @@ def extract_all_info(my_dict, metadata_file, service_metadata_file, serviceId, q
                                                                             'service-metadata' : load_dataset_metadata(service_metadata_file),
                                                                             'service-availability' : load_dataset_metadata(api_file),
                                                                             'quality-evaluation': qualityEvaluation_file,
-                                                                            'interoperability-maturity-model': interoperability_file
+                                                                            'interopability-map': interoperability_file
                                                                         }
                                                                         row["Extraction_Rule_value"] = func(row["Extraction_Rule"],model,api_file,serviceId)
                                                                     elif value10["source"] == "quality-evaluation":
-                                                                        row["Extraction_Rule_value"] = func(row["Extraction_Rule"],model,qualityEvaluation_file,serviceId)                                              
+                                                                        row["Extraction_Rule_value"] = func(row["Extraction_Rule"],model,qualityEvaluation_file,serviceId)                                             
                                                                     elif value10["source"] == "dataset-metadata":
                                                                         row["Extraction_Rule_value"] = func(row["Extraction_Rule"],model,metadata_file,serviceId)
                                                                     elif value10["source"] == "service-metadata":
                                                                         row["Extraction_Rule_value"] = func(row["Extraction_Rule"],model,service_metadata_file,serviceId)
-                                                                    elif value10["source"] == "interoperability-maturity-model":
+                                                                    elif value10["source"] == "interopability-map":
                                                                        row["Extraction_Rule_value"] = func(row["Extraction_Rule"],model,interoperability_file,serviceId)
                                                                     
                                                                     if type(row["Extraction_Rule_value"]) == str:
@@ -136,9 +136,11 @@ def extract_all_info(my_dict, metadata_file, service_metadata_file, serviceId, q
                                                                     elif value10["type"] == "comparison":
                                                                         operator = value10["operator"]
                                                                         referenceValue = value10["referenceValue"]
-                                                                        row["Score"] = evaluate(evaluationRule, value,operator,referenceValue)  
-                                                                    elif value10["type"] == "RestrictionCode":
-                                                                        row["Score"] = evaluate(evaluationRule, value,operator,referenceValue)                                                
+                                                                        row["Score"] = evaluate(evaluationRule, value, operator, referenceValue)  
+                                                                    elif value10["type"] == "restrictionCode":
+                                                                        row["Score"] = evaluate(evaluationRule, value, '', '')         
+                                                                    elif value10["type"] == "none":
+                                                                        row["Score"] = evaluate(evaluationRule, value, '', '')                                          
                                                                     elif value10["type"] == "comparisonDependent":
                                                                         temp_df = pd.DataFrame(table_data_Metrics)
                                                                         row["Score"] = evaluate(evaluationRule,value, temp_df, value10["dependentOn"])
@@ -202,21 +204,35 @@ def execute_xpath_rule(rule, model,file,serviceId=None):
         logging.warning('Unknown value extraction method (%s) in extractionRule', value_method)
     return result
 
-def execute_formula_rule(rule,model,file,serviceId=None):
+def execute_formula_rule(rule,model,file,serviceId):
     """Executes formula extraction rule and returns the result value"""
-    formula = rule['rule']
-    rows = load_cvs(file)
-    # Iterate over the rows to find the desired value
-    for row in rows:
-        if len(row) > 1 and row[1] == formula:
-            if len(row) > 2:
-                result = row[2]
-                return result
-    return 0 # Because if nothing is returned by the process, it means no error was found
+    if rule['rule'] == 'serviceId':
+        formula = serviceId
+        rows = load_cvs(file)
+        with open(file, 'r') as f:
+            header_row = f.readline().strip().split(',')  # Get the header row and split into a list
+            column_index = header_row.index(rule['column'])  # Find the index of the column with name "rule['column']"
+            # Iterate over the rows to find the desired value
+            for row in rows:
+                if len(row) > column_index and row[0] == formula:
+                    if len(row) > 2:
+                        result = row[column_index]
+                        return result
+            return 0
+    else:
+        formula = rule['rule']
+        rows = load_cvs(file)
+        # Iterate over the rows to find the desired value
+        for row in rows:
+            if len(row) > 1 and row[1] == formula:
+                if len(row) > 2:
+                    result = row[2]
+                    return result
+        return 0 # Because if nothing is returned by the process, it means no error was found
 
 extractor_by_type = {
     'xpath': execute_xpath_rule,
-    'formula' : execute_formula_rule
+    'formula' : execute_formula_rule,
 }
 
 if __name__ == "__main__":
@@ -239,7 +255,7 @@ if __name__ == "__main__":
         'service-availability': 0,
         'service-metadata': load_dataset_metadata(service_metadata_file),
         'quality-evaluation': load_cvs(qualityEvaluation_file),
-        'interoperability-maturity-model': load_cvs(interoperability_file)
+        'interopability-map': load_cvs(interoperability_file)
     }
 
     extractionRule_table = extract_all_info(structure_file, metadata_file, service_metadata_file, serviceId, qualityEvaluation_file, interoperability_file, func = extract_rule)

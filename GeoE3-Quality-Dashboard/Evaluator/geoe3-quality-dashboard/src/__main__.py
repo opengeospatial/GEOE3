@@ -23,9 +23,10 @@ def main():
 
     metadata_file = 'MD_Bui_EX_1.xml'
     service_metadata_file = 'SMD_Bui_EX_1.xml'
-    qualityEvaluation_file = 'buildings_and_errors/results_NO_cc.csv'
-    serviceId = '157353'
     interoperability_file = 'interoperability_maturityModel.csv'
+    qualityEvaluation_file = 'buildings_and_errors/results_NO_cc.csv'
+    serviceId = '164572'
+
 
 
 
@@ -35,7 +36,7 @@ def main():
     'service-availability': 0,
     'service-metadata': load_dataset_metadata(service_metadata_file),
     'quality-evaluation': load_cvs(qualityEvaluation_file),
-    'interoperability-maturity-model': 0
+    'interoperability_map': load_cvs(interoperability_file)
     }
     # Extract rules from Structure file (JSON) and executes them. Result is a Dataframe table
     scores_table, M, E, D, VP = extract_all_info(structure_file, metadata_file, service_metadata_file, serviceId, qualityEvaluation_file,interoperability_file, func = extract_rule)
@@ -51,7 +52,7 @@ def main():
     D.to_csv(os.path.join(folder_name, 'Dimensions' + '.csv'), index=False)
     E.to_csv(os.path.join(folder_name, 'Elements' + '.csv'), index=False)
     M.to_csv(os.path.join(folder_name, 'Measures' + '.csv'), index=False)
-    print('Results have been saved in a folder named : ', name_excel_file)
+    print('Results have been saved in a folder named : ', folder_name)
 
 
 
