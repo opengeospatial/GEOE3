@@ -54,12 +54,16 @@ The data from the availability API is downloaded into a temp file located in the
 2. Service metadata OR Service description Capabilities document (data or service provider)
 3. Quality evaluation results (see [GeoE3 Quality Software](https://github.com/opengeospatial/GEOE3/tree/main/Geoe3-Quality-Software))
 4. Service availability information (Spatineo)
+5. Interoperability map (GeoE3 project)
 
 Sources 1 and 2 are XML files that can be downloaded from wherever catalogues they reside from.
 
 Source 3 data is provided by a Quality Software. The Quality software is based on FME and the workbench which analyses the actual contenst of the dataset. It could produce a machine readable file that the dashboard could read in. Currently, for each dataset, we are interested in the produced CSV result file that puts together the list and count of errors the software has identified.
 
 Source 4 data is downloaded from an API provided by Spatineo.
+
+Source 5 data is updated periodically through the GeoE3 project.
+**Note that the `service Id` is used to link the data of the interoperability map to the rest of the data. It must therefore be filled by the service availability provider.**
 
 ## The evaluation process
 
