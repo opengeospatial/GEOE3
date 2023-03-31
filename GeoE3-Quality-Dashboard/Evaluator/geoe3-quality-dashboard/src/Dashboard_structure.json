@@ -11,11 +11,11 @@
             "weight": 7,
             "description": "Quality Dimension under the Use Case Viewpoint. Describes whether the dataset can easily be understood by potential users.",
             "nodes": {
-                "Findability": {
+                "Contextuality": {
                     "type": "qualityElement",
-                    "name": "FAIR Findability",
-                    "weight": 7,
-                    "description": "Data and metadata are online and openly searchable with a persistent link that is uniquely attached to each specific dataset. ",
+                    "name": "Contextuality",
+                    "weight": 8,
+                    "description": "Context is provided to the user.",
                     "nodes": {
                         "Keywords": {
                             "type": "measure",
@@ -40,15 +40,7 @@
                                     }
                                 }
                             }
-                        }
-                    }
-                },
-                "Contextuality": {
-                    "type": "qualityElement",
-                    "name": "Contextuality",
-                    "weight": 4,
-                    "description": "Context is provided to the user.",
-                    "nodes": {
+                        },
                         "Title": {
                             "type": "measure",
                             "name": "Title",
@@ -76,7 +68,7 @@
                         "Description": {
                             "type": "measure",
                             "name": "Description",
-                            "weight": 8,
+                            "weight": 6,
                             "description": "Description.",
                             "nodes": {
                                 "metric1": {
@@ -93,6 +85,69 @@
                                     "evaluationRule": {
                                         "type": "presence",
                                         "description": "Checks that the property is set."
+                                    }
+                                }
+                        }
+                        },
+                        "CurrentnessUC": {
+                            "type": "measure",
+                            "name": "Currentness (UC)",
+                            "weight": 8,
+                            "description": "Time frame of the dataset and relevant dates.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "Date Of Creation (UC)",
+                                    "weight": 5,
+                                    "description": "Date of creation",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:identificationInfo[1]//gmd:citation//gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue='creation']/gmd:date/gco:Date",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule":{
+                                        "type": "date",
+                                        "minimum": "2015-01-01",
+                                        "maximum": "2023-01-01",
+                                        "description": "Date of creation should be included in user requested period"
+                                    }
+
+                                },
+                                "metric2": {
+                                    "type": "metric",
+                                    "name": "Date Of Publication (UC)",
+                                    "weight": 5,
+                                    "description": "Date of publication",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:identificationInfo[1]//gmd:citation//gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue='publication']/gmd:date/gco:Date",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule":{
+                                        "type": "date",
+                                        "minimum": "2016-01-01",
+                                        "maximum": "2023-01-01",
+                                        "description": "Date of publication should be included in user requested period"
+                                    }
+                                },
+                                "metric3": {
+                                    "type": "metric",
+                                    "name": "Date Of Revision (UC)",
+                                    "weight": 5,
+                                    "description": "Date of revision declared in the Metadata",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:identificationInfo[1]//gmd:citation//gmd:CI_Date[gmd:dateType/gmd:CI_DateTypeCode/@codeListValue='revision']/gmd:date/gco:Date",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule":{
+                                        "type": "date",
+                                        "minimum": "2022-01-01",
+                                        "maximum": "2023-01-01",
+                                        "description": "Date of last revision should be included in user requested period"
                                     }
                                 }
                             }
@@ -172,6 +227,104 @@
                             }
                         }
                     }
+                }
+            }
+        },
+        "Relevance": {
+            "type": "dimension",
+            "name": "Relevance",
+            "weight": 9,
+            "description": "Quality Dimension under the Use Case Viewpoint. Describes the relevance potential of the dataset for users.",
+            "nodes": {
+                "ReferenceSystem": {
+                    "type": "qualityElement",
+                    "name": "Reference System (relevance)",
+                    "weight": 5,
+                    "description": "Description of the reference system(s) used in the data set.",
+                    "nodes": {
+                        "CoordinateReferenceSystem": {
+                            "type": "measure",
+                            "name": "Coordinate Reference System (relevance)",
+                            "weight": 5,
+                            "description": "Description of the coordinate reference system(s) used in the data set.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "West Bound Longitude (relevance)",
+                                    "weight": 5,
+                                    "description": "Parameter must be set",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:identificationInfo//gmd:extent//gmd:geographicElement//gmd:westBoundLongitude",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "referenceValue": 5,
+                                        "operator": ">",
+                                        "description": "Checks whether the dataset encompasses the right area according to user input."
+                                    }
+                                },
+                                "metric2": {
+                                    "type": "metric",
+                                    "name": "East Bound Longitude (relevance)",
+                                    "weight": 5,
+                                    "description": "Parameter must be set",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:identificationInfo//gmd:extent//gmd:geographicElement//gmd:eastBoundLongitude",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "referenceValue": 25,
+                                        "operator": "<",
+                                        "description": "Checks whether the dataset encompasses the right area according to user input."
+                                    }
+                                },
+                                "metric3": {
+                                    "type": "metric",
+                                    "name": "South Bound Latitude (relevance)",
+                                    "weight": 5,
+                                    "description": "Parameter must be set",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "//gmd:identificationInfo//gmd:extent//gmd:geographicElement//gmd:southBoundLatitude",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "referenceValue": 60,
+                                        "operator": ">",
+                                        "description": "Checks whether the dataset encompasses the right area according to user input."
+                                    }
+                                },
+                                "metric4": {
+                                    "type": "metric",
+                                    "name": "North Bound Latitude (relevance)",
+                                    "weight": 5,
+                                    "description": "Parameter must be set",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "dataset-metadata",
+                                        "rule": "///gmd:identificationInfo//gmd:extent//gmd:geographicElement//gmd:northBoundLatitude",
+                                        "value": "text"
+                                    },
+                                    "evaluationRule": {
+                                        "type": "comparison",
+                                        "referenceValue": 65,
+                                        "operator": "<",
+                                        "description": "Checks whether the dataset encompasses the right area according to user input."
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
                 }
             }
         }
@@ -1945,9 +2098,161 @@
     "weight": 1,
     "description": "Viewpoint focused on the interoperability capacity of the dataset and service. Includes evaluations from the GeoE3 Data Maturity Model and Interoperability Map.",
     "nodes":{
+        "InteroperabilityMap":{
+            "type": "dimension",
+            "name": "Interoperability Map",
+            "description": "GeoE3 Interoperability map",
+            "weight": 10,
+            "nodes": {
+                "TechnicalInteroperability": {
+                    "type": "qualityElement",
+                    "name": "Technical Interoperability",
+                    "description": "Technical Interoperability",
+                    "weight": 2,
+                    "nodes": {
+                        "TechnicalInteroperability": {
+                            "type": "measure",
+                            "name": "Technical Interoperability",
+                            "description": "Technical Interoperability",
+                            "weight": 5,
+                            "nodes": {
+                                "MetadataDiscoverability": {
+                                    "type": "metric",
+                                    "name": "Metadata Discoverability",
+                                    "weight": 5,
+                                    "description": "Metadata Discoverability",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "interopability-map",
+                                        "column": "metadata_discoverability",
+                                        "rule": "serviceId",
+                                        "value": "text"  
+                                    },
+                                    "evaluationRule": {
+                                        "type": "none"
+                                    }
+                                },
+                                "DataAccessibility": {
+                                    "type": "metric",
+                                    "name": "Data Accessibility",
+                                    "weight": 5,
+                                    "description": "Data Accessibility",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "interopability-map",
+                                        "column": "data_accessibility",
+                                        "rule": "serviceId",
+                                        "value": "text"  
+                                    },
+                                    "evaluationRule": {
+                                        "type": "none"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "LegalAndOrganizationalInteroperability": {
+                    "type": "qualityElement",
+                    "name": "Legal And Organizational Interoperability",
+                    "description": "Legal And Organizational Interoperability",
+                    "weight": 1,
+                    "nodes": {  
+                        "LegalAndOrganizationalInteroperability": {
+                            "type": "measure",
+                            "name": "Legal And Organizational Interoperability",
+                            "description": "Legal And Organizational Interoperability",
+                            "weight": 5,
+                            "nodes": {  
+                                "NationalData": {
+                                    "type": "metric",
+                                    "name": "National Data accessibility and integration arrangements",
+                                    "weight": 5,
+                                    "description": "National Data accessibility and integration arrangements",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "interopability-map",
+                                        "column": "National_data_accessibility_and_integration_arrangements",
+                                        "rule": "serviceId",
+                                        "value": "text"  
+                                    },
+                                    "evaluationRule": {
+                                        "type": "none"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "SemanticInteroperability": {
+                    "type": "qualityElement",
+                    "name": "Semantic Interoperability",
+                    "description": "Semantic Interoperability",
+                    "weight": 3,
+                    "nodes": { 
+                        "SemanticInteroperability": {
+                            "type": "measure",
+                            "name": "Semantic Interoperability",
+                            "description": "Semantic Interoperability",
+                            "weight": 5,
+                            "nodes": {  
+                                "QualityAssessment": {
+                                    "type": "metric",
+                                    "name": "Quality Assessment",
+                                    "weight": 5,
+                                    "description": "Quality assessment (QA)",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "interopability-map",
+                                        "column": "Quality_assessment_(QA)",
+                                        "rule": "serviceId",
+                                        "value": "text"  
+                                    },
+                                    "evaluationRule": {
+                                        "type": "none"
+                                    }
+                                },
+                                "DataContentAndQuality": {
+                                    "type": "metric",
+                                    "name": "Data Content And Quality",
+                                    "weight": 5,
+                                    "description": "Data Content And Quality",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "interopability-map",
+                                        "column": "Data_content_and_data_quality",
+                                        "rule": "serviceId",
+                                        "value": "text"  
+                                    },
+                                    "evaluationRule": {
+                                        "type": "none"
+                                    }
+                                },
+                                "VocabularyAndDataQuality": {
+                                    "type": "metric",
+                                    "name": "Vocabulary And Data Quality",
+                                    "weight": 5,
+                                    "description": "Vocabulary_And_Data_Quality",
+                                    "extractionRule": {
+                                        "type": "formula",
+                                        "source": "interopability-map",
+                                        "column": "Vocabulary_and_data_specifications",
+                                        "rule": "serviceId",
+                                        "value": "text"  
+                                    },
+                                    "evaluationRule": {
+                                        "type": "none"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "Reusability": {
             "type": "dimension",
-            "name": "FAIR Reusability",
+            "name": "Reusability",
             "weight": 7,
             "description": "Data and metadata are sufficiently annotated so machine and human users can determine fit-for-purpose in the context of their analysis (FAIR principles).",
             "nodes":{
@@ -1970,8 +2275,8 @@
                                     "description": "Access constraints applied to assure the protection of privacy or intellectual property, and any special restrictions or limitations on obtaining the resource.",
                                     "extractionRule": {
                                         "type": "xpath",
-                                        "source": "dataset-metadata",
-                                        "rule": "//gmd:identificationInfo//gmd:resourceContraints//gmd:accessConstraints",
+                                        "source": "service-metadata",
+                                        "rule": "//gmd:identificationInfo//gmd:resourceConstraints//gmd:accessConstraints",
                                         "value": "text"
                                     },
                                     "evaluationRule": {
@@ -1986,8 +2291,8 @@
                                     "description": "Other restrictions and legal prerequisites for accessing and using the resource or metadata.",
                                     "extractionRule": {
                                         "type": "xpath",
-                                        "source": "dataset-metadata",
-                                        "rule": "//gmd:identificationInfo//gmd:resourceContraints//gmd:otherConstraints",
+                                        "source": "service-metadata",
+                                        "rule": "//gmd:identificationInfo//gmd:resourceConstraints//gmd:otherConstraints",
                                         "value": "text"
                                     },
                                     "evaluationRule": {
@@ -2002,7 +2307,7 @@
                                     "description": "Restrictions on the access and use of a resource or metadata.",
                                     "extractionRule": {
                                         "type": "xpath",
-                                        "source": "dataset-metadata",
+                                        "source": "service-metadata",
                                         "rule": "//gmd:identificationInfo//gmd:useLimitation",
                                         "value": "text"
                                     },
