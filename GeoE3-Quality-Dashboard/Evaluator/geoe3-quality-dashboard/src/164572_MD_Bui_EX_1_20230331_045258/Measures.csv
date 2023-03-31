@@ -1,0 +1,58 @@
+Element,Measure,Measure_Weight,Measure_Description,Measure_Score
+Contextuality,Keywords,10,Keywords should be specified.,0.0
+Contextuality,Title,8,Title,5.0
+Contextuality,Description,6,Description.,5.0
+Contextuality,Currentness (UC),8,Time frame of the dataset and relevant dates.,2.0
+Language,Language Presence,5,Language should be specified.,5.0
+Language,English Language,8,Describes whether English is available.,5.0
+Reference System (relevance),Coordinate Reference System (relevance),5,Description of the coordinate reference system(s) used in the data set.,2.75
+Service Robustness,Availability,5,Displays availability statistics of the service.,3.967741935483871
+Omission,Missing Item,5,Evaluation based on missing items in the data.,5.0
+Comission,Item Duplicate,2,Evaluation based on duplicate items in the data.,5.0
+Quantitative Attribute Accuracy,Date Last Evaluation (QAA),8,Evaluation based on the date of last Evaluation.,0.0
+Quantitative Attribute Accuracy,Attribute Value Uncertainty,5,Attribute value uncertainty.,0.0
+Non Quantitative Attribute Correctness,Date Last Evaluation (NQAC),8,Evaluation based on the date of last Evaluation.,0.0
+Non Quantitative Attribute Correctness,Missclassification (NQAC),6,Evaluation based on the missclassification of non-quantitative attributes.,0.0
+Classification Correctness,Date Last Evaluation Thematic Quality,8,Evaluation based on the date of last Evaluation.,5.0
+Classification Correctness,Missclassification (TCC),5,Evaluation based on thematic missclassification.,5.0
+Conceptual Consistency,FailsOGC,7,Evaluation based on whether the data follows OGC principles.,5.0
+Conceptual Consistency,Missing Vertex Normals,5,Evaluation based on whether the data is missing vertex normals.,1.0
+Conceptual Consistency,Surfaces Wrongly Oriented,5,Evaluation based on whether the data has mistakes in the orientation of surfaces.,5.0
+Domain Consistency,Attribute Value Not In Allowed Range,5,Describes whether the attribute value is within allowed range.,5.0
+Format Consistency,Mismatched Dimensions,5,Evaluates the presence of mismatched dimensions.,5.0
+Format Consistency,Not 3D,5,Describes whether the coordinate reference system is in 3D (as it should) or not.,5.0
+Format Consistency,Wrong Data Type,5,Desctibes whether the data type of attriute is valid.,5.0
+Geometric Consistency,Ground Overlapping In 2D,5,Describes whether features overlap.,5.0
+Geometric Consistency,Degenerate Corrupt Geometries,5,Describe whether the geometry of features is valid.,1.0
+Geometric Consistency,Non Planar Surfaces,5,Describes whether surfaces are planar.,5.0
+Geometric Consistency,Ground Higher Than Roof,5,Describes errors due to incoherent heights of ground an roof in relation with each other.,5.0
+Geometric Consistency,Feature Has Spikes,5,Evaluation based on spikes in dataset that exceed tolerance.,5.0
+Geometric Consistency,Geometry Too Small,5,Describes whether some geometry are too small.,3.0
+Geometric Consistency,Orientation,5,Evaluation based on presence of inccorect orientation.,5.0
+Topological Consistency,Missing Connections,5,Describes whether connections are missing.,5.0
+Topological Consistency,Invalid Solid Voids,5,Describes whether the solid contains problems.,5.0
+Topological Consistency,Invalid Self-Interest Overlap Errors,5,Describes whether vertices of the feature are correctly connected.,5.0
+Topological Consistency,Invalid Solid Boundaries,5,The solid boundaries must be valid.,5.0
+Accuracy Time Measurment,Time Accuracy,5,Time accuracy at XX.X % significance level [ISO 19157-3:2021]..,5.0
+Temporal Consistency,Chronological Order,5,"Time accuracy at 99,8 % significance level [ISO 19157-3:2021]",5.0
+Temporal Validity,Currentness,8,Degree to which data has attributes that are of the right age in a specific context of use [25012:2008].,2.0
+Temporal Validity,Maintenance Frequency,7,evaluation if a dataset is maintained as set as maintenance frequency [ISO 19157-3:2021].,5.0
+Absolute Positional Accuracy,MeanValuePosUncertainties,8,Mean value of the positional uncertainties for a set of positions where the positional uncertainties are defined as the distance between a measured position and what is accepted as the corresponding true position [ISO 19157-3:2021].,5.0
+Relative Positional Accuracy,Relative Vertical Error,5,evaluation of the random errors of one relief feature to another in the same dataset or on the same map/chart [ISO 19157-3:2021].,5.0
+Relative Positional Accuracy,Relative Horizontal Error,5,Evaluation of the random errors in the horizontal position of one feature to another in the same dataset or on the same map/chart [ISO 19157-3:2021].,5.0
+Gridded Positional Accuracy,Circular Standard Deviation,5,"Circular standard deviation, also known as circular standard error, Helmertâ€™s point error, CSE [ISO 19157-3:2021].",5.0
+Gridded Positional Accuracy,RMS Error Planimetry,10,Root mean square error of planimetry [ISO 19157-3:2021].,4.0
+Spatial Resolution,Equivalent Scale,5,Level of detail expressed as the scale denominator of a comparable hardcopy map or chart [MD_IR_and_ISO_20081219].,5.0
+Spatial Resolution,Distance,5,Ground sample distance [MD_IR_and_ISO_20081219].,1.0
+Technical Interoperability,Technical Interoperability,5,Technical Interoperability,4.166666666666667
+Legal And Organizational Interoperability,Legal And Organizational Interoperability,5,Legal And Organizational Interoperability,0.0
+Semantic Interoperability,Semantic Interoperability,5,Semantic Interoperability,2.777777777777778
+Accessibility,Access Restrictions,10,Checks whether the access to the data is public or restricted.,1.6666666666666667
+Accessibility,Point of Contact,4,Checks whether the access to the data is public or restricted.,5.0
+Versioning,Metadata Standard Name,5,Metadata Standard Name.,5.0
+Versioning,Metadata Standard Version,5,Metadata Standard Version.,5.0
+Traceability,Lineage Statment,5,Describes whether the data has a lineage statment.,5.0
+Reference System,Coordinate Reference System,5,Description of the coordinate reference system(s) used in the data set.,5.0
+Format,Format,5,Describes the file format of the distribution.,5.0
+Encoding,Encoding,5,Describes the encoding.,5.0
+SpatialRepresentation,Spatial representation type,5,Describes the spatial representation type.,5.0

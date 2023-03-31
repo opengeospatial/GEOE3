@@ -1,0 +1,13 @@
+Viewpoint,Dimension,Dimension_Weight,Dimension_Description,Dimension_Score
+Use Case,Understandability,7,Quality Dimension under the Use Case Viewpoint. Describes whether the dataset can easily be understood by potential users.,3.6785714285714284
+Use Case,Relevance,9,Quality Dimension under the Use Case Viewpoint. Describes the relevance potential of the dataset for users.,2.75
+Service And Dataset,Service Quality,6,Dimension under the Service and Dataset Viewpoint. Evaluates the quality of the service that provides the data.,3.967741935483871
+Service And Dataset,Completeness,5,"Presence and absence of features, their attributes and their relationship [ISO 19157-1:2021].",5.0
+Service And Dataset,Thematic Quality,5,Thematic quality is defined as the accuracy of quantitative attributes and the correctness of non-quantitative attributes and of the classifications of features and their relationships [ISO 19157-1:2021].,1.6666666666666667
+Service And Dataset,Logical Consistency,5,"Degree of adherence to logical rules of data structure, attribution and relationships (data structure can be conceptual, logical or physical) [ISO 19157-1:2021].",4.6088090408577225
+Service And Dataset,Temporal Quality,7,Accuracy of the temporal attributes and temporal relationships of features [ISO 19157-1:2021].,4.242105263157894
+Service And Dataset,Positionnal Accuracy,5,Accuracy of the position of features [ISO 19157-1:2021].,4.045045045045045
+Interoperability,Interoperability Map,10,GeoE3 Interoperability map,2.777777777777778
+Interoperability,Reusability,7,Data and metadata are sufficiently annotated so machine and human users can determine fit-for-purpose in the context of their analysis (FAIR principles).,3.534798534798535
+Interoperability,Traceability,6,Describes whether the data process is described adequately.,5.0
+Interoperability,FAIR Interoperability,8,"Data and metadata are consistently structured and described, both syntactically and semantically, so that algorithms can parse and ensure like data are accurately compared to like (FAIR principles).",5.0
