@@ -1845,9 +1845,9 @@
                 }
             }
         },
-        "positionnalAccuracy": {
+        "positionalAccuracy": {
             "type": "dimension",
-            "name": "Positionnal Accuracy",
+            "name": "Positional Accuracy",
             "weight": 5,
             "description": "Accuracy of the position of features [ISO 19157-1:2021].",
             "nodes": {
@@ -1867,7 +1867,7 @@
                                     "type": "metric",
                                     "name": "MeanValuePosUncertainties",
                                     "weight": 5,
-                                    "description": "Mean value of positionnal uncertainty of the dataset",
+                                    "description": "Mean value of positional uncertainty of the dataset",
                                     "extractionRule": {
                                         "type": "xpath",
                                         "source": "dataset-metadata",
@@ -1878,7 +1878,7 @@
                                         "type": "range",
                                         "minimum": 0,
                                         "maximum": 0.8,
-                                        "description": "Mean value of positionnal uncertainty should be between 0m and 0.8m (user request)"
+                                        "description": "Mean value of positional uncertainty should be between 0m and 0.8m (user request)"
                                 }
                             }
                         },
