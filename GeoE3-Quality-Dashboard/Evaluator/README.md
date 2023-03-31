@@ -57,6 +57,7 @@ The data from the availability API is downloaded into a temp file located in the
 5. Interoperability map (GeoE3 project)
 
 Sources 1 and 2 are XML files that can be downloaded from wherever catalogues they reside from.
+**In Source 1, fields have been added in the metadata file.** They are indicated by being between markers ' <!-- Added : ... '. Check MD_Bui_EX_1.xml to consult reccomended additions to metadata.
 
 Source 3 data is provided by a Quality Software. The Quality software is based on FME and the workbench which analyses the actual contenst of the dataset. It could produce a machine readable file that the dashboard could read in. Currently, for each dataset, we are interested in the produced CSV result file that puts together the list and count of errors the software has identified.
 
