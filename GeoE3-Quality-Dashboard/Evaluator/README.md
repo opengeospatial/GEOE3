@@ -22,18 +22,48 @@ The output of the program is 5 files located in one folder:
 Name of the folder is formatted as follow :  
 > *'service ID'_'name of metadata file'_date_time*  
 
+## Run the program
+
+### Miniconda3 help
+
+1. Start "Anaconda Powershell Prompt (Miniconda3)" from the start menu
+2. In the shell, run `conda activate geoe3`
+3. In the shell, run `cd c:\whereever\this\project\is\geoe3-quality-dashboard\`
+4. Use the project as normal
+
+#### When using miniconda for the first time
+When using miniconda for the first time, run these commands :
+```
+$ conda create --name geoe3
+$ conda activate geoe3
+$ conda config --add chanels conda-forge
+$ cd c:\whereever\this\project\is\geoe3-quality-dashboard\
+$ conda install pytest lxml isodate==0.6.1
+```
+Then install the required modules specified in the requirements file : ```pip install name_module```
+
+### Run the program
+
+Run the ```__main__.py``` program.
+It will ask for the path of source files and a service ID.  
+The data from the availability API is downloaded into a temp file located in the temp folder. This file should be automatically deleted after the program is run.
+
 ## Source of the dashboard data
 
 1. Dataset metadata (data provider)
 2. Service metadata OR Service description Capabilities document (data or service provider)
-3. Quality evaluation results (see [GeoE3 Quality Software](https://github.com/opengeospatial/GEOE3/tree/main/GeoE3-Quality-Software)
+3. Quality evaluation results (see [GeoE3 Quality Software](https://github.com/opengeospatial/GEOE3/tree/main/Geoe3-Quality-Software))
 4. Service availability information (Spatineo)
+5. Interoperability map (GeoE3 project)
 
 Sources 1 and 2 are XML files that can be downloaded from wherever catalogues they reside from.
 
-Source 3 data is provided by a Quality Software. The Quality software is based on FME and the workbench which analyses the actual contenst of the dataset. It could produce a machine readable file that the dashboard could read in. Currently, for each dataset, we are interested in the produced CSV result file that puts together the list and count of errors the software has identified. The products of the software should be downloaded from 'somewhere' - still undetermined where the software would run from and where the data would be stored.
+Source 3 data is provided by a Quality Software. The Quality software is based on FME and the workbench which analyses the actual contenst of the dataset. It could produce a machine readable file that the dashboard could read in. Currently, for each dataset, we are interested in the produced CSV result file that puts together the list and count of errors the software has identified.
 
 Source 4 data is downloaded from an API provided by Spatineo.
+
+Source 5 data is updated periodically through the GeoE3 project.
+**Note that the `service Id` column in the interoperability map file (CVS) is used to link the data of the interoperability map to the rest of the data. It must therefore be filled by the service availability provider.**
 
 ## The evaluation process
 
@@ -42,57 +72,130 @@ Source 4 data is downloaded from an API provided by Spatineo.
     - link to service metadata for a (single) service that is used to disseminate the dataset
     - linkage to the Quality evaluation results (TBD)
     - linkage to the service availability information (TBD)
-2. Configuration file that includes viewpoints, their dimensions, all the way up to metrics. Each metric includes extraction rules on how to extract information to evaluate that metric for a particular dataset
-    - an exatraction rule may target one of the sources (dataset metadata, service metadata, quality software output, or availability information)
-3. Configuration also includes the evaluation criteria used to assess whether the extraction output meets requirements => gives a score for that metric
-4. Scores are then combined up the quality hierarchy with weights applied (weights are stored in the configuration file)
-5. Output in tabular format (for example CSV) so that it is easily usable in the dashboard application (for example Power BI)
+2. Configuration file that includes viewpoints, their dimensions, all the way down to metrics. Each metric includes extraction rules on how to extract data from its source file. An extraction rule may target one of the sources (dataset metadata, service metadata, quality software output, or availability information).
+3. Configuration also includes the evaluation rules used to assess whether the extraction output meets requirements => gives a score for that metric.
+4. Scores are then combined up the quality hierarchy using weighted average with weights stored in the configuration file.
+5. Output is 5 **DataFrames** that are saved in tabular format (CSV) so that it is easily usable in the dashboard application (ie. Power BI)
+
+## Origin of quality metrics and classification
+
+The source for the metrics used in this classification include :
+- ISO 19157-3 ;
+- ISO 19115 ;
+- ISO 19139 ;
+- INSPIRE Metadata Implementing Rules: Technical Guidelines based on EN ISO 19115 and EN ISO 19119 (v 1.3) ;
+- the FAIR principles.
+
+For additionnal information on the metrics and classification, see this [index file](https://github.com/opengeospatial/GEOE3/tree/main/GeoE3-Quality-Dashboard/Evaluator/Quality_metrics_and_where_to_find_them.xlsx).
 
 ## Configuration file format
 
+The configuration file is named 'Dashboard_structure.json' and is in a JSON format.
+It is in the form of noded dictionaries with keys and values.
+
+```
+...
+"viewpoint1": {
+    "type": "viewpoint",
+    "name": "name of viewpoint",
+    "weight": 1,
+    "description": "Description of viewpoint.",
+    "nodes": {
+        "dimension1":{
+            "type": "dimension",
+            "name": "name of dimension",
+            "weight": 6,
+            "description": "Description of dimension.",
+            "nodes": {
+                "element1": {
+                    "type": "qualityElement",
+                    "name": "name of element",
+                    "weight": 5,
+                    "description": "Description of quality element.",
+                    "nodes": {
+                        "measure1": {
+                            "type": "measure",
+                            "name": "name of measure",
+                            "weight": 5,
+                            "description": "Description of measure.",
+                            "nodes": {
+                                "metric1": {
+                                    "type": "metric",
+                                    "name": "name of metric",
+                                    "weight": 0,
+                                    "description": "Description of metric",
+                                    "extractionRule": {
+                                        "type": "xpath",
+                                        "source": "service-availability",
+                                        "url_start": "https://xxxxx",
+                                        "rule": "//xpathxxxxxx",
+                                        "value": "text"                                        
+                                    },
+                                    "evaluationRule": {
+                                        "type": "presence",
+                                        "description": "Checks presence"
+                                    }
+...
+```
 
 ### Extraction rules
 
 ```
   ... 
   "extractionRule": {
-    "source": "dataset-metadata", 
     "type": "xpath",
-    "rule": ".//gmd:MD_Metadata/gmd:contact/gmd:CI_ResponsibleParty/gmd:individualName/gco:CharacterString"
+    "source": "dataset-metadata", 
+    "rule": "//gmd:MD_Metadata//gmd:contact//gmd:CI_ResponsibleParty//gmd:individualName//gco:CharacterString",
+    "value": "text"
   }
 ```
+#### `Source`
 
-`source` = one of `dataset-metadata`, `service-metadata`, `quality-evaluation`, `service-description` (e.g. WFS Capabilities document), or `service-availability`
+`source` = one of `dataset-metadata`, `service-metadata`, `quality-evaluation`, `service-description` (e.g. WFS Capabilities document), or `service-availability`  
+    `service-availability` and `quality-evaluation` have additional keys :
+```
+  "extractionRule": {
+    "type": "xpath",
+    "source": "service-availability",
+    "url_start": "https://...",
+    "rule": "//daysOfAvailabilityMetrics",
+    "value": "text"  
+ }
+```
+```
+  "extractionRule": {
+    "type": "formula",
+    "source": "quality-evaluation",
+    "column": "error_count",
+    "rule": "Fails OGC Valid",
+    "value": "text"                                       
+  }
+```
+#### `type`
+`type` = one of `xpath` or  `formula` (for CSV documents)
+
+### Evaluation rules
+
+```
+    "evaluationRule": {
+      "type": "presence",
+      "description": "Description of evaluation rule."
+     }
+```
+#### `type`
+`type` = one of `presence`, `comparison`, `range`, `date`, `none`
+
+- `none` is used for the interoperability map, it only transforms the 0-3 levels into a score from 0-5 ;
+- `comparison` has the additional keys : `referenceValue` and `operator`.  
+`operator` = one of `<`, `>`, `is` (for str type of value)  
+ - range` and `date` have the additional keys `minimum` and `maximum`
+
 
 ## Adding extractors / evaluators
 
-When you need a new type of extractor:
+To add a new type of extractor:
 1. Choose a keyword for it (for example "***xpath***")
 2. Write a function in `src/extract.py` that follows the format `def execute_[your_chosen_keyword_with_underscores]_rule(rule, model):`
 3. Register the keyword in the dict `extractor_by_type` in `src/extract.py`
-4. Write tests for that extractor in a new file `test/test_extractor_[your_chosen_keyword_with_underscores].py`
 
-Similar thing with evaluators, choose a keyword, write the function in `src/evaluate.py` and write tests in a new file.
-
-## Testing
-
-To run tests:
-
-`$ pytest`
-
-## Miniconda3 help
-
-1. Start "Anaconda Powershell Prompt (Miniconda3)" from the start menu
-2. In the shell, run `conda activate geoe3`
-3. In the shell, run `cd c:\whereever\this\project\is\geoe3-quality-dashboard\`
-4. Use the project as normal
-
-When using miniconda for the first time, run these commands
-
-```
-$ conda create --name geoe3
-$ conda activate geoe3
-$ conda config --add chanels conda-forge
-$ cd c:\whereever\this\project\is\geoe3-quality-dashboard\
-$ conda install pytest lxml isodate==0.6.1
-```
+Similar thing with evaluators.
